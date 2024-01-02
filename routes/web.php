@@ -18,7 +18,7 @@ Route::get('/', function () {
 });
 
 Route::get('/home', function () {
-    return view('Home');
+    return view('masyarakat/Home');
 });
 Route::get('/about', function () {
     return view('About');
@@ -26,3 +26,5 @@ Route::get('/about', function () {
 Route::get('/faq', function () {
     return view('FAQ');
 });
+
+// Route::get('/home','MasyarakatController@depan');
