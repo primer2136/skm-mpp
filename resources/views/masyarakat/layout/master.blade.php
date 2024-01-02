@@ -11,8 +11,11 @@
     <link rel="stylesheet" type="text/css" href="{{ asset('landing/css/navbar.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('landing/css/resp.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/style2.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('landing/css/style.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('landing/css/as.css') }}">
 
-    <title>Pengaduan</title>
+
+    <title>SURVEY KEPUASAN MASYARAKAT</title>
   </head>
   <body style="background-color: #fafafa;">
     
@@ -23,7 +26,7 @@
     <nav class="navbar navbar-expand-lg navbar-light mt-3 fixed-top" id="navbar">
       <div class="container-fluid">
         <a class="navbar-brand" href="#">
-          <img src="{{ asset('assets/img/logopengaduan.png') }}" height="50px">
+          <img src="{{ asset('assets/img/logopengaduan.png') }}" height="30px">
         </a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
