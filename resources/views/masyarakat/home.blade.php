@@ -20,7 +20,7 @@
 
             <div class="desc mt-4">
                 <p>Website ini digunakan untuk menyampaikan pendapat yang ingin masyarakat sampaikan terhadap kinerja
-                    masing-masing tenant yang ada.</p>
+                    masing-masing tenant yang ada di Mal Pelayanan Publik Kota Cimahi.</p>
             </div>
 
             {{-- <div class="mt-5"> --}}
