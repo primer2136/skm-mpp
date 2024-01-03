@@ -37,6 +37,76 @@
         </div>
     </div>
 
+    <!-- How -->
+    <div id="how" class="container my-10 mx-auto px-4 md:px-8 lg:px-12 max-w-xs">
+        <div class="flex flex-wrap -mx-4">
+            <!-- Article 1 -->
+            <div class="my-1 px-1 w-full md:w-1/4 lg:my-4 lg:px-4 lg:w-1/4">
+                <article class="overflow-hidden rounded-lg shadow-lg text-gray-800">
+                    <img alt="Tulis"
+                        class="block max-w-full h-auto mx-auto my-10 transform transition hover:scale-125 duration-300 ease-in-out"
+                        src="{{ asset('assets/img/tulis.svg')}}" />
+                    <header class="leading-tight p-2 md:p-4 text-center ">
+                        <h1 class="text-lg font-bold">1. Tulis Laporan</h1>
+                        <p class="text-grey-darker text-sm py-4">
+                            Tulis laporan keluhan Anda dengan jelas.
+                        </p>
+                    </header>
+                </article>
+            </div>
+            <!-- END Article 1 -->
+
+            <!-- Article 2 -->
+            <div class="my-1 px-1 w-full md:w-1/4 lg:my-4 lg:px-4 lg:w-1/4">
+                <article class="overflow-hidden rounded-lg shadow-lg text-gray-800">
+                    <img alt="Proses"
+                        class="block max-w-full h-auto mx-auto my-10 transform transition hover:scale-125 duration-300 ease-in-out"
+                        src="{{ asset('assets/img/processing.svg')}}" />
+                    <header class="leading-tight p-2 md:p-4 text-center">
+                        <h1 class="text-lg font-bold">2. Proses Verifikasi</h1>
+                        <p class="text-grey-darker text-sm py-4">
+                            Tunggu sampai laporan Anda di verifikasi.
+                        </p>
+                    </header>
+                </article>
+            </div>
+            <!-- END Article 2 -->
+
+            <!-- Article 3 -->
+            <div class="my-1 px-1 w-full md:w-1/4 lg:my-4 lg:px-4 lg:w-1/4">
+                <article class="overflow-hidden rounded-lg shadow-lg text-gray-800">
+                    <img alt="Ditindak"
+                        class="block max-w-full h-auto mx-auto my-10 transform transition hover:scale-125 duration-300 ease-in-out"
+                        src="{{ asset('assets/img/act.svg')}}" />
+                    <header class="leading-tight p-2 md:p-4 text-center">
+                        <h1 class="text-lg font-bold">3. Tindak Lanjut</h1>
+                        <p class="text-grey-darker text-sm py-4">
+                            Laporan Anda sedang dalam tindak lanjut.
+                        </p>
+                    </header>
+                </article>
+            </div>
+            <!-- END Article 3 -->
+
+            <!-- Article 4 -->
+            <div class="my-1 px-1 w-full md:w-1/4 lg:my-4 lg:px-4 lg:w-1/4">
+                <article class="overflow-hidden rounded-lg shadow-lg text-gray-800">
+                    <img alt="Selesai"
+                        class="block max-w-full h-auto mx-auto my-10 transform transition hover:scale-125 duration-300 ease-in-out"
+                        src="{{ asset('assets/img/verification.svg')}}" />
+                    <header class="leading-tight p-2 md:p-4 text-center">
+                        <h1 class="text-lg font-bold">4. Selesai</h1>
+                        <p class="text-grey-darker text-sm py-4">
+                            Laporan pengaduan telah selesai ditindak.
+                        </p>
+                    </header>
+                </article>
+            </div>
+            <!-- END Article 4 -->
+        </div>
+    </div>
+
+
     <div id="tenant" class="mb-8">
         <form action="/">
             <div class="w-full md:w-1/2 m-auto relative">
