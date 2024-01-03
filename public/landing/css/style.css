@@ -65,8 +65,8 @@
 }
 
 .-mx-4 {
-  margin-left: -1rem;
-  margin-right: -1rem;
+  margin-left: -35rem;
+  margin-right: -35rem;
 }
 
 .lg\:-mx-4 {
@@ -213,6 +213,10 @@
 
 .mb-8 {
     margin-bottom: 2rem;
+}
+
+.i-full {
+    width: 25%;
 }
 
 .w-full {

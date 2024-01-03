@@ -18,7 +18,7 @@
             <h1 class="display-1 text-truncate tebel-sedang">Survei Kepuasan</h1>
             <h1 class="display-1 text-truncate tebel-sedang">Pelayanan Tenant</h1>
 
-            <div class="desc mt-4">
+            <div id="tata-cara" class="desc mt-4">
                 <p>Website ini digunakan untuk menyampaikan pendapat yang ingin masyarakat sampaikan terhadap kinerja
                     masing-masing tenant yang ada di Mal Pelayanan Publik Kota Cimahi.</p>
             </div>
@@ -38,18 +38,18 @@
     </div>
 
     <!-- How -->
-    <div id="how" class="container my-10 mx-auto px-4 md:px-8 lg:px-12 max-w-xs">
+    <div class="container my-10 mx-auto px-4 md:px-8 lg:px-12 max-w-xs">
         <div class="flex flex-wrap -mx-4">
             <!-- Article 1 -->
-            <div class="my-1 px-1 w-full md:w-1/4 lg:my-4 lg:px-4 lg:w-1/4">
+            <div class="my-1 px-1 i-full md:w-1/4 lg:my-4 lg:px-4 lg:w-1/4">
                 <article class="overflow-hidden rounded-lg shadow-lg text-gray-800">
                     <img alt="Tulis"
                         class="block max-w-full h-auto mx-auto my-10 transform transition hover:scale-125 duration-300 ease-in-out"
-                        src="{{ asset('assets/img/tulis.svg')}}" />
+                        src="{{ asset('assets/img/pilihtenant.svg')}}" />
                     <header class="leading-tight p-2 md:p-4 text-center ">
-                        <h1 class="text-lg font-bold">1. Tulis Laporan</h1>
+                        <h1 class="text-lg font-bold">1. Pilih Tenant</h1>
                         <p class="text-grey-darker text-sm py-4">
-                            Tulis laporan keluhan Anda dengan jelas.
+                            Pilih tenant yang akan anda nilai.
                         </p>
                     </header>
                 </article>
@@ -57,15 +57,15 @@
             <!-- END Article 1 -->
 
             <!-- Article 2 -->
-            <div class="my-1 px-1 w-full md:w-1/4 lg:my-4 lg:px-4 lg:w-1/4">
+            <div class="my-1 px-1 i-full md:w-1/4 lg:my-4 lg:px-4 lg:w-1/4">
                 <article class="overflow-hidden rounded-lg shadow-lg text-gray-800">
                     <img alt="Proses"
                         class="block max-w-full h-auto mx-auto my-10 transform transition hover:scale-125 duration-300 ease-in-out"
-                        src="{{ asset('assets/img/processing.svg')}}" />
+                        src="{{ asset('assets/img/tulis.svg')}}" />
                     <header class="leading-tight p-2 md:p-4 text-center">
-                        <h1 class="text-lg font-bold">2. Proses Verifikasi</h1>
+                        <h1 class="text-lg font-bold">2. Isi Biodata Diri</h1>
                         <p class="text-grey-darker text-sm py-4">
-                            Tunggu sampai laporan Anda di verifikasi.
+                            Isi biodata diri sesuai dengan data diri Anda.
                         </p>
                     </header>
                 </article>
@@ -73,15 +73,15 @@
             <!-- END Article 2 -->
 
             <!-- Article 3 -->
-            <div class="my-1 px-1 w-full md:w-1/4 lg:my-4 lg:px-4 lg:w-1/4">
+            <div class="my-1 px-1 i-full md:w-1/4 lg:my-4 lg:px-4 lg:w-1/4">
                 <article class="overflow-hidden rounded-lg shadow-lg text-gray-800">
                     <img alt="Ditindak"
                         class="block max-w-full h-auto mx-auto my-10 transform transition hover:scale-125 duration-300 ease-in-out"
-                        src="{{ asset('assets/img/act.svg')}}" />
+                        src="{{ asset('assets/img/isikuesioner.svg')}}" />
                     <header class="leading-tight p-2 md:p-4 text-center">
-                        <h1 class="text-lg font-bold">3. Tindak Lanjut</h1>
+                        <h1 class="text-lg font-bold">3. Isi Kuisioner</h1>
                         <p class="text-grey-darker text-sm py-4">
-                            Laporan Anda sedang dalam tindak lanjut.
+                            Beri penilaian Anda terhadap kinerja tenant.
                         </p>
                     </header>
                 </article>
@@ -89,15 +89,15 @@
             <!-- END Article 3 -->
 
             <!-- Article 4 -->
-            <div class="my-1 px-1 w-full md:w-1/4 lg:my-4 lg:px-4 lg:w-1/4">
+            <div class="my-1 px-1 i-full md:w-1/4 lg:my-4 lg:px-4 lg:w-1/4">
                 <article class="overflow-hidden rounded-lg shadow-lg text-gray-800">
                     <img alt="Selesai"
                         class="block max-w-full h-auto mx-auto my-10 transform transition hover:scale-125 duration-300 ease-in-out"
                         src="{{ asset('assets/img/verification.svg')}}" />
                     <header class="leading-tight p-2 md:p-4 text-center">
                         <h1 class="text-lg font-bold">4. Selesai</h1>
-                        <p class="text-grey-darker text-sm py-4">
-                            Laporan pengaduan telah selesai ditindak.
+                        <p id="tenant" class="text-grey-darker text-sm py-4">
+                            Penilaian selesai dilakukan.
                         </p>
                     </header>
                 </article>
@@ -107,7 +107,7 @@
     </div>
 
 
-    <div id="tenant" class="mb-8">
+    <div class="mb-8">
         <form action="/">
             <div class="w-full md:w-1/2 m-auto relative">
                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-search text-gray-400 absolute inset-3 w-7 h-7">
