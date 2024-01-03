@@ -4,6 +4,9 @@
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>SURVEY KEPUASAN MASYARAKAT</title>
+    
+    <link rel="shortcut icon" href="https://mpp.cimahikota.go.id/img/favicon.png" type="image/x-icon">
 
     <!-- Bootstrap CSS -->
     <link href="{{ asset('landing/bs/css/bootstrap.min.css') }}" rel="stylesheet">
@@ -14,10 +17,7 @@
     <link rel="stylesheet" type="text/css" href="{{ asset('landing/css/style.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('landing/css/as.css') }}">
 
-
-    <title>SURVEY KEPUASAN MASYARAKAT</title>
-    <link rel="shortcut icon" href="https://mpp.cimahikota.go.id/img/favicon.png" type="image/x-icon">
-  </head>
+    </head>
   <body style="background-color: #fafafa;">
     
     <!-- background -->
@@ -26,7 +26,7 @@
     <!-- navbar -->
     <nav class="navbar navbar-expand-lg navbar-light mt-3 fixed-top" id="navbar">
       <div class="container-fluid">
-        <a class="navbar-brand" href="#">
+        <a href="/" class="navbar-brand">
           <img src="{{ asset('assets/img/logopengaduan.png') }}" height="30px">
         </a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -36,10 +36,10 @@
           <ul class="nav nav-pills">
             {{-- @if (Auth::guard('masyarakat')->check()) --}}
             <li class="nav-item">
-              <a class="nav-link active bg-active link-navbar tebel-sedang" href="/">Beranda &nbsp;&nbsp;</a>
+              <a href="#" class="nav-link active bg-active link-navbar tebel-sedang">Beranda &nbsp;&nbsp;</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link link-navbar tebel-sedang" href="/history">Riwayat &nbsp;&nbsp;</a>
+              <a href="#tenant" class="nav-link link-navbar tebel-sedang">Layanan Tenant &nbsp;&nbsp;</a>
             </li>
             {{-- <li class="nav-item">
               <a href="/logoutmasyarakat" class="nav-link bg-custom rounded tebel-sedang shadow" id="btn-sign">LOG OUT</a>
