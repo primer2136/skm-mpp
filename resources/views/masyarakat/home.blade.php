@@ -23,25 +23,21 @@
                     masing-masing tenant yang ada.</p>
             </div>
 
-            <div class="mt-5">
+            {{-- <div class="mt-5"> --}}
                 {{-- @if (Auth::guard('masyarakat')->check()) --}}
-                <a href="masyarakat_pengaduan" class="button rounded-pill shadow tebel-sedang">Isi Survei</a>
+                {{-- <a href="masyarakat_pengaduan" class="button rounded-pill shadow tebel-sedang">Isi Survei</a>
                 &nbsp;
-                <a href="history" class="link">Riwayat Survei</a>
+                <a href="history" class="link">Riwayat Survei</a> --}}
                 {{-- @else 
               <a href="#" id="swal-6" class="button rounded-pill shadow tebel-sedang">Isi Survei</a>
               &nbsp;
               <a href="#" id="swal-6" class="link">Riwayat Survei</a>                
               @endif --}}
-            </div>
-
-            <br>
-
+            {{-- </div> --}}
         </div>
-
     </div>
 
-    <div class="mb-8">
+    <div id="tenant" class="mb-8">
         <form action="/">
             <div class="w-full md:w-1/2 m-auto relative">
                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-search text-gray-400 absolute inset-3 w-7 h-7">
@@ -397,11 +393,9 @@
     </div> -->
 <br><br>
 </div>
+
 <div class="container">
     <p class="text-center font-semibold text-sm text-gray-500">© DPMPTSP Kota Cimahi X ITENAS</p>
 </div>
-
-
-
 
 @endsection
