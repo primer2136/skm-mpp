@@ -39,6 +39,9 @@
               <a href="#" class="nav-link active bg-active link-navbar tebel-sedang">Beranda &nbsp;&nbsp;</a>
             </li>
             <li class="nav-item">
+              <a href="#tata-cara" class="nav-link link-navbar tebel-sedang">Tata Cara &nbsp;&nbsp;</a>
+            </li>
+            <li class="nav-item">
               <a href="#tenant" class="nav-link link-navbar tebel-sedang">Layanan Tenant &nbsp;&nbsp;</a>
             </li>
             {{-- <li class="nav-item">
