@@ -70,7 +70,7 @@
                 src="https://mpp.cimahikota.go.id/layanan/1666239444_kisspng-directorate-general-of-immigration-logo-vector-gra-international-affairs-office-5b6d3f3f610287.0532550815338862713974.png"
                 alt="Logo IMIGRASI">
         </div>
-        <h3 class="service-title">iMIGRASI</h3>
+        <h3 class="service-title">IMIGRASI</h3>
     </a>
     <a href="https://mpp.cimahikota.go.id/layanan/1" class="box">
         <div class="logo-container">
@@ -105,7 +105,7 @@
             <img class="logo" src="https://mpp.cimahikota.go.id/layanan/1666239844_Lambang_Polda_Jabar.png"
                 alt="Logo POLRES">
         </div>
-        <h3 class="service-title">KPOLRES</h3>
+        <h3 class="service-title">POLRES</h3>
     </a>
     <a href="https://mpp.cimahikota.go.id/layanan/1" class="box">
         <div class="logo-container">
@@ -116,10 +116,10 @@
     </a>
     <a href="https://mpp.cimahikota.go.id/layanan/1" class="box">
         <div class="logo-container">
-            <img class="logo" src="https://mpp.cimahikota.go.id/layanan/1666239898_2560px-Pegadaian_logo_(2013).svg.png"
-                alt="Logo PT PEGADAIAN">
+            <img class="logo" src="https://mpp.cimahikota.go.id/layanan/1673406612_logo antrian disdukcapil.png"
+                alt="Logo DINAS KEPENDUDUKAN DAN PENCATATAN SIPIL">
         </div>
-        <h3 class="service-title">PT PEGADAIAN</h3>
+        <h3 class="service-title">DINAS KEPENDUDUKAN DAN PENCATATAN SIPIL</h3>
     </a>
     <a href="https://mpp.cimahikota.go.id/layanan/1" class="box">
         <div class="logo-container">

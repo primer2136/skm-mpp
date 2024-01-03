@@ -1,0 +1,1 @@
+@extends('masyarakat/layout/master')

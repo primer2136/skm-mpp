@@ -20,8 +20,8 @@ Route::get('/', function () {
 Route::get('/home', function () {
     return view('masyarakat/Home');
 });
-Route::get('/about', function () {
-    return view('About');
+Route::get('/survey', function () {
+    return view('survey');
 });
 Route::get('/faq', function () {
     return view('FAQ');
