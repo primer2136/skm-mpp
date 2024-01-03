@@ -16,6 +16,7 @@
 
 
     <title>SURVEY KEPUASAN MASYARAKAT</title>
+    <link rel="shortcut icon" href="https://mpp.cimahikota.go.id/img/favicon.png" type="image/x-icon">
   </head>
   <body style="background-color: #fafafa;">
     
