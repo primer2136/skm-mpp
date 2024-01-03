@@ -211,7 +211,7 @@ object {
     gap: 1rem; /* Jarak antar elemen */
     margin-left: auto;
     margin-right: auto;
-    max-width: 960px; /* Lebar maksimum grid */
+    max-width: 1400px; /* Lebar maksimum grid */
 }
 
 @media (min-width: 768px) {
