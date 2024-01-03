@@ -4,7 +4,7 @@
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>SURVEY KEPUASAN MASYARAKAT</title>
+    <title>SURVEI KEPUASAN MASYARAKAT</title>
     
     <link rel="shortcut icon" href="https://mpp.cimahikota.go.id/img/favicon.png" type="image/x-icon">
 
@@ -26,7 +26,7 @@
     <!-- navbar -->
     <nav class="navbar navbar-expand-lg navbar-light mt-3 fixed-top" id="navbar">
       <div class="container-fluid">
-        <a class="navbar-brand" href="#">
+        <a href="/" class="navbar-brand" >
           <img src="{{ asset('assets/img/logoMPP.png') }}" height="75px">
         </a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
