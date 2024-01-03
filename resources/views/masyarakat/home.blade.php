@@ -53,7 +53,7 @@
     </div>
 
     <div class="grid">
-        <a href="https://mpp.cimahikota.go.id/layanan/1" class="box">
+        <a href="http://127.0.0.1:8000/survey" class="box">
             <div class="logo-container">
                 <img class="logo" src="https://mpp.cimahikota.go.id/layanan/1666239340_dekranasda.png" alt="Logo DEKRANASDA">
             </div>
