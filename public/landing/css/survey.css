@@ -1,0 +1,30 @@
+body {
+  font-family: Arial, sans-serif;
+  text-align: center;
+}
+
+.container {
+  width: 300px;
+  margin: 50px auto;
+}
+
+h1 {
+    position: relative;
+    right: 300px;
+    top: 115px;
+    text-align: center;
+}
+
+.box {
+  padding: 20px;
+  border: 1px solid #ccc;
+  background-color: #f9f9f9;
+  margin-top: 20px;
+  position: relative;
+  right: 300px;
+  top: 150px;
+}
+
+.box p {
+  margin-bottom: 20px;
+}
