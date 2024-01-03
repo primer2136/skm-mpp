@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 @extends('masyarakat/layout/navbar')
 
 <!DOCTYPE html>
@@ -15,3 +16,6 @@
   </div>
 </body>
 </html>
+=======
+@extends('masyarakat/layout/master')
+>>>>>>> main

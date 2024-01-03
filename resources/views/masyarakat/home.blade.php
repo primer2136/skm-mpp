@@ -23,36 +23,32 @@
                     masing-masing tenant yang ada.</p>
             </div>
 
-            <div class="mt-5">
+            {{-- <div class="mt-5"> --}}
                 {{-- @if (Auth::guard('masyarakat')->check()) --}}
-                <a href="masyarakat_pengaduan" class="button rounded-pill shadow tebel-sedang">Isi Survei</a>
+                {{-- <a href="masyarakat_pengaduan" class="button rounded-pill shadow tebel-sedang">Isi Survei</a>
                 &nbsp;
-                <a href="history" class="link">Riwayat Survei</a>
+                <a href="history" class="link">Riwayat Survei</a> --}}
                 {{-- @else 
               <a href="#" id="swal-6" class="button rounded-pill shadow tebel-sedang">Isi Survei</a>
               &nbsp;
               <a href="#" id="swal-6" class="link">Riwayat Survei</a>                
               @endif --}}
-            </div>
-
-            <br>
-
+            {{-- </div> --}}
         </div>
-
     </div>
 
-    <div class="mb-8">
+    <div id="tenant" class="mb-8">
         <form action="/">
             <div class="w-full md:w-1/2 m-auto relative">
-            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-search text-gray-400 absolute inset-3 w-7 h-7">
-                <circle cx="11" cy="11" r="8"></circle>
-                <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
-            </svg>
-            <input type="text" name="nama_layanan" class="form-input pl-12 text-lg py-3 rounded-lg" placeholder="Cari Layanan">
-            <button class="form-button absolute inset-y-2 right-2">
-            Cari
-            </button>
-            </div> 
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-search text-gray-400 absolute inset-3 w-7 h-7">
+                    <circle cx="11" cy="11" r="8"></circle>
+                    <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                </svg>
+                <input type="text" name="nama_layanan" class="form-input pl-12 text-lg py-3 rounded-lg" placeholder="Cari Layanan">
+                <button class="form-button absolute inset-y-2 right-2">
+                    Cari
+                </button>
+            </div>
         </form>
     </div>
 
@@ -372,15 +368,17 @@
 
 </div>
 
-<div>
-<div style="margin-top:2%">
+<!-- <div>
+    <div style="margin-top:2%">
         <nav>
             <ul class="pagination">
 
 
                 <li class="page-item disabled" aria-disabled="true" aria-label="&laquo; Previous">
                     <span class="page-link" aria-hidden="true">
-                        <</span> </li> <li class="page-item active" aria-current="page"><span class="page-link">1</span>
+                        <</span>
+                </li>
+                <li class="page-item active" aria-current="page"><span class="page-link">1</span>
                 </li>
                 <li class="page-item"><a class="page-link" href="http://mpp.cimahikota.go.id?page=2">2</a></li>
                 <li class="page-item"><a class="page-link" href="http://mpp.cimahikota.go.id?page=3">3</a></li>
@@ -388,15 +386,16 @@
                 <li class="page-item"><a class="page-link" href="http://mpp.cimahikota.go.id?page=5">5</a></li>
                 <li class="page-item"><a class="page-link" href="http://mpp.cimahikota.go.id?page=6">6</a></li>
                 <li class="page-item"><a class="page-link" href="http://mpp.cimahikota.go.id?page=2" rel="next" aria-label="Next »">></a>
-              </li>
+                </li>
 
             </ul>
         </nav>
-    </div>
-
+    </div> -->
+<br><br>
 </div>
 
-
-
+<div class="container">
+    <p class="text-center font-semibold text-sm text-gray-500">© DPMPTSP Kota Cimahi X ITENAS</p>
+</div>
 
 @endsection
