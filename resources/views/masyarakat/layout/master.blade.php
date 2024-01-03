@@ -4,8 +4,10 @@
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>SURVEI KEPUASAN MASYARAKAT</title>
 
     <!-- Bootstrap CSS -->
+    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <link href="{{ asset('landing/bs/css/bootstrap.min.css') }}" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="{{ asset('landing/css/body.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('landing/css/navbar.css') }}">
@@ -13,9 +15,7 @@
     <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/style2.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('landing/css/style.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('landing/css/as.css') }}">
-
-
-    <title>SURVEY KEPUASAN MASYARAKAT</title>
+    
   </head>
   <body style="background-color: #fafafa;">
     
@@ -25,7 +25,7 @@
     <!-- navbar -->
     <nav class="navbar navbar-expand-lg navbar-light mt-3 fixed-top" id="navbar">
       <div class="container-fluid">
-        <a class="navbar-brand" href="#">
+        <a href="/" class="navbar-brand">
           <img src="{{ asset('assets/img/logopengaduan.png') }}" height="30px">
         </a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -35,10 +35,10 @@
           <ul class="nav nav-pills">
             {{-- @if (Auth::guard('masyarakat')->check()) --}}
             <li class="nav-item">
-              <a class="nav-link active bg-active link-navbar tebel-sedang" href="/">Beranda &nbsp;&nbsp;</a>
+              <a href="#" class="nav-link active bg-active link-navbar tebel-sedang">Beranda &nbsp;&nbsp;</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link link-navbar tebel-sedang" href="/history">Riwayat &nbsp;&nbsp;</a>
+              <a href="#tenant" class="nav-link link-navbar tebel-sedang">Layanan Tenant &nbsp;&nbsp;</a>
             </li>
             {{-- <li class="nav-item">
               <a href="/logoutmasyarakat" class="nav-link bg-custom rounded tebel-sedang shadow" id="btn-sign">LOG OUT</a>
@@ -53,7 +53,11 @@
       </div>
     </nav>
     @yield('content')
-      
+
+    <!-- Footer -->
+    <footer class="mt-3 p-3 text-center bg-white text-sm text-gray-600 dark:text-gray-400 dark:bg-gray-800">
+      © DPMPTSP Kota cimahi
+    </footer>
 
     <!-- Option 1: Bootstrap Bundle with Popper -->
     <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
