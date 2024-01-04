@@ -49,16 +49,16 @@
               <a href="/logoutmasyarakat" class="nav-link bg-custom rounded tebel-sedang shadow" id="btn-sign">LOG OUT</a>
             </li>
             @else --}}
-          <li class="nav-item">
-            <a href="/loginmasyarakat" class="nav-link bg-custom rounded tebel-sedang shadow" id="btn-sign">MASUK</a>
-          </li>
-          {{-- @endif --}}
-        </ul>
+            <li class="nav-item">
+              <a href="/login-admin" class="nav-link bg-custom rounded tebel-sedang shadow" id="btn-sign">MASUK</a>
+            </li>
+            {{-- @endif --}}
+          </ul>
+        </div>
       </div>
-    </div>
-  </nav>
-  @yield('content')
-
+    </nav>
+    @yield('content')
+      
 
   <!-- Option 1: Bootstrap Bundle with Popper -->
   <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>

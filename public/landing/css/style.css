@@ -65,8 +65,8 @@
 }
 
 .-mx-4 {
-  margin-left: -35rem;
-  margin-right: -35rem;
+  margin-left: -32rem;
+  margin-right: -32rem;
 }
 
 .lg\:-mx-4 {
@@ -234,6 +234,15 @@
 .text-gray-400 {
     --tw-text-opacity: 1;
     color: rgba(156, 163, 175, var(--tw-text-opacity));
+}
+
+.mt-4 {
+  margin-top: 1rem;
+}
+
+.garis-horizontal {
+    border-top: 1px solid #000;
+    margin: 10px 0;
 }
 
 .w-7 {
