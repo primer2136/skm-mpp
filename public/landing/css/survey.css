@@ -61,7 +61,6 @@ input[type="submit"]:hover {
   margin-bottom: 10px;
   width: calc(100% - 20px); /* Mengatur lebar elemen agar rata kiri */
   padding: 5px;
-  position relative;
   right: 40px;
 
 }
@@ -99,5 +98,42 @@ input[type="submit"]:hover {
 
 .asd{
   position: relative;
+}
+
+/* Gaya Navbar */
+.navbar {
+  background-color: #f0f0f0; /* Warna latar belakang navbar */
+  padding: 10px 0; /* Padding untuk navbar */
+}
+
+.a {
+  max-width: 1200px; /* Menetapkan lebar maksimum untuk kontainer */
+  height: 50PX;
+  margin: 0 auto; /* Pusatkan kontainer */
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.navbar-brand {
+  font-size: 24px; /* Ukuran font untuk brand/logo */
+  color: #333; /* Warna untuk brand/logo */
+  text-decoration: none;
+}
+
+.navbar-nav {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.nav-item {
+  display: inline-block;
+  margin-left: 20px;
+}
+
+.nav-item a {
+  text-decoration: none;
+  color: #333;
 }
 

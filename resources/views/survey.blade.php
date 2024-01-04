@@ -6,6 +6,14 @@
   <link rel="stylesheet" type="text/css" href="{{ asset('landing/css/survey.css') }}">
 </head>
 <body>
+
+   <!-- Navbar -->
+   <nav class="navbar">
+    <div class="a">
+      <a class="navbar-brand" href="#">SURVEY KEPUASAN MASYARAKAT</a>
+    </div>
+  </nav>
+
   <div class="container">
     <form action="#">
       <h2>DATA RESPONDEN</h2>
