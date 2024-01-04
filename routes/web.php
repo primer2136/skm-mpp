@@ -19,6 +19,9 @@ Route::get('/', function () {
 Route::get('/survey', function () {
     return view('survey');
 });
+Route::get('/layanan', function () {
+    return view('masyarakat/layanan');
+});
 Route::get('/faq', function () {
     return view('FAQ');
 });
