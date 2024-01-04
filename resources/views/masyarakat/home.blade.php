@@ -18,7 +18,7 @@
             <h1 class="display-1 text-truncate tebel-sedang">Survei Kepuasan</h1>
             <h1 class="display-1 text-truncate tebel-sedang">Pelayanan Tenant</h1>
 
-            <div id="tata-cara" class="desc mt-4">
+            <div class="desc mt-4">
                 <p>Website ini digunakan untuk menyampaikan pendapat yang ingin masyarakat sampaikan terhadap kinerja
                     masing-masing tenant yang ada di Mal Pelayanan Publik Kota Cimahi.</p>
             </div>
@@ -36,6 +36,11 @@
             {{-- </div> --}}
         </div>
     </div>
+
+    <br><br><br id="tata-cara"><br><br><br><br>
+
+    <h1>Tata Cara Mengisi Survei</h1>
+    <div class="garis-horizontal"></div>
 
     <!-- How -->
     <div class="container my-10 mx-auto px-4 md:px-8 lg:px-12 max-w-xs">
@@ -96,7 +101,7 @@
                         src="{{ asset('assets/img/verification.svg')}}" />
                     <header class="leading-tight p-2 md:p-4 text-center">
                         <h1 class="text-lg font-bold">4. Selesai</h1>
-                        <p id="tenant" class="text-grey-darker text-sm py-4">
+                        <p class="text-grey-darker text-sm py-4">
                             Penilaian selesai dilakukan.
                         </p>
                     </header>
@@ -106,6 +111,7 @@
         </div>
     </div>
 
+    <br><br><br id="tenant"><br><br><br><br>
 
     <div class="mb-8">
         <form action="/">
