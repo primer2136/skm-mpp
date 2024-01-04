@@ -4,7 +4,7 @@
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>SURVEI KEPUASAN MASYARAKAT</title>
+    <title>Survei Kepuasan Masyarakat</title>
     
     <link rel="shortcut icon" href="https://mpp.cimahikota.go.id/img/favicon.png" type="image/x-icon">
 
@@ -48,7 +48,7 @@
             </li>
             @else --}}
             <li class="nav-item">
-              <a href="/loginmasyarakat" class="nav-link bg-custom rounded tebel-sedang shadow" id="btn-sign">MASUK</a>
+              <a href="/login-admin" class="nav-link bg-custom rounded tebel-sedang shadow" id="btn-sign">MASUK</a>
             </li>
             {{-- @endif --}}
           </ul>

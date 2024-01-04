@@ -14,13 +14,56 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('masyarakat/Home');
+    return view('masyarakat/home');
 });
+
 Route::get('/survey', function () {
     return view('survey');
 });
-Route::get('/faq', function () {
-    return view('FAQ');
+
+Route::get('login-admin', function () {
+    return view('admin/login');
+})->name('login.admin');
+
+Route::get('login', 'LoginController@getLogin')->name('login');
+Route::post('proseslogin', 'LoginController@postLogin');
+Route::get('logout', 'LoginController@logout');
+
+Route::get('/dashboard', function () {
+    return view('admin/dashboard/index');
 });
 
-// Route::get('/home','MasyarakatController@depan');
+Route::get('/ds-admin', function () {
+    return view('admin/ds-admin/index');
+});
+
+Route::get('/ds-masyarakat', function () {
+    return view('admin/ds-masyarakat/index');
+});
+
+// Route::group(['middleware' => 'auth:admin'], function () {
+//     Route::get('dashboard', 'DashboardController@index');
+
+//     // Petugas
+//     Route::resource('petugas', 'PetugasController');
+
+//     // Masyarakat
+//     Route::resource('masyarakat', 'MasyarakatController');
+
+//     // Pengaduan
+//     Route::get('pengaduan', 'PengaduanController@index');
+//     Route::get('pengaduan_p/{id}', 'PengaduanController@proses')->name('pengaduan.proses');
+//     Route::get('pengaduan_s/{id}', 'PengaduanController@selesai')->name('pengaduan.selesai');
+//     Route::get('pengaduan_t/{id}', 'PengaduanController@tanggapan')->name('pengaduan.tanggapan');
+
+//     // Tanggapan
+//     Route::post('tambahtanggapan', 'TanggapanController@tambah');
+//     Route::get('tanggapan', 'TanggapanController@index');
+//     Route::get('tanggapan/{id}', 'TanggapanController@edit')->name('tanggapan.edit');
+//     Route::patch('tanggapans/{id}', 'TanggapanController@update')->name('tanggapan.update');
+//     Route::delete('tanggapand/{id}', 'TanggapanController@destroy')->name('tanggapan.destroy');
+
+//     //Laporan
+//     Route::view('laporan', 'admin/laporan.index');
+//     Route::get('rekap_laporan', 'LaporanController@rekap');
+// });
