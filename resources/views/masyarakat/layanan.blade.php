@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>DEKRANASDA</title>
 
-    <link rel="shortcut icon" href="https://mpp.cimahikota.go.id/img/favicon.png" type="image/x-icon">
+    <link rel="shortcut icon" href="https://mpp.cimahikota.go.id/layanan/1666239340_dekranasda.png" type="image/x-icon">
 
     <!-- Bootstrap CSS -->
     <link href="{{ asset('landing/bs/css/bootstrap.min.css') }}" rel="stylesheet">
