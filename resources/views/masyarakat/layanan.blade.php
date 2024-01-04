@@ -73,7 +73,7 @@
                         masing-masing tenant yang ada di Mal Pelayanan Publik Kota Cimahi.</p>
                 </div>
 
-                <div class="mt-5">
+                <div id="statistik" class="mt-5">
                     {{-- @if (Auth::guard('masyarakat')->check()) --}}
                     <a href="/survey" class="button rounded-pill shadow tebel-sedang">Mulai Survei</a>
                     &nbsp;
@@ -82,7 +82,7 @@
               &nbsp;           
               @endif --}}
                     {{-- </div> --}}
-                </div>
+                </div> <br><br>
                 <div>
                     <h1 class="display-3 mt-5 text-left">STATISTIK PELAYANAN</h1>
                     <h2 class="display-3 mb-5 text-left">DEKRANASDA</h2>
