@@ -32,6 +32,12 @@ Route::get('logout', 'LoginController@logout');
 Route::get('/dashboard', function () {
     return view('admin/dashboard/index');
 });
+Route::get('/layanan', function () {
+    return view('masyarakat/layanan');
+});
+Route::get('/faq', function () {
+    return view('FAQ');
+});
 
 Route::get('/ds-admin', function () {
     return view('admin/ds-admin/index');
