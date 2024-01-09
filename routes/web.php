@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use Illuminate\Http\Controllers\PertanyaanController;
 
 /*
 |--------------------------------------------------------------------------
@@ -46,6 +47,12 @@ Route::get('/ds-admin', function () {
 Route::get('/ds-masyarakat', function () {
     return view('admin/ds-masyarakat/index');
 });
+
+
+Route::get('/layanan/{layananId}/pertanyaan/{halaman}', 'LayananController@tampilkanPertanyaan')->name('layanan.pertanyaan');
+Route::post('/layanan/simpan-jawaban', 'LayananController@simpanJawaban')->name('layanan.simpan');
+
+
 
 // Route::group(['middleware' => 'auth:admin'], function () {
 //     Route::get('dashboard', 'DashboardController@index');
