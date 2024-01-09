@@ -47,6 +47,10 @@ Route::get('/ds-masyarakat', function () {
     return view('admin/ds-masyarakat/index');
 });
 
+Route::get('/penilaian', function () {
+    return view('admin/penilaian/index');
+});
+
 // Route::group(['middleware' => 'auth:admin'], function () {
 //     Route::get('dashboard', 'DashboardController@index');
 

@@ -46,9 +46,10 @@
                                 <th>No.</th>
                                 <th>Nama Admin</th>
                                 <th>Username</th>
-                                <th>Telp.</th>
+                                <th>Password</th>
+                                <th>No. HP</th>
                                 <th>Level</th>
-                                <th>Aksi</th>
+                                <th></th>
                             </tr>
                         </thead>
                         <tbody>
