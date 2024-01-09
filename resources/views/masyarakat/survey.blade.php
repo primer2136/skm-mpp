@@ -7,8 +7,8 @@
 </head>
 <body>
 
-   <!-- Navbar -->
-   <nav class="navbar">
+  <!-- Navbar -->
+  <nav class="navbar">
     <div class="a">
       <a class="navbar-brand" href="#">SURVEY KEPUASAN MASYARAKAT</a>
     </div>
