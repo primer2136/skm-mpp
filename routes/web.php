@@ -36,6 +36,8 @@ Route::get('/dashboard', function () {
 
 Route::get('/layanan/{nomor}', [LayananController::class, 'show']);
 
+Route::get('layanan/{nomor}/survey', [LayananController::class, 'showSurveyForm'])->name('layanan.survey');;
+
 Route::get('/faq', function () {
     return view('FAQ');
 });

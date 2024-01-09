@@ -75,7 +75,7 @@
 
                 <div id="statistik" class="mt-5">
                     {{-- @if (Auth::guard('masyarakat')->check()) --}}
-                    <a href="/survey" class="button rounded-pill shadow tebel-sedang">Mulai Survei</a>
+                    <a href="{{ url("/layanan/{$layananData['nomor']}/survey") }}" class="button rounded-pill shadow tebel-sedang">Mulai Survei</a>
                     &nbsp;
                     {{-- @else 
                 <a href="#" id="swal-6" class="button rounded-pill shadow tebel-sedang">Mulai Survei</a>

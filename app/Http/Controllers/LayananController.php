@@ -19,6 +19,17 @@ class LayananController extends Controller
         return view('masyarakat.layanan', compact('layananData'));
     }
 
+    public function showSurveyForm($nomor)
+    {
+        // Logika untuk menampilkan halaman survey
+        // Gunakan data yang diperlukan sesuai kebutuhan
+        $layananData = [
+            'nomor' => $nomor,
+        ];
+
+        return view('masyarakat.survey', compact('layananData'));
+    }
+    
     private function getJudulByNomor($nomor)
     {
         // Tambahkan logika atau kueri database sesuai kebutuhan
