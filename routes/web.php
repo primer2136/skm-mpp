@@ -18,7 +18,7 @@ Route::get('/', function () {
     return view('masyarakat/home');
 });
 
-Route::get('/survey', function () {
+Route::get('/survei', function () {
     return view('survey');
 });
 
@@ -47,6 +47,15 @@ Route::get('/ds-admin', function () {
 Route::get('/ds-masyarakat', function () {
     return view('admin/ds-masyarakat/index');
 });
+
+// Rute untuk menampilkan halaman survei
+Route::get('/layanan/{nomor}', [LayananController::class, 'show'])->name('layanan.show');
+
+// Rute untuk mengirimkan data survei
+Route::post('/layanan/submit', [LayananController::class, 'submit'])->name('layanan.submit');
+
+
+
 
 // Route::group(['middleware' => 'auth:admin'], function () {
 //     Route::get('dashboard', 'DashboardController@index');

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
+use App\Models\Responden;
 
 class LayananController extends Controller
 {
@@ -18,6 +19,7 @@ class LayananController extends Controller
         // Kembalikan tampilan atau lakukan operasi lain sesuai kebutuhan Anda
         return view('masyarakat.layanan', compact('layananData'));
     }
+    
 
     private function getJudulByNomor($nomor)
     {
