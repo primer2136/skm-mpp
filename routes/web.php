@@ -2,6 +2,8 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LayananController;
+use App\Http\Controllers\LoginController;
+use App\Http\Controllers\AdminController;
 
 /*
 |--------------------------------------------------------------------------
@@ -13,6 +15,8 @@ use App\Http\Controllers\LayananController;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
+// Use the AdminController class in your code
+// $adminController = new AdminController();
 
 Route::get('/', function () {
     return view('masyarakat/home');
@@ -26,13 +30,18 @@ Route::get('login-admin', function () {
     return view('admin/login');
 })->name('login.admin');
 
-Route::get('login', 'LoginController@getLogin')->name('login');
-Route::post('proseslogin', 'LoginController@postLogin');
-Route::get('logout', 'LoginController@logout');
+Route::get('login', [LoginController::class, 'getLogin'])->name('login');;
+Route::post('proseslogin', [LoginController::class, 'postLogin']);
+Route::get('logout', [LoginController::class, 'logout']);
 
 Route::get('/dashboard', function () {
     return view('admin/dashboard/index');
 });
+
+Route::resource('ds-admin', AdminController::class);
+Route::get('ds-admin/create', [AdminController::class, 'create'])->name('admin.create');;
+Route::get('ds-admin/store', [AdminController::class, 'store'])->name('admin.store');;
+Route::post('ds-admin/store', [AdminController::class, 'store'])->name('admin.store');;
 
 Route::get('/layanan/{nomor}', [LayananController::class, 'show']);
 

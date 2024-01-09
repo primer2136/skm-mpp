@@ -39,7 +39,7 @@ class AdminController extends Controller
             ->orWhere('username', 'like', "%{$request->keyword}%")
             ->orWhere('status', 'like', "%{$request->keyword}%")
             ->paginate(5);
-        return view('admin/petugas.index', ['data' => $data]);
+        return view('admin/ds-admin.index', ['data' => $data]);
     }
 
     /**
@@ -49,7 +49,7 @@ class AdminController extends Controller
      */
     public function create()
     {
-        return view('admin/petugas.create');
+        return view('admin/ds-admin.create');
     }
 
     /**
