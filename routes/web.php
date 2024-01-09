@@ -18,10 +18,6 @@ Route::get('/', function () {
     return view('masyarakat/home');
 });
 
-Route::get('/survey', function () {
-    return view('survey');
-});
-
 Route::get('login-admin', function () {
     return view('admin/login');
 })->name('login.admin');
@@ -36,7 +32,12 @@ Route::get('/dashboard', function () {
 
 Route::get('/layanan/{nomor}', [LayananController::class, 'show']);
 
-Route::get('layanan/{nomor}/survey', [LayananController::class, 'showSurveyForm'])->name('layanan.survey');;
+Route::get('layanan/{nomor}/survey', [LayananController::class, 'showSurveyForm'])->name('layanan.survey');
+
+Route::prefix('layanan/{nomor}/survey')->group(function () {
+    Route::get('/', [LayananController::class, 'showSurveyForm'])->name('layanan.survey');
+    Route::get('/pertanyaan', [LayananController::class, 'showPertanyaanForm'])->name('layanan.pertanyaan');
+});
 
 Route::get('/faq', function () {
     return view('FAQ');

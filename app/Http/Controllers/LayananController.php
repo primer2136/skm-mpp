@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
+use Illuminate\Http\Request;
 
 class LayananController extends Controller
 {
@@ -27,7 +28,13 @@ class LayananController extends Controller
             'nomor' => $nomor,
         ];
 
-        return view('masyarakat.survey', compact('layananData'));
+        return redirect()->route('layanan.pertanyaan', ['nomor' => $nomor]);
+    }
+
+    public function showPertanyaanForm(Request $request, $nomor)
+    {
+        // Logika untuk menampilkan halaman pertanyaan
+        return view('layanan.pertanyaan', ['nomor' => $nomor]);
     }
     
     private function getJudulByNomor($nomor)

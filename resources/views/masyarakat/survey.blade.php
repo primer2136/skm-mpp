@@ -15,7 +15,7 @@
   </nav>
 
   <div class="container">
-    <form action="#">
+    <form action="{{ route('layanan.pertanyaan', ['nomor' => $nomor]) }}" method="get">>
       <h2>DATA RESPONDEN</h2>
 
       <label for="nama">Nama:</label>
