@@ -29,6 +29,16 @@ class LayananController extends Controller
 
         return view('masyarakat.survey', compact('layananData'));
     }
+
+    
+    public function showPertanyaanForm($nomor)
+    {
+        $layananData = [
+            'nomor' => $nomor,
+        ];
+
+        return view('masyarakat.pertanyaan', compact('layananData'));
+    }
     
     private function getJudulByNomor($nomor)
     {

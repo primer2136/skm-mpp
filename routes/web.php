@@ -18,10 +18,6 @@ Route::get('/', function () {
     return view('masyarakat/home');
 });
 
-Route::get('/survey', function () {
-    return view('survey');
-});
-
 Route::get('login-admin', function () {
     return view('admin/login');
 })->name('login.admin');
@@ -53,6 +49,10 @@ Route::get('/ds-masyarakat', function () {
 Route::get('/penilaian', function () {
     return view('admin/penilaian/index');
 });
+
+
+Route::get('layanan/{nomor}/survey/pertanyaan', [LayananController::class, 'showPertanyaanForm'])->name('layanan.survey.pertanyaan');
+
 
 // Route::group(['middleware' => 'auth:admin'], function () {
 //     Route::get('dashboard', 'DashboardController@index');
