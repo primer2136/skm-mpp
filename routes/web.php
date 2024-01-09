@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\LayananController;
 
 /*
 |--------------------------------------------------------------------------
@@ -32,9 +33,11 @@ Route::get('logout', 'LoginController@logout');
 Route::get('/dashboard', function () {
     return view('admin/dashboard/index');
 });
-Route::get('/layanan', function () {
-    return view('masyarakat/layanan');
-});
+
+Route::get('/layanan/{nomor}', [LayananController::class, 'show']);
+
+Route::get('layanan/{nomor}/survey', [LayananController::class, 'showSurveyForm'])->name('layanan.survey');;
+
 Route::get('/faq', function () {
     return view('FAQ');
 });

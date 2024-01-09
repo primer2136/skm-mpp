@@ -5,7 +5,7 @@
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>DEKRANASDA</title>
+    <title>{{ $layananData['judul'] }}</title>
 
     <link rel="shortcut icon" href="https://mpp.cimahikota.go.id/img/favicon.png" type="image/x-icon">
 
@@ -75,17 +75,17 @@
 
                 <div id="statistik" class="mt-5">
                     {{-- @if (Auth::guard('masyarakat')->check()) --}}
-                    <a href="/survey" class="button rounded-pill shadow tebel-sedang">Mulai Survei</a>
+                    <a href="{{ url("/layanan/{$layananData['nomor']}/survey") }}" class="button rounded-pill shadow tebel-sedang">Mulai Survei</a>
                     &nbsp;
                     {{-- @else 
-              <a href="#" id="swal-6" class="button rounded-pill shadow tebel-sedang">Mulai Survei</a>
-              &nbsp;           
-              @endif --}}
+                <a href="#" id="swal-6" class="button rounded-pill shadow tebel-sedang">Mulai Survei</a>
+                &nbsp;           
+                @endif --}}
                     {{-- </div> --}}
                 </div> <br><br>
                 <div>
                     <h1 class="display-3 mt-5 text-left">STATISTIK PELAYANAN</h1>
-                    <h2 class="display-3 mb-5 text-left">DEKRANASDA</h2>
+                    <h2 class="display-3 mb-5 text-left">{{ $layananData['info'] }}</h2>
                     <div class="box-container">
                         <div class="box">
                             <h2>Indeks Kepuasan (%)</h2>
