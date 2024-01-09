@@ -1,9 +1,9 @@
 @extends('admin/layout.master')
 
-@section('title','Masyarakat')
+@section('title','Penilaian')
 @section('title2','index')
-@section('masyarakat','active')
-<title>Masyarakat</title>
+@section('penilaian','active')
+<title>Entry Penilaian</title>
 
 @section('konten')
 <div class="container-fluid">
@@ -12,8 +12,19 @@
             <div class="card">
                 <div class="card-body">
 
+                    {{-- Alert --}}
+                    @if(session('message'))
+                    <div class="alert alert-success alert-dismissible show fade">
+                        <div class="alert-body">
+                        <button class="close" data-dismiss="alert">
+                            <span>×</span>
+                        </button>
+                        {{ session('message') }}
+                        </div>
+                    </div>
+                    @endif
                     {{-- Button tambah --}}
-                    {{-- <a href="{{ route('masyarakat.create') }}" class="btn btn-warning mb-4"><i class="fas fa-plus text-light"></i></a> --}}
+                    {{-- <a href="{{ route('penilaian.create') }}" class="btn btn-violet mb-4"><i class="fas fa-plus text-light"></i></a> --}}
                     
                     {{-- Form search --}}
                     <div class="float-right">
@@ -27,17 +38,7 @@
                         </form>
                     </div>
 
-                    {{-- Alert --}}
-                    @if(session('message'))
-                    <div class="alert alert-success alert-dismissible show fade">
-                        <div class="alert-body">
-                        <button class="close" data-dismiss="alert">
-                            <span>×</span>
-                        </button>
-                        {{ session('message') }}
-                        </div>
-                    </div>
-                    @endif
+                    
 
                     {{-- tabel --}}
                     <table class="table">
@@ -45,10 +46,8 @@
                             <tr>
                                 <th>No.</th>
                                 <th>Nama</th>
-                                <th>Tahun Lahir</th>
-                                <th>Jenis Kelamin</th>
-                                <th>Riwayat Pendidikan</th>
-                                <th>Pekerjaan</th>
+                                <th>Tanggal Penilaian</th>
+                                <th>Status</th>
                                 <th></th>
                             </tr>
                         </thead>
@@ -61,17 +60,17 @@
                                     <td>{{ $no++ }}</td>
                                     <td>{{ $item->nik }}</td>
                                     <td>{{ $item->nama }}</td>
-                                    <td>{{ $item->telp }}</td>
-                                    <td>{{ $item->username }}</td>
+                                    <td>{{ $item->tanggal_penilaian }}</td>
+                                    <td>{{ $item->status }}</td>
                                     <td>
-                                        <a href="{{ route('masyarakat.edit',$item->nik) }}" class="btn btn-warning"><i class="fas fa-edit mb-2"></i></a>
-                                        <a href="#" data-id="" class="btn btn-danger confirm_script-{{$item->nik}} mr-3">
-                                            <form action="{{ route('masyarakat.destroy',$item->nik)}}" class="delete_form-{{$item->nik}}" method="POST">
-                                            @method('DELETE')
-                                            @csrf
-                                            </form>
-                                            <i class="fas fa-trash"></i>
-                                          </a>
+                                        @if ($item->status == 'terkirim')
+                                            <a href="{{ route('penilaian.proses',$item->id_penilaian )}}" class="btn btn-primary"><i class="fas fa-keyboard"></i> Diproses</a>
+                                        @elseif($item->status == 'proses')
+                                            <a href="{{ route('penilaian.selesai',$item->id_penilaian )}}" class="btn btn-success"><i class="fas fa-check"></i> Selesaikan</a>
+                                        @else
+                                            
+                                        @endif
+                                        <a href="{{ route('penilaian.tanggapan',$item->id_penilaian) }}" class="btn btn-warning"><i class="far fa-comment-dots"></i> Tanggapi</a>
                                     </td>
                                 </tr>
                                 @push('page-scripts')
@@ -82,7 +81,7 @@
                                 @push('after-scripts')
 
                                 <script>
-                                $(".confirm_script-{{$item->nik}}").click(function(e) {
+                                $(".confirm_script-{{$item->id_penilaian}}").click(function(e) {
                                 // id = e.target.dataset.id;
                                 swal({
                                     title: 'Yakin hapus data?',
@@ -93,7 +92,7 @@
                                     })
                                     .then((willDelete) => {
                                     if (willDelete) {
-                                        $('.delete_form-{{$item->nik}}').submit();
+                                        $('.delete_form-{{$item->id_penilaian}}').submit();
                                     } else {
                                     swal('Hapus data telah di batalkan');
                                     }

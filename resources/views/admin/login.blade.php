@@ -56,7 +56,7 @@
                                         <div class="d-block">
                                             <label for="password" class="control-label">Password</label>
                                         </div>
-                                        <input id="password" type="password" class="form-control" name="password"
+                                        <input onclick="window.location.href='/dashboard'" id="password" type="password" class="form-control" name="password"
                                             tabindex="2" required autocomplete="off">
                                         <div class="invalid-feedback">
                                             Please fill in your password
@@ -78,7 +78,7 @@
                                         <button type="submit" class="btn btn-warning btn-lg btn-block" tabindex="4">
                                             Masuk
                                         </button>
-                                        <button type="button" class="btn btn-light btn-lg btn-block" tabindex="4" onclick="goBack()">
+                                        <button type="button" onclick="window.location.href='/'" class="btn btn-light btn-lg btn-block" tabindex="4">
                                             Kembali
                                         </button>
                                     </div>
@@ -118,11 +118,12 @@
     <script src="{{ asset('assets/js/custom.js')}}"></script>
 
     <!-- Page Specific JS File -->
-    <script>
+    {{-- <script>
+        onclick="goBack()"
         function goBack() {
             window.history.back();
         }
-    </script>
+    </script> --}}
 </body>
 
 </html>
