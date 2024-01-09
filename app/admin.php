@@ -1,13 +1,12 @@
 <?php
 
-namespace App\Providers;
+namespace App;
 
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
-
-class masyarakat extends Authenticatable
+class admin extends Authenticatable
 {
     use Notifiable;
 
@@ -17,12 +16,12 @@ class masyarakat extends Authenticatable
      * @var array
      */
 
-    protected $table = "tbl_masyarakat";
+    protected $table = "tbl_petugas";
 
-    protected $primaryKey = "nik";
+    protected $primaryKey = "id_petugas";
 
     protected $fillable = [
-        'nik', 'nama', 'username', 'password'
+        'nama_petugas', 'username', 'password', 'status'
     ];
 
     /**

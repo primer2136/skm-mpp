@@ -13,7 +13,7 @@
                 <div class="card-body">
 
                     {{-- Button tambah --}}
-                    {{-- <a href="{{ route('admin.create') }}" class="btn btn-warning mb-4"><i class="fas fa-plus text-light"></i></a> --}}
+                    <a href="{{ route('admin.create') }}" class="btn btn-warning mb-4"><i class="fas fa-plus text-light"></i></a>
                     
                     {{-- Form search --}}
                     <div class="float-right">
