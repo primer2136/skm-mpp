@@ -460,6 +460,28 @@ object {
     height: auto; /* Tinggi gambar logo menyesuaikan */
 }
 
+.footer {
+  background-color: #ff9900;
+  padding: 20px;
+  text-align: center;
+}
+
+.footer p {
+  margin: 0;
+  font-size: 14px;
+}
+
+.footer p a {
+  color: rgba(107, 114, 128, var(--tw-text-opacity));
+  text-decoration: none; /* menghilangkan garis bawah */
+  transition: color 0.3s ease, text-shadow 0.3s ease; /* efek transisi warna dan shadow */
+}
+
+.footer p a:hover {
+  color: #fff; /* warna tulisan putih pada hover */
+  text-shadow: 0 0 10px rgba(255, 255, 255, 0.8); /* efek glowing */
+}
+
 .service-title {
     text-align: center;
     font-size: 1.125rem;

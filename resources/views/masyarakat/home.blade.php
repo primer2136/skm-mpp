@@ -424,8 +424,10 @@
 <br><br>
 </div>
 
-<div class="container">
-    <p class="text-center font-semibold text-sm text-gray-500">© DPMPTSP Kota Cimahi X ITENAS</p>
+<div class="footer">
+    <p class="text-center font-semibold text-sm text-gray-500">
+        © DPMPTSP Kota Cimahi X <a href="https://www.itenas.ac.id" target="_blank" rel="noopener noreferrer">ITENAS</a>
+    </p>
 </div>
 
 @endsection
