@@ -25,18 +25,38 @@ select {
   border-radius: 4px;
 }
 
-input[type="submit"] {
+button {
   background-color: #4CAF50;
   color: white;
+  width: 120px;
   padding: 10px 20px;
   border: none;
   border-radius: 4px;
   cursor: pointer;
-  position: relative;
-  left: 400px;
-
+  position: absolute;
+  margin-top: 10px;
+  margin-right: 10px;
+  margin-bottom: 10px;
+  right: 0;
+  bottom: 0;
 }
 
+.btn-back {
+  position: absolute;
+  margin-right: 140px;
+  margin-bottom: 10px;
+  right: 0;
+  bottom: 0;
+}
+
+.btn-reset {
+  background-color: #ff0000;
+  position: absolute;
+  margin-left: 20px;
+  margin-bottom: 10px;
+  left: 0;
+  bottom: 0;
+}
 
 input[type="submit"]:hover {
   background-color: #45a049;
@@ -44,9 +64,11 @@ input[type="submit"]:hover {
 }
 
 .container {
+  background-color: #D9D9D9;
   width: 500px;
   margin: 50px auto;
   border: 1px solid #ccc;
+  border-radius: 20px;
   padding: 20px;
   text-align: right;
   position: relative;
@@ -75,6 +97,17 @@ input[type="submit"]:hover {
 .container .double-column input[type="number"],
 .container .double-column input[type="text"] {
   flex-basis: calc(50% - 5px);
+}
+
+#saran {
+  width: 100%; /* Sesuaikan dengan lebar yang diinginkan */
+  height: 150px; /* Sesuaikan dengan tinggi yang diinginkan */
+  resize: none;
+}
+
+.garis-horizontal {
+  border-top: 1px solid #000;
+  margin: 10px 0;
 }
 
 .form-group {
@@ -137,7 +170,27 @@ input[type="submit"]:hover {
   color: #333;
 }
 
-.selected {
-  outline: 2px solid blue;
+/* Gaya untuk radio button */
+input[type="radio"] {
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  border: 2px solid #000000;
+  outline: none;
+  cursor: pointer;
+  transition: background-color 0.3s, border-color 0.3s;
 }
 
+/* Gaya radio button ketika diklik */
+input[type="radio"]:checked {
+  background-color: #2200ff; /* Warna oranye */
+  border-color: #ffffff;
+}
+
+/* Gaya radio button ketika dihover */
+input[type="radio"]:hover {
+  background-color: rgb(0, 183, 255); /* Warna oranye transparan */
+}
