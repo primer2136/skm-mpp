@@ -137,3 +137,7 @@ input[type="submit"]:hover {
   color: #333;
 }
 
+.selected {
+  outline: 2px solid blue;
+}
+
