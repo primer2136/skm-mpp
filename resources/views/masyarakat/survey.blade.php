@@ -61,63 +61,175 @@
             <h2>Pertanyaan</h2>
             <div class="question" id="question_1">
                 <!-- Pertanyaan 1 -->
-                <p>Pertanyaan 1: Bagaimana pendapat Anda mengenai layanan yang diberikan?</p>
-                <input type="radio" id="answer_1_1" name="answer_1" value="Sangat Baik">
-                <label for="answer_1_1">Sangat Baik</label><br>
-                <input type="radio" id="answer_1_2" name="answer_1" value="Baik">
-                <label for="answer_1_2">Baik</label><br>
-                <input type="radio" id="answer_1_3" name="answer_1" value="Cukup">
-                <label for="answer_1_3">Cukup</label><br>
-                <input type="radio" id="answer_1_4" name="answer_1" value="Buruk">
-                <label for="answer_1_4">Buruk</label><br>
+                <p>Bagaimana Kemudahan Persyaratan Pelayanan?</p>
+                <input type="radio" id="answer_1_1" name="answer_1" value=1>
+                <label for="answer_1_1">Tidak Mudah</label><br>
+                <input type="radio" id="answer_1_2" name="answer_1" value=2>
+                <label for="answer_1_2">Kurang Mudah</label><br>
+                <input type="radio" id="answer_1_3" name="answer_1" value=3>
+                <label for="answer_1_3">Mudah</label><br>
+                <input type="radio" id="answer_1_4" name="answer_1" value=4>
+                <label for="answer_1_4">Sangat Mudah</label><br>
                 <button type="button"
                     onclick="tampilkanPertanyaanSelanjutnya('question_1', 'question_2')">Selanjutnya</button>
             </div>
             <div class="question" id="question_2" style="display: none;">
                 <!-- Pertanyaan 2 -->
-                <p>Pertanyaan 2: Apakah Anda merasa puas dengan produk yang kami tawarkan?</p>
-                <input type="radio" id="answer_2_1" name="answer_2" value="Sangat Puas">
-                <label for="answer_2_1">Sangat Puas</label><br>
-                <input type="radio" id="answer_2_2" name="answer_2" value="Puas">
-                <label for="answer_2_2">Puas</label><br>
-                <input type="radio" id="answer_2_3" name="answer_2" value="Kurang Puas">
-                <label for="answer_2_3">Kurang Puas</label><br>
-                <input type="radio" id="answer_2_4" name="answer_2" value="Tidak Puas">
-                <label for="answer_2_4">Tidak Puas</label><br>
+                <p>Bagaimana Kemudahan Prosedur Pelayanan?</p>
+                <input type="radio" id="answer_2_1" name="answer_2" value=1>
+                <label for="answer_2_1">Tidak Mudah</label><br>
+                <input type="radio" id="answer_2_2" name="answer_2" value=2>
+                <label for="answer_2_2">Kurang Mudah</label><br>
+                <input type="radio" id="answer_2_3" name="answer_2" value=3>
+                <label for="answer_2_3">Mudah</label><br>
+                <input type="radio" id="answer_2_4" name="answer_2" value=4>
+                <label for="answer_2_4">Sangat Mudah</label><br>
+                <button type="button"
+                    onclick="kembaliKePertanyaanSebelumnya('question_2', 'question_1')">Kembali</button>
                 <button type="button"
                     onclick="tampilkanPertanyaanSelanjutnya('question_2', 'question_3')">Selanjutnya</button>
             </div>
             <div class="question" id="question_3" style="display: none;">
                 <!-- Pertanyaan 3 -->
-                <p>Pertanyaan 3: Seberapa sering Anda menggunakan layanan kami?</p>
-                <input type="radio" id="answer_3_1" name="answer_3" value="Setiap Hari">
-                <label for="answer_3_1">Setiap Hari</label><br>
-                <input type="radio" id="answer_3_2" name="answer_3" value="Beberapa Kali dalam Seminggu">
-                <label for="answer_3_2">Beberapa Kali dalam Seminggu</label><br>
-                <input type="radio" id="answer_3_3" name="answer_3" value="Sekali dalam Sebulan">
-                <label for="answer_3_3">Sekali dalam Sebulan</label><br>
-                <input type="radio" id="answer_3_4" name="answer_3" value="Jarang">
-                <label for="answer_3_4">Jarang</label><br>
+                <p>Bagaimana Kecepatan Pelayanan?</p>
+                <input type="radio" id="answer_3_1" name="answer_3" value=1>
+                <label for="answer_3_1">Tidak Cepat</label><br>
+                <input type="radio" id="answer_3_2" name="answer_3" value=2>
+                <label for="answer_3_2">Kurang Cepat</label><br>
+                <input type="radio" id="answer_3_3" name="answer_3" value=3>
+                <label for="answer_3_3">Cepat</label><br>
+                <input type="radio" id="answer_3_4" name="answer_3" value=4>
+                <label for="answer_3_4">Sangat Cepat</label><br>
+                <button type="button"
+                    onclick="kembaliKePertanyaanSebelumnya('question_3', 'question_2')">Kembali</button>
                 <button type="button"
                     onclick="tampilkanPertanyaanSelanjutnya('question_3', 'question_4')">Selanjutnya</button>
             </div>
             <div class="question" id="question_4" style="display: none;">
                 <!-- Pertanyaan 4 -->
-                <p>Pertanyaan 4: Seberapa sering Anda menggunakan layanan kami?</p>
-                <input type="radio" id="answer_4_1" name="answer_4" value="Setiap Hari">
-                <label for="answer_4_1">Setiap Hari</label><br>
-                <input type="radio" id="answer_4_2" name="answer_4" value="Beberapa Kali dalam Seminggu">
-                <label for="answer_4_2">Beberapa Kali dalam Seminggu</label><br>
-                <input type="radio" id="answer_4_3" name="answer_4" value="Sekali dalam Sebulan">
-                <label for="answer_4_3">Sekali dalam Sebulan</label><br>
-                <input type="radio" id="answer_4_4" name="answer_4" value="Jarang">
-                <label for="answer_4_4">Jarang</label><br>
+                <p>Apakah Pelayanan dipungut Biaya?</p>
+                <input type="radio" id="answer_4_1" name="answer_4" value=1>
+                <label for="answer_4_1">Sangat Sering</label><br>
+                <input type="radio" id="answer_4_2" name="answer_4" value=2>
+                <label for="answer_4_2">Sering</label><br>
+                <input type="radio" id="answer_4_3" name="answer_4" value=3>
+                <label for="answer_4_3">Sesekali</label><br>
+                <input type="radio" id="answer_4_4" name="answer_4" value=4>
+                <label for="answer_4_4">Tidak Pernah</label><br>
+                <button type="button"
+                    onclick="kembaliKePertanyaanSebelumnya('question_4', 'question_3')">Kembali</button>
                 <button type="button"
                     onclick="tampilkanPertanyaanSelanjutnya('question_4', 'question_5')">Selanjutnya</button>
             </div>
+
+            <div class="question" id="question_5" style="display: none;">
+                <!-- Pertanyaan 5 -->
+                <p>Bagaimana Kualitas Administratif Pelayanan?</p>
+                <input type="radio" id="answer_5_1" name="answer_5" value=1>
+                <label for="answer_5_1">Tidak Berkualitas</label><br>
+                <input type="radio" id="answer_5_2" name="answer_5" value=2>
+                <label for="answer_5_2">Kurang Berkualitas</label><br>
+                <input type="radio" id="answer_5_3" name="answer_5" value=3>
+                <label for="answer_5_3">Berkualitas</label><br>
+                <input type="radio" id="answer_5_4" name="answer_5" value=4>
+                <label for="answer_5_4">Sangat Berkualitas</label><br>
+                <button type="button"
+                    onclick="kembaliKePertanyaanSebelumnya('question_5', 'question_4')">Kembali</button>
+                <button type="button"
+                    onclick="tampilkanPertanyaanSelanjutnya('question_5', 'question_6')">Selanjutnya</button>
+            </div>
+
+            <div class="question" id="question_6" style="display: none;">
+                <!-- Pertanyaan 6 -->
+                <p>Bagaimana Kemampuan Petugas Memberikan Pelayanan?</p>
+                <input type="radio" id="answer_6_1" name="answer_6" value=1>
+                <label for="answer_6_1">Tidak Kompeten</label><br>
+                <input type="radio" id="answer_6_2" name="answer_6" value=2>
+                <label for="answer_6_2">Kurang Kompeten</label><br>
+                <input type="radio" id="answer_6_3" name="answer_6" value=3>
+                <label for="answer_6_3">Kompeten</label><br>
+                <input type="radio" id="answer_6_4" name="answer_6" value=4>
+                <label for="answer_6_4">Sangat Kompeten</label><br>
+                <button type="button"
+                    onclick="kembaliKePertanyaanSebelumnya('question_6', 'question_5')">Kembali</button>
+                <button type="button"
+                    onclick="tampilkanPertanyaanSelanjutnya('question_6', 'question_7')">Selanjutnya</button>
+            </div>
+
+            <div class="question" id="question_7" style="display: none;">
+                <!-- Pertanyaan 7 -->
+                <p>Bagaimana Perilaku Petugas Pemberi Layanan?</p>
+                <input type="radio" id="answer_7_1" name="answer_7" value=1>
+                <label for="answer_7_1">Tidak Sopan dan Ramah</label><br>
+                <input type="radio" id="answer_7_2" name="answer_7" value=2>
+                <label for="answer_7_2">Kurang Sopan dan Ramah</label><br>
+                <input type="radio" id="answer_7_3" name="answer_7" value=3>
+                <label for="answer_7_3">Sopan dan Ramah</label><br>
+                <input type="radio" id="answer_7_4" name="answer_7" value=4>
+                <label for="answer_7_4">Sangat Sopan dan Ramah</label><br>
+                <button type="button"
+                    onclick="kembaliKePertanyaanSebelumnya('question_7', 'question_6')">Kembali</button>
+                <button type="button"
+                    onclick="tampilkanPertanyaanSelanjutnya('question_7', 'question_8')">Selanjutnya</button>
+            </div>
+
+            <div class="question" id="question_8" style="display: none;">
+                <!-- Pertanyaan 8 -->
+                <p>Bagaimana Kualitas Sarana dan Prasarana Layanan?</p>
+                <input type="radio" id="answer_8_1" name="answer_8" value=1>
+                <label for="answer_8_1">Tidak Nyaman</label><br>
+                <input type="radio" id="answer_8_2" name="answer_8" value=2>
+                <label for="answer_8_2">Cukup Nyaman</label><br>
+                <input type="radio" id="answer_8_3" name="answer_8" value=3>
+                <label for="answer_8_3">Nyaman</label><br>
+                <input type="radio" id="answer_8_4" name="answer_8" value=4>
+                <label for="answer_8_4">Sangat Nyaman</label><br>
+                <button type="button"
+                    onclick="kembaliKePertanyaanSebelumnya('question_8', 'question_7')">Kembali</button>
+                <button type="button"
+                    onclick="tampilkanPertanyaanSelanjutnya('question_8', 'question_9')">Selanjutnya</button>
+            </div>
+
+            <div class="question" id="question_9" style="display: none;">
+                <!-- Pertanyaan 9 -->
+                <p>Bagaimana Kelengkapan Media Penanganan dalam Layanan? (Informasi Website, Informasi Persyaratan,
+                    Instagram, Banner/Pamflet, dan Media Sosial Lainnya)</p>
+                <input type="radio" id="answer_9_1" name="answer_9" value=1>
+                <label for="answer_9_1">Sangat Tidak Lengkap</label><br>
+                <input type="radio" id="answer_9_2" name="answer_9" value=2>
+                <label for="answer_9_2">Kurang Lengkap</label><br>
+                <input type="radio" id="answer_9_3" name="answer_9" value=3>
+                <label for="answer_9_3">Lengkap</label><br>
+                <input type="radio" id="answer_9_4" name="answer_9" value=4>
+                <label for="answer_9_4">Sangat Lengkap</label><br>
+                <button type="button"
+                    onclick="kembaliKePertanyaanSebelumnya('question_9', 'question_8')">Kembali</button>
+                <button type="button"
+                    onclick="tampilkanPertanyaanSelanjutnya('question_9', 'kritik_saran')">Selanjutnya</button>
+            </div>
+
+            <div class="question" id="kritik_saran" style="display: none;">
+                <h2>Kritik dan Saran</h2>
+                <label for="saran">Saran:</label>
+                <textarea id="saran" name="saran" rows="4" cols="50"></textarea><br><br>
+                <button type="button"
+                    onclick="kembaliKePertanyaanSebelumnya('kritik_saran', 'question_9')">Kembali</button>
+                <button type="button" onclick="submitSurvey()">Kirim Survey</button>
+                <button type="button"
+                    onclick="kembaliKePertanyaanSebelumnya('question_9', 'question_8')">Kembali</button>
+            </div>
+
             <button type="button" onclick="resetPilihan()">Reset Pilihan</button>
         </form>
     </div>
+
+    <!-- Bagian HTML untuk tampilan terima kasih -->
+    <div class="question" id="terima_kasih" style="display: none;">
+        <h2>Terima Kasih!</h2>
+        <p>Terima kasih telah mengisi survei.</p>
+        <p id="countdown">Kembali ke halaman awal dalam <span id="timer">3</span> detik.</p>
+    </div>
+
 
     <script>
         function validateForm() {
@@ -186,6 +298,56 @@
                 }
             }
         });
+
+        function resetPilihan() {
+            var questions = document.querySelectorAll('.question');
+            questions.forEach(function(question) {
+                var radioButtons = question.querySelectorAll('input[type="radio"]');
+                radioButtons.forEach(function(radioButton) {
+                    radioButton.checked = false;
+                    radioButton.classList.remove('selected');
+                });
+            });
+        }
+
+
+        function kembaliKePertanyaanSebelumnya(currentQuestionId, previousQuestionId) {
+            var currentQuestion = document.getElementById(currentQuestionId);
+            var previousQuestion = document.getElementById(previousQuestionId);
+
+            if (currentQuestion && previousQuestion) {
+                currentQuestion.style.display = 'none';
+                previousQuestion.style.display = 'block';
+            }
+        }
+
+        function submitSurvey() {
+            // ... (Proses pengiriman survei ke server atau operasi lainnya)
+
+            // Menampilkan tanda terima kasih
+            document.getElementById('kritik_saran').style.display = 'none'; // Sembunyikan bagian kritik dan saran
+            document.getElementById('terima_kasih').style.display = 'block'; // Tampilkan tanda terima kasih
+            document.getElementById('formPertanyaan').style.display = 'none';
+            document.getElementById('formSurvey').style.display = 'none';
+            document.querySelector('.container').style.display = 'none';
+            
+
+            // Pengaturan hitungan mundur
+            var seconds = 3; // Hitungan mundur dalam detik
+            var countdown = document.getElementById('timer');
+
+            var timer = setInterval(function() {
+                seconds--;
+                countdown.textContent = seconds;
+
+                if (seconds <= 0) {
+                    clearInterval(timer);
+                    // Kode untuk kembali ke halaman awal atau halaman lain setelah hitungan mundur selesai
+                    window.location.href = "/"; // Ganti dengan halaman awal yang sesuai
+                }
+            }, 1000); // Waktu pengurangan 1 detik
+
+        }
     </script>
 
 
