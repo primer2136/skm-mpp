@@ -215,8 +215,6 @@
                 <button type="button"
                     onclick="kembaliKePertanyaanSebelumnya('kritik_saran', 'question_9')">Kembali</button>
                 <button type="button" onclick="submitSurvey()">Kirim Survey</button>
-                <button type="button"
-                    onclick="kembaliKePertanyaanSebelumnya('question_9', 'question_8')">Kembali</button>
             </div>
 
             <button type="button" onclick="resetPilihan()">Reset Pilihan</button>
@@ -330,7 +328,18 @@
             document.getElementById('formPertanyaan').style.display = 'none';
             document.getElementById('formSurvey').style.display = 'none';
             document.querySelector('.container').style.display = 'none';
-            
+
+            var questionHeadings = document.querySelectorAll('.question h2');
+            questionHeadings.forEach(function(heading) {
+                heading.style.display = 'none';
+            });
+
+            // Menyembunyikan h2 pada form kritik dan saran
+            var kritikSaranHeading = document.querySelector('#kritik_saran h2');
+            if (kritikSaranHeading) {
+                kritikSaranHeading.style.display = 'none';
+            }
+
 
             // Pengaturan hitungan mundur
             var seconds = 3; // Hitungan mundur dalam detik
