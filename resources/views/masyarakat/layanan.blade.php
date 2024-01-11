@@ -95,34 +95,34 @@
                     <div>
                         <h1 class="display-3 mt-5 text-left">STATISTIK PELAYANAN</h1>
                         <h2 class="display-3 mb-5 text-left">{{ $layananData['info'] }}</h2>
-                        <div class="box-container">
-                            <div class="box">
+                        <div class="kotak-container">
+                            <div class="kotak">
                                 <h2>Indeks Kepuasan (%)</h2>
                                 <p>80</p>
                             </div>
-                            <div class="box">
+                            <div class="kotak">
                                 <h2>Total Responden</h2>
                                 <p>500</p>
                             </div>
-                            <div class="box">
+                            <div class="kotak">
                                 <h2>Kualitas Pelayanan</h2>
                                 <p>Sangat Baik</p>
                             </div>
 
                             <!-- Diagram batang -->
-                            <div class="box bar-chart">
+                            <div class="kotak bar-chart">
                                 <h4>Statistik Pemilihan Responden Per Kategori Soal</h4>
                                 <canvas id="barChart" width="300" height="300"></canvas>
                             </div>
 
                             <!-- Diagram lingkaran (pendidikan) -->
-                            <div class="box doughnut-chart-edu">
+                            <div class="kotak doughnut-chart-edu">
                                 <h4>Responden Berdasarkan Pendidikan</h4>
                                 <canvas id="doughnutChartEdu" width="300" height="300"></canvas>
                             </div>
 
                             <!-- Diagram lingkaran (pekerjaan) -->
-                            <div class="box doughnut-chart-job">
+                            <div class="kotak doughnut-chart-job">
                                 <h4>Responden Berdasarkan Pekerjaan</h4>
                                 <canvas id="doughnutChartJob" width="300" height="300"></canvas>
                             </div>
