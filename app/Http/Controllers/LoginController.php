@@ -21,27 +21,29 @@ class LoginController extends Controller
         // Passwordnya pake bcrypt
         if (Auth::guard('admin')->attempt(['username' => $request->username, 'password' => $request->password])) {
             // if successful, then redirect to their intended location
-            return redirect()->intended('dashboard');
-        } elseif (Auth::guard('masyarakat')->attempt(['username' => $request->username, 'password' => $request->password])) {
-            // if successful, then redirect to their intended location
-            return redirect()->intended('masyarakat_pengaduan');
-        } else {
-            return redirect('/login')->with('message', 'username atau password salah');
-        }
+            return redirect()->intended('/dashboard');
+        } 
+        // elseif (Auth::guard('admin_tenant_1')->attempt(['username' => $request->username, 'password' => $request->password])) {
+        //     // if successful, then redirect to their intended location
+        //     return redirect()->intended('dashboard');
+        // } 
+        // else {
+        //     return redirect('/login')->with('message', 'username atau password salah');
+        // }
     }
 
     public function logout()
     {
-        if (Auth::guard('admin')->check()) {
-            Auth::guard('admin')->logout();
+        if (Auth::guard('super_admin')->check()) {
+            Auth::guard('super_admin')->logout();
         }
         return redirect('/login');
     }
 
     public function logoutmasyarakat()
     {
-        if (Auth::guard('masyarakat')->check()) {
-            Auth::guard('masyarakat')->logout();
+        if (Auth::guard('admin_tenant_1')->check()) {
+            Auth::guard('admin_tenant_1')->logout();
         }
         return redirect('/loginmasyarakat');
     }

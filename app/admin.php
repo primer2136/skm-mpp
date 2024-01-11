@@ -16,12 +16,12 @@ class admin extends Authenticatable
      * @var array
      */
 
-    protected $table = "tbl_petugas";
+    protected $table = "admin";
 
-    protected $primaryKey = "id_petugas";
+    protected $primaryKey = "id_admin";
 
     protected $fillable = [
-        'nama_petugas', 'username', 'password', 'status'
+        'nama_admin', 'username', 'password', 'telp', 'status'
     ];
 
     /**

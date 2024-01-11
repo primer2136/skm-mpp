@@ -30,6 +30,20 @@ Route::get('login-admin', function () {
     return view('admin/login');
 })->name('login.admin');
 
+// Route::middleware(['check.status:super_admin'])->group(function () {
+//     Route::get('dashboard', 'DashboardController@index');
+// });
+
+// Route::middleware(['check.status:admin_tenant_1'])->group(function () {
+//     // Routes yang hanya dapat diakses oleh admin_tenant_1
+//     // ...
+// });
+
+// Route::middleware(['check.status:admin_tenant_2'])->group(function () {
+//     // Routes yang hanya dapat diakses oleh admin_tenant_2
+//     // ...
+// });
+
 Route::get('login', [LoginController::class, 'getLogin'])->name('login');;
 Route::post('proseslogin', [LoginController::class, 'postLogin']);
 Route::get('logout', [LoginController::class, 'logout']);

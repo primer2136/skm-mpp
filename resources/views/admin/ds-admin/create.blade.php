@@ -77,6 +77,8 @@
                 @enderror
               </label>
               <select name="level" class="form-control" id="select2">
+                  <option value="admin" class="form-control" disabled selected>-- Pilih --</option>
+                  <option value="admin" class="form-control">Super Admin</option>
                   <option value="admin" class="form-control">Admin Tenant 1</option>
                   <option value="petugas" class="form-control">Admin Tenant 2</option>
               </select>

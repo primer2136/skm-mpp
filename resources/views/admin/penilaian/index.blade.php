@@ -1,7 +1,7 @@
 @extends('admin/layout.master')
 
 @section('title','Penilaian')
-@section('title2','index')
+@section('title2','Entry Penilaian')
 @section('penilaian','active')
 <title>Entry Penilaian</title>
 

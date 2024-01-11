@@ -1,7 +1,7 @@
 @extends('admin/layout.master')
 
 @section('title','Dashboard')
-@section('title2','index')
+@section('title2','Index')
 @section('dashboard','active')
 <title>Dashboard</title>
 
