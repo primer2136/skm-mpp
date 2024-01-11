@@ -8,6 +8,7 @@
   <title>SURVEI KEPUASAN MASYARAKAT</title>
 
   <link rel="shortcut icon" href="https://mpp.cimahikota.go.id/img/favicon.png" type="image/x-icon">
+  
 
   <!-- Bootstrap CSS -->
   <link href="{{ asset('landing/bs/css/bootstrap.min.css') }}" rel="stylesheet">
