@@ -57,3 +57,11 @@
 .display-3.mb-5.text-left {
     font-weight: bold;
 }
+
+.custom-paragraph {
+    font-size: 20px;
+    line-height: 1.5;
+    color: #333;
+    margin-bottom: 10px;
+    margin-left: 5px;
+}

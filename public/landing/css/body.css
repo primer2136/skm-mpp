@@ -18,13 +18,14 @@ body {
 }
 
 .desc {
-	max-width: 400px;
+	max-width: 539px;
 }
 
 .button {
-	background-color: #f10000;
+	background-color: #f20000;
 	border: none;
 	color: white;
+	margin: 0px 160px;
 	padding: 16px 32px;
 	text-align: center;
 	text-decoration: none;
@@ -33,7 +34,7 @@ body {
 }
 
 .button:hover {
-	background-color: #ba7c25;
+	background-color: #970000;
 	color: white;
 }
 
