@@ -17,6 +17,7 @@
     <link rel="stylesheet" type="text/css" href="{{ asset('landing/css/resp.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/style2.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('landing/css/style.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('landing/css/layanan.css') }}">
 
 </head>
 
@@ -48,6 +49,9 @@
                             &nbsp;&nbsp;</a>
                     </li>
                     <li class="nav-item">
+                      <a href="#statistik" class="nav-link link-navbar tebel-sedang">Statistik &nbsp;&nbsp;</a>
+                  </li>
+                    <li class="nav-item">
                         <a href="#tata-cara" class="nav-link link-navbar tebel-sedang">Tata Cara &nbsp;&nbsp;</a>
                     </li>
                     <li class="nav-item">
@@ -75,6 +79,7 @@
     <script src="{{ asset('landing/bs/js/bootstrap.bundle.js') }}"></script>
     <script src="{{ asset('landing/js/onscroll.js') }}"></script>
     <script src="{{ asset('node_modules/sweetalert/dist/sweetalert.min.js') }}"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     @stack('page-scripts')
 
     <!-- Option 2: Separate Popper and Bootstrap JS -->
@@ -86,6 +91,89 @@
         integrity="sha384-pQQkAEnwaBkjpqZ8RU1fF1AKtTcHJwFl3pblpTlHXybJjHpMYo79HY3hIi4NKxyj" crossorigin="anonymous">
     </script>
     -->
+    <script>
+      // Diagram batang
+      var ctxBar = document.getElementById('barChart').getContext('2d');
+      var barChart = new Chart(ctxBar, {
+          type: 'bar',
+          data: {
+              labels: ['P1', 'P2', 'P3', 'P4', 'P5', 'P6', 'P7', 'P8', 'P9'],
+              datasets: [{
+                  label: 'Jumlah Responden',
+                  data: [10, 15, 7, 20, 12, 18, 25, 16, 9],
+                  backgroundColor: 'rgba(255, 99, 132, 0.2)',
+                  borderColor: 'rgba(255, 99, 132, 1)',
+                  borderWidth: 1
+              }]
+          },
+          options: {
+              indexAxis: 'y',
+              scales: {
+                  x: {
+                      beginAtZero: true
+                  }
+              }
+          }
+      });
+
+      // Diagram lingkaran (pendidikan)
+      var ctxDoughnutEdu = document.getElementById('doughnutChartEdu').getContext('2d');
+      var doughnutChartEdu = new Chart(ctxDoughnutEdu, {
+          type: 'doughnut',
+          data: {
+              labels: ['SD', 'SMP', 'SMA', 'S1', 'S2', 'S3'],
+              datasets: [{
+                  label: 'Jumlah Responden',
+                  data: [20, 30, 25, 40, 15, 10],
+                  backgroundColor: [
+                      'rgba(255, 99, 132, 0.2)',
+                      'rgba(54, 162, 235, 0.2)',
+                      'rgba(255, 206, 86, 0.2)',
+                      'rgba(75, 192, 192, 0.2)',
+                      'rgba(153, 102, 255, 0.2)',
+                      'rgba(255, 159, 64, 0.2)',
+                  ],
+                  borderColor: [
+                      'rgba(255, 99, 132, 1)',
+                      'rgba(54, 162, 235, 1)',
+                      'rgba(255, 206, 86, 1)',
+                      'rgba(75, 192, 192, 1)',
+                      'rgba(153, 102, 255, 1)',
+                      'rgba(255, 159, 64, 1)',
+                  ],
+                  borderWidth: 1
+              }]
+          }
+      });
+
+      // Diagram lingkaran (pekerjaan)
+      var ctxDoughnutJob = document.getElementById('doughnutChartJob').getContext('2d');
+      var doughnutChartJob = new Chart(ctxDoughnutJob, {
+          type: 'doughnut',
+          data: {
+              labels: ['PNS', 'Swasta', 'Wiraswasta', 'Mahasiswa', 'Lainnya'],
+              datasets: [{
+                  label: 'Jumlah Responden',
+                  data: [30, 25, 15, 20, 10],
+                  backgroundColor: [
+                      'rgba(255, 99, 132, 0.2)',
+                      'rgba(54, 162, 235, 0.2)',
+                      'rgba(255, 206, 86, 0.2)',
+                      'rgba(75, 192, 192, 0.2)',
+                      'rgba(153, 102, 255, 0.2)'
+                  ],
+                  borderColor: [
+                      'rgba(255, 99, 132, 1)',
+                      'rgba(54, 162, 235, 1)',
+                      'rgba(255, 206, 86, 1)',
+                      'rgba(75, 192, 192, 1)',
+                      'rgba(153, 102, 255, 1)'
+                  ],
+                  borderWidth: 1
+              }]
+          }
+      });
+  </script>
 </body>
 
 </html>

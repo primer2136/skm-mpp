@@ -18,8 +18,9 @@
                 <h1 class="display-1 text-truncate tebel-sedang">Survei Kepuasan</h1>
                 <h1 class="display-1 text-truncate tebel-sedang">Pelayanan Tenant</h1>
 
-                <div class="desc mt-4">
-                    <h6 class="custom-paragraph">Website ini digunakan untuk menyampaikan pendapat yang ingin masyarakat sampaikan terhadap kinerja
+                <div id="statistik" class="desc mt-4">
+                    <h6 class="custom-paragraph">Website ini digunakan untuk menyampaikan pendapat yang ingin masyarakat
+                        sampaikan terhadap kinerja
                         masing-masing tenant yang ada di Mal Pelayanan Publik Kota Cimahi.</h6>
                 </div>
 
@@ -37,7 +38,45 @@
             </div>
         </div>
 
-        <br><br><br id="tata-cara"><br><br><br><br>
+        <h1>STATISTIK PELAYANAN</h1>
+        <div class="garis-horizontal"></div>
+        <div>
+            <div class="kotak-container">
+                <div class="kotak">
+                    <h2>Indeks Kepuasan (%)</h2>
+                    <p>80</p>
+                </div>
+                <div class="kotak">
+                    <h2>Total Responden</h2>
+                    <p>500</p>
+                </div>
+                <div class="kotak">
+                    <h2>Kualitas Pelayanan</h2>
+                    <p>Sangat Baik</p>
+                </div>
+
+                <!-- Diagram batang -->
+                <div class="kotak bar-chart">
+                    <h4>Statistik Pemilihan Responden Per Kategori Soal</h4>
+                    <canvas id="barChart" width="300" height="300"></canvas>
+                </div>
+
+                <!-- Diagram lingkaran (pendidikan) -->
+                <div class="kotak doughnut-chart-edu">
+                    <h4>Responden Berdasarkan Pendidikan</h4>
+                    <canvas id="doughnutChartEdu" width="300" height="300"></canvas>
+                </div>
+
+                <!-- Diagram lingkaran (pekerjaan) -->
+                <div class="kotak doughnut-chart-job">
+                    <h4>Responden Berdasarkan Pekerjaan</h4>
+                    <canvas id="doughnutChartJob" width="300" height="300"></canvas>
+                </div>
+            </div>
+        </div>
+
+        
+        <br id="tata-cara"><br><br><br><br><br>
 
         <h1>Tata Cara Mengisi Survei</h1>
         <div class="garis-horizontal"></div>
@@ -111,7 +150,7 @@
             </div>
         </div>
 
-        <br><br><br id="tenant"><br><br><br><br>
+        <br><br><br id="tenant"><br><br><br><br><br>
 
         <div class="mb-8">
             <form action="/">
@@ -450,28 +489,28 @@
     </div>
 
     <!-- <div>
-        <div style="margin-top:2%">
-            <nav>
-                <ul class="pagination">
+            <div style="margin-top:2%">
+                <nav>
+                    <ul class="pagination">
 
 
-                    <li class="page-item disabled" aria-disabled="true" aria-label="&laquo; Previous">
-                        <span class="page-link" aria-hidden="true">
-                            <</span>
-                    </li>
-                    <li class="page-item active" aria-current="page"><span class="page-link">1</span>
-                    </li>
-                    <li class="page-item"><a class="page-link" href="http://mpp.cimahikota.go.id?page=2">2</a></li>
-                    <li class="page-item"><a class="page-link" href="http://mpp.cimahikota.go.id?page=3">3</a></li>
-                    <li class="page-item"><a class="page-link" href="http://mpp.cimahikota.go.id?page=4">4</a></li>
-                    <li class="page-item"><a class="page-link" href="http://mpp.cimahikota.go.id?page=5">5</a></li>
-                    <li class="page-item"><a class="page-link" href="http://mpp.cimahikota.go.id?page=6">6</a></li>
-                    <li class="page-item"><a class="page-link" href="http://mpp.cimahikota.go.id?page=2" rel="next" aria-label="Next »">></a>
-                    </li>
+                        <li class="page-item disabled" aria-disabled="true" aria-label="&laquo; Previous">
+                            <span class="page-link" aria-hidden="true">
+                                <</span>
+                        </li>
+                        <li class="page-item active" aria-current="page"><span class="page-link">1</span>
+                        </li>
+                        <li class="page-item"><a class="page-link" href="http://mpp.cimahikota.go.id?page=2">2</a></li>
+                        <li class="page-item"><a class="page-link" href="http://mpp.cimahikota.go.id?page=3">3</a></li>
+                        <li class="page-item"><a class="page-link" href="http://mpp.cimahikota.go.id?page=4">4</a></li>
+                        <li class="page-item"><a class="page-link" href="http://mpp.cimahikota.go.id?page=5">5</a></li>
+                        <li class="page-item"><a class="page-link" href="http://mpp.cimahikota.go.id?page=6">6</a></li>
+                        <li class="page-item"><a class="page-link" href="http://mpp.cimahikota.go.id?page=2" rel="next" aria-label="Next »">></a>
+                        </li>
 
-                </ul>
-            </nav>
-        </div> -->
+                    </ul>
+                </nav>
+            </div> -->
     <br><br>
     </div>
 
