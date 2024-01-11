@@ -43,9 +43,9 @@ button {
 
 .btn-back {
   position: absolute;
-  margin-left: 10px;
+  margin-right: 140px;
   margin-bottom: 10px;
-  left: 0;
+  right: 0;
   bottom: 0;
 }
 
