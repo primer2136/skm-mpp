@@ -551,14 +551,8 @@
             for (var i = 0; i < serviceBoxes.length; i++) {
                 var serviceTitle = serviceBoxes[i].querySelector(".service-title").innerText.toLowerCase();
                 var altText = serviceBoxes[i].querySelector(".logo").getAttribute("alt").toLowerCase();
-                var isMatch = serviceTitle.includes(searchTerm) || altText.includes(searchTerm);
-
-                // Tambah atau hapus kelas .hidden berdasarkan hasil pencarian
-                if (isMatch) {
-                    serviceBoxes[i].classList.remove("hidden");
-                } else {
-                    serviceBoxes[i].classList.add("hidden");
-                }
+                var displayStyle = serviceTitle.includes(searchTerm) || altText.includes(searchTerm) ? "block" : "none";
+                serviceBoxes[i].style.display = displayStyle;
             }
         }
     </script>
