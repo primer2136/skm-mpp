@@ -329,7 +329,9 @@ object {
 }
 
 .form-input:focus {
-    border-color: transparent;
+    border-color: #f19e00;
+    border-width: 3px;
+    outline: none;
 }
 
 .form-input {
@@ -392,6 +394,7 @@ object {
 
 .form-button {
     border-radius: 0.25rem;
+    border: none;
     --tw-bg-opacity: 1;
     background-color: rgba(230, 120, 23, var(--tw-bg-opacity));
     padding-left: 1rem;
