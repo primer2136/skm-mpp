@@ -525,12 +525,11 @@ object {
 }
 
 .search-result .logo {
-    width: 5.625rem; /* Lebar gambar logo */
-    height: auto; /* Tinggi gambar logo menyesuaikan */
     max-width: 100%;
-    max-height: 100%; /* Menambahkan max-height agar tetap di tengah */
-    margin: auto; /* Memastikan gambar berada di tengah */
+    height: auto;
+    margin: 0 auto; /* Memastikan gambar berada di tengah */
 }
+
 
 
 

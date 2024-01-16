@@ -501,28 +501,28 @@
     </div>
 
     <!-- <div>
-                                                <div style="margin-top:2%">
-                                                    <nav>
-                                                        <ul class="pagination">
+                                        <div style="margin-top:2%">
+                                            <nav>
+                                                <ul class="pagination">
 
 
-                                                            <li class="page-item disabled" aria-disabled="true" aria-label="&laquo; Previous">
-                                                                <span class="page-link" aria-hidden="true">
-                                                                    <</span>
-                                                            </li>
-                                                            <li class="page-item active" aria-current="page"><span class="page-link">1</span>
-                                                            </li>
-                                                            <li class="page-item"><a class="page-link" href="http://mpp.cimahikota.go.id?page=2">2</a></li>
-                                                            <li class="page-item"><a class="page-link" href="http://mpp.cimahikota.go.id?page=3">3</a></li>
-                                                            <li class="page-item"><a class="page-link" href="http://mpp.cimahikota.go.id?page=4">4</a></li>
-                                                            <li class="page-item"><a class="page-link" href="http://mpp.cimahikota.go.id?page=5">5</a></li>
-                                                            <li class="page-item"><a class="page-link" href="http://mpp.cimahikota.go.id?page=6">6</a></li>
-                                                            <li class="page-item"><a class="page-link" href="http://mpp.cimahikota.go.id?page=2" rel="next" aria-label="Next »">></a>
-                                                            </li>
+                                                    <li class="page-item disabled" aria-disabled="true" aria-label="&laquo; Previous">
+                                                        <span class="page-link" aria-hidden="true">
+                                                            <</span>
+                                                    </li>
+                                                    <li class="page-item active" aria-current="page"><span class="page-link">1</span>
+                                                    </li>
+                                                    <li class="page-item"><a class="page-link" href="http://mpp.cimahikota.go.id?page=2">2</a></li>
+                                                    <li class="page-item"><a class="page-link" href="http://mpp.cimahikota.go.id?page=3">3</a></li>
+                                                    <li class="page-item"><a class="page-link" href="http://mpp.cimahikota.go.id?page=4">4</a></li>
+                                                    <li class="page-item"><a class="page-link" href="http://mpp.cimahikota.go.id?page=5">5</a></li>
+                                                    <li class="page-item"><a class="page-link" href="http://mpp.cimahikota.go.id?page=6">6</a></li>
+                                                    <li class="page-item"><a class="page-link" href="http://mpp.cimahikota.go.id?page=2" rel="next" aria-label="Next »">></a>
+                                                    </li>
 
-                                                        </ul>
-                                                    </nav>
-                                                </div> -->
+                                                </ul>
+                                            </nav>
+                                        </div> -->
     <br><br>
     </div>
 
@@ -550,25 +550,6 @@
                 var altText = serviceBoxes[i].querySelector(".logo").getAttribute("alt").toLowerCase();
                 var displayStyle = serviceTitle.includes(searchTerm) || altText.includes(searchTerm) ? "block" : "none";
                 serviceBoxes[i].style.display = displayStyle;
-
-                // Reset display style for logo container and logo
-                var logoContainer = serviceBoxes[i].querySelector(".logo-container");
-                var logoImage = serviceBoxes[i].querySelector(".logo");
-
-                // Additional styles to ensure the layout
-                logoContainer.style.backgroundColor = "white";
-                logoContainer.style.marginBottom = "1rem";
-                logoContainer.style.borderRadius = "50%";
-                logoContainer.style.width = "8.25rem";
-                logoContainer.style.height = "8.25rem";
-                logoContainer.style.display = "flex";
-                logoContainer.style.alignItems = "center";
-                logoContainer.style.justifyContent = "center";
-                logoContainer.style.overflow = "hidden";
-
-                logoImage.style.maxWidth = "100%";
-                logoImage.style.height = "auto";
-                logoImage.style.margin = "0 auto";
             }
         }
     </script>
