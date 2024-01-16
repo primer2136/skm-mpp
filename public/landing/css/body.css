@@ -38,6 +38,13 @@ body {
 	color: white;
 }
 
+@media (max-width: 768px) {
+    .button {
+        display: block; 
+        margin: 0 auto; 
+        width: 75%; 
+    }
+}
 .gambar {
 	display: none;
 }

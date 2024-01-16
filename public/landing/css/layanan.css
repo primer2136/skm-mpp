@@ -8,7 +8,7 @@
 .kotak {
     width: calc(33.33% - 20px); /* Menggunakan calc untuk menghitung lebar setiap kotak dengan jarak antar kotak */
     padding: 20px;
-    border: 1px solid #ccc;
+    border: none;
     border-radius: 10px;
     background-color: #f19e00;
     color: white;
@@ -20,6 +20,30 @@
     justify-content: space-between;
     flex-direction: column;
     align-items: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.kotak canvas {
+    width: 100% !important;
+    height: auto;
+}
+
+.garis-horizontal {
+    width: 100%;
+    box-sizing: border-box;
+}
+
+/* Media query untuk layar lebih kecil */
+@media (max-width: 768px) {
+    .kotak {
+        width: calc(33.33% - 20px);
+    }
+
+    .kotak-container > div:nth-child(4),
+    .kotak-container > div:nth-child(5),
+    .kotak-container > div:nth-child(6){
+        width: 100%;
+    }
 }
 
 .bar-chart {
@@ -37,21 +61,12 @@
     color: black;
 }
 
-#barChart,
-#doughnutChartEdu,
-#doughnutChartJob {
-    width: 400px; /* Mengubah lebar diagram */
-    height: 300px; /* Mengubah tinggi diagram */
-    margin-right: 20px; /* Menambahkan jarak antara diagram */
-}
-
 .display-3 {
-    font-size: 2.5rem; /* Ubah ukuran font sesuai keinginan Anda */
+    font-size: 2.5rem;
 }
 
-/* Atau jika Anda ingin membuat lebih kecil dan bold hanya pada elemen dengan teks "DEKRANASDA" */
 .display-3.text-left {
-    font-size: 2.5rem; /* Ubah ukuran font sesuai keinginan Anda */
+    font-size: 2.5rem;
 }
 
 .display-3.mb-5.text-left {
