@@ -5,25 +5,25 @@
 }
 
 .bg-custom:hover {
-	background-color: #6884e7 !important;
+	background-color: #f19e00 !important;
 	color: #fff !important;
 }
 
 .bg-custom-sm {
-	background-color: #6884e7 !important;
+	background-color: #f19e00 !important;
 	transition: 0.3s;
 	color: #fff !important;
 }
 
 .bg-custom-sm:hover {
-	background-color: #3950a5 !important;
+	background-color: #a36b02 !important;
 	color: #fff !important;
 }
 
 .bg-active {
 	background-color: transparent !important;
 	transition: 0.3s;
-	color: #6884e7 !important;
+	color: #a36b02 !important;
 }
 
 .navbar {
@@ -36,6 +36,6 @@
 }
 
 .link-navbar:hover {
-	color: #6884e7 !important;
+	color: #a36b02 !important;
 	transition: 0.3s;
 }
