@@ -116,7 +116,7 @@
 
 @media (max-width: 1000px) {
     .md\:w-1\/4 {
-        width: 100% !important; 
+        width: 100% !important;
     }
 }
 
@@ -291,7 +291,6 @@ object {
     /* vertical-align: middle; */
 }
 
-
 .text-lg {
     font-size: 1.125rem;
     line-height: 1.75rem;
@@ -311,7 +310,7 @@ object {
 }
 
 .right-2 {
-    right: 21rem;
+    right: 0.5rem;
 }
 
 .inset-y-2 {
@@ -343,7 +342,7 @@ object {
 }
 
 .form-input {
-    width: 50%;
+    width: 100%;
     border-radius: 0.25rem;
     border-width: 1px;
     --tw-border-opacity: 1;
@@ -492,7 +491,7 @@ object {
     background-color: #ff9900;
     padding: 20px;
     text-align: center;
-    font-family: 'Poppins', sans-serif;
+    font-family: "Poppins", sans-serif;
 }
 
 .footer p {
@@ -546,9 +545,6 @@ object {
     margin: 0 auto; /* Memastikan gambar berada di tengah */
 }
 
-
-
-
 .service-title {
     text-align: center;
     font-size: 1.125rem;
@@ -564,7 +560,7 @@ object {
 
 .feather-search {
     position: absolute;
-    left: 335px;
+    left: 0.75rem;
     top: 50%;
     transform: translateY(-50%);
 }
@@ -586,4 +582,10 @@ object {
     font-weight: bold;
     font-size: 65px;
     color: #f19e00;
+}
+
+@media (min-width: 768px) {
+    .md\:w-1\/2 {
+        width: 50%;
+    }
 }
