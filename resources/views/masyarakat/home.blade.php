@@ -40,7 +40,8 @@
 
         <h1>STATISTIK PELAYANAN</h1>
         <h2 class="display-3 text-left custom-h2">
-            <span class="highlight-letter">M</span>AL <span class="highlight-letter">P</span>ELAYANAN <span class="highlight-letter">P</span>UBLIK CIMAHI
+            <span class="highlight-letter">M</span>AL <span class="highlight-letter">P</span>ELAYANAN <span
+                class="highlight-letter">P</span>UBLIK CIMAHI
         </h2>
         <div class="garis-horizontal"></div>
         <div>
@@ -504,53 +505,29 @@
     </div>
 
     <!-- <div>
-                                        <div style="margin-top:2%">
-                                            <nav>
-                                                <ul class="pagination">
+                        <div style="margin-top:2%">
+                            <nav>
+                                <ul class="pagination">
 
 
-                                                    <li class="page-item disabled" aria-disabled="true" aria-label="&laquo; Previous">
-                                                        <span class="page-link" aria-hidden="true">
-                                                            <</span>
-                                                    </li>
-                                                    <li class="page-item active" aria-current="page"><span class="page-link">1</span>
-                                                    </li>
-                                                    <li class="page-item"><a class="page-link" href="http://mpp.cimahikota.go.id?page=2">2</a></li>
-                                                    <li class="page-item"><a class="page-link" href="http://mpp.cimahikota.go.id?page=3">3</a></li>
-                                                    <li class="page-item"><a class="page-link" href="http://mpp.cimahikota.go.id?page=4">4</a></li>
-                                                    <li class="page-item"><a class="page-link" href="http://mpp.cimahikota.go.id?page=5">5</a></li>
-                                                    <li class="page-item"><a class="page-link" href="http://mpp.cimahikota.go.id?page=6">6</a></li>
-                                                    <li class="page-item"><a class="page-link" href="http://mpp.cimahikota.go.id?page=2" rel="next" aria-label="Next »">></a>
-                                                    </li>
+                                    <li class="page-item disabled" aria-disabled="true" aria-label="&laquo; Previous">
+                                        <span class="page-link" aria-hidden="true">
+                                            <</span>
+                                    </li>
+                                    <li class="page-item active" aria-current="page"><span class="page-link">1</span>
+                                    </li>
+                                    <li class="page-item"><a class="page-link" href="http://mpp.cimahikota.go.id?page=2">2</a></li>
+                                    <li class="page-item"><a class="page-link" href="http://mpp.cimahikota.go.id?page=3">3</a></li>
+                                    <li class="page-item"><a class="page-link" href="http://mpp.cimahikota.go.id?page=4">4</a></li>
+                                    <li class="page-item"><a class="page-link" href="http://mpp.cimahikota.go.id?page=5">5</a></li>
+                                    <li class="page-item"><a class="page-link" href="http://mpp.cimahikota.go.id?page=6">6</a></li>
+                                    <li class="page-item"><a class="page-link" href="http://mpp.cimahikota.go.id?page=2" rel="next" aria-label="Next »">></a>
+                                    </li>
 
-                                                </ul>
-                                            </nav>
-                                        </div> -->
-                                        
-                    <div style="margin-top:2%">
-                        <nav>
-                            <ul class="pagination">
-
-
-                                <li class="page-item disabled" aria-disabled="true" aria-label="&laquo; Previous">
-                                    <span class="page-link" aria-hidden="true">
-                                        <</span>
-                                </li>
-                                <li class="page-item active" aria-current="page"><span class="page-link">1</span>
-                                </li>
-                                <li class="page-item"><a class="page-link" href="http://mpp.cimahikota.go.id?page=2">2</a></li>
-                                <li class="page-item"><a class="page-link" href="http://mpp.cimahikota.go.id?page=3">3</a></li>
-                                <li class="page-item"><a class="page-link" href="http://mpp.cimahikota.go.id?page=4">4</a></li>
-                                <li class="page-item"><a class="page-link" href="http://mpp.cimahikota.go.id?page=5">5</a></li>
-                                <li class="page-item"><a class="page-link" href="http://mpp.cimahikota.go.id?page=6">6</a></li>
-                                <li class="page-item"><a class="page-link" href="http://mpp.cimahikota.go.id?page=2" rel="next" aria-label="Next »">></a>
-                                </li>
-
-                            </ul>
-                        </nav>
-                    </div> -->
+                                </ul>
+                            </nav>
+                        </div> -->
     <br><br>
-    </div>
 
     <div class="footer">
         <p class="text-center font-semibold text-sm text-gray-500">

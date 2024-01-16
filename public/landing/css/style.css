@@ -114,6 +114,12 @@
     width: 25%;
 }
 
+@media (max-width: 1000px) {
+    .md\:w-1\/4 {
+        width: 100% !important; 
+    }
+}
+
 .flex {
     display: flex;
 }
@@ -570,5 +576,6 @@ object {
 
 .highlight-letter {
     font-weight: bold;
+    font-size: 65px;
     color: #f19e00;
 }
