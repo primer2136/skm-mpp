@@ -157,7 +157,7 @@
         <br><br><br id="tenant"><br><br><br><br><br>
 
         <div class="mb-8">
-            <form action="/">
+            <form action="/" id="searchForm">
                 <div class="w-full md:w-1/2 m-auto relative">
                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
                         stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
@@ -165,19 +165,31 @@
                         <circle cx="11" cy="11" r="8"></circle>
                         <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
                     </svg>
-                    <input type="text" name="nama_layanan" class="form-input pl-12 text-lg py-3 rounded-lg"
-                        placeholder="Cari Layanan">
-                    <button class="form-button absolute inset-y-2 right-2">
+                    <input type="text" name="search" class="form-input pl-12 text-lg py-3 rounded-lg"
+                        placeholder="Cari Layanan" id="searchInput">
+                    <button class="form-button absolute inset-y-2 right-2" type="submit" onclick="searchServices(event)">
                         Cari
                     </button>
                 </div>
             </form>
         </div>
 
-        <div class="grid">
+        {{-- <div class="row">
+            <div class=col-md-6>
+                <form action="/" id="searchForm">
+                    <div class="input-group mb-3">
+                        <input type="text" class="form-control" placeholder="Cari Layanan" name="search"
+                            id="searchInput">
+                        <button class="btn btn-danger" type="submit" onclick="searchServices(event)">Cari</button>
+                    </div>
+                </form>
+            </div>
+        </div> --}}
+
+        <div class="grid" id="serviceResults">
             <a href="layanan/1" class="box">
                 <div class="logo-container">
-                    <img class="logo" src="https://mpp.cimahikota.go.id/layanan/1666239340_dekranasda.png"
+                    <img class="logo search-result" src="https://mpp.cimahikota.go.id/layanan/1666239340_dekranasda.png"
                         alt="Logo DEKRANASDA">
                 </div>
                 <h3 class="service-title">DEKRANASDA</h3>
@@ -523,4 +535,25 @@
                 rel="noopener noreferrer">ITENAS</a>
         </p>
     </div>
+
+    <script>
+        function searchServices(event) {
+            // Mencegah perilaku pengiriman formulir bawaan
+            event.preventDefault();
+
+            // Mendapatkan nilai pencarian dari input
+            var searchTerm = document.querySelector("input[name='search']").value.toLowerCase();
+
+            // Mendapatkan semua kotak layanan
+            var serviceBoxes = document.querySelectorAll(".box");
+
+            // Memfilter dan menampilkan hanya kotak layanan yang relevan
+            for (var i = 0; i < serviceBoxes.length; i++) {
+                var serviceTitle = serviceBoxes[i].querySelector(".service-title").innerText.toLowerCase();
+                var altText = serviceBoxes[i].querySelector(".logo").getAttribute("alt").toLowerCase();
+                var displayStyle = serviceTitle.includes(searchTerm) || altText.includes(searchTerm) ? "block" : "none";
+                serviceBoxes[i].style.display = displayStyle;
+            }
+        }
+    </script>
 @endsection

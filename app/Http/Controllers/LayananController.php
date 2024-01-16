@@ -30,6 +30,8 @@ class LayananController extends Controller
         return view('masyarakat.survey', compact('layananData'));
     }
 
+    
+
     private function getJudulByNomor($nomor)
     {
         // Tambahkan logika atau kueri database sesuai kebutuhan

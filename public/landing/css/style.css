@@ -287,9 +287,10 @@ audio,
 iframe,
 embed,
 object {
-    display: block;
-    vertical-align: middle;
+    /* display: block; */
+    /* vertical-align: middle; */
 }
+
 
 .text-lg {
     font-size: 1.125rem;
@@ -453,6 +454,18 @@ object {
     justify-content: center;
 }
 
+.box .logo {
+    max-width: 100%;
+    height: auto;
+}
+
+/* Tambahkan CSS ini untuk mengatur ukuran dan margin gambar di dalam container */
+.box .logo {
+    max-width: 100%;
+    height: auto;
+    margin: 0 auto; /* Memastikan gambar berada di tengah */
+}
+
 .box:hover {
     transform: scale(1.05); /* Efek zoom saat dihover */
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1), 0 1px 3px rgba(0, 0, 0, 0.08); /* Efek bayangan saat dihover */
@@ -479,6 +492,7 @@ object {
     background-color: #ff9900;
     padding: 20px;
     text-align: center;
+    font-family: 'Poppins', sans-serif;
 }
 
 .footer p {
@@ -505,6 +519,28 @@ object {
     line-height: 1.25rem;
 }
 
+/* Tambahkan CSS ini untuk mengatur gambar di tengah dan mempertahankan ukuran setelah pencarian */
+.search-result .logo-container {
+    background-color: white;
+    margin-bottom: 1rem;
+    border-radius: 50%;
+    width: 8.25rem;
+    height: 8.25rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+
+.search-result .logo {
+    max-width: 100%;
+    height: auto;
+    margin: 0 auto; /* Memastikan gambar berada di tengah */
+}
+
+
+
+
 .service-title {
     text-align: center;
     font-size: 1.125rem;
@@ -515,6 +551,7 @@ object {
     position: relative;
     display: flex;
     align-items: center;
+    margin: 0;
 }
 
 .feather-search {

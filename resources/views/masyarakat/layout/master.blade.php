@@ -15,7 +15,6 @@
     <link rel="stylesheet" type="text/css" href="{{ asset('landing/css/body.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('landing/css/navbar.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('landing/css/resp.css') }}">
-    <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/style2.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('landing/css/style.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('landing/css/layanan.css') }}">
 
