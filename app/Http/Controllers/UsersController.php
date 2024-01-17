@@ -5,25 +5,27 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
-class AdminController extends Controller
+class UsersController extends Controller
 {
 
     private function _validation(Request $request)
     {
         $validation = $request->validate(
             [
-                'nama' => 'required|max:35',
+                'nama_admin' => 'required|max:35',
                 'username' => 'required|max:35',
                 'password' => 'required',
-                'level' => 'required',
+                'telp' => 'required',
+                'role' => 'required',
             ],
             [
-                'nama.required' => 'Harus diisi',
-                'nama.max' => 'Jangan melebihi 35 huruf',
+                'nama_admin.required' => 'Harus diisi',
+                'nama_admin.max' => 'Jangan melebihi 35 huruf',
                 'username.required' => 'Harus diisi',
                 'username.max' => 'Jangan melebihi 25 huruf',
                 'password.required' => 'Harus diisi',
-                'level.required' => 'Harus diisi',
+                'telp.required' => 'Harus diisi',
+                'role.required' => 'Harus diisi',
             ]
         );
     }
@@ -34,10 +36,12 @@ class AdminController extends Controller
      */
     public function index(Request $request)
     {
-        $data = DB::table('tbl_petugas')
-            ->where('nama_petugas', 'like', "%{$request->keyword}%")
+        $data = DB::table('users')
+            ->where('nama_admin', 'like', "%{$request->keyword}%")
             ->orWhere('username', 'like', "%{$request->keyword}%")
-            ->orWhere('status', 'like', "%{$request->keyword}%")
+            ->orWhere('password', 'like', "%{$request->keyword}%")
+            ->orWhere('telp', 'like', "%{$request->keyword}%")
+            ->orWhere('role', 'like', "%{$request->keyword}%")
             ->paginate(5);
         return view('admin/ds-admin.index', ['data' => $data]);
     }
@@ -62,14 +66,14 @@ class AdminController extends Controller
     {
         $this->_validation($request);
         $password = $request->password;
-        DB::table('tbl_petugas')->insert([
-            'nama_petugas' => $request->nama,
+        DB::table('users')->insert([
+            'nama_admin' => $request->nama,
             'username' => $request->username,
             'password' => bcrypt($password),
             'telp' => $request->telp,
-            'status' => $request->level
+            'role' => $request->level
         ]);
-        return redirect('petugas')->with('message', 'Berhasil ditambahkan');
+        return redirect('ds-admin')->with('message', 'Berhasil ditambahkan');
     }
 
     /**
@@ -91,8 +95,8 @@ class AdminController extends Controller
      */
     public function edit($id)
     {
-        $data = DB::table('tbl_petugas')->where('id_petugas', $id)->first();
-        return view('admin/petugas.edit', ['data' => $data]);
+        $data = DB::table('users')->where('id_admin', $id)->first();
+        return view('admin/ds-admin.edit', ['data' => $data]);
     }
 
     /**
@@ -106,14 +110,14 @@ class AdminController extends Controller
     {
         $this->_validation($request);
         $password = $request->password;
-        DB::table('tbl_petugas')->where('id_petugas', $id)->update([
-            'nama_Petugas' => $request->nama,
+        DB::table('users')->where('id_admin', $id)->update([
+            'nama_admin' => $request->nama,
             'username' => $request->username,
             'password' => bcrypt($password),
             'telp' => $request->telp,
-            'status' => $request->level
+            'role' => $request->level
         ]);
-        return redirect('petugas')->with('message', 'Berhasil diubah');
+        return redirect('ds-admin')->with('message', 'Berhasil diubah');
     }
 
     /**
@@ -124,7 +128,7 @@ class AdminController extends Controller
      */
     public function destroy($id)
     {
-        DB::table('tbl_petugas')->where('id_petugas', $id)->delete();
+        DB::table('users')->where('id_admin', $id)->delete();
         return redirect()->back()->with('message', 'Berhasil dihapus');
     }
 }

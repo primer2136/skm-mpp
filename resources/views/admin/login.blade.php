@@ -30,6 +30,16 @@
                 <div class="row">
                     <div
                         class="col-12 col-sm-8 offset-sm-2 col-md-6 offset-md-3 col-lg-6 offset-lg-3 col-xl-4 offset-xl-4">
+                        @if(session('message'))
+                                    <div class="alert alert-warning alert-dismissible show fade">
+                                        <div class="alert-body">
+                                            <button class="close" data-dismiss="alert">
+                                                <span>×</span>
+                                            </button>
+                                            {{ session('message') }}
+                                        </div>
+                                    </div>
+                                    @endif
                         <div class="login-brand">
                             <img src="../assets/img/logo-admin.png" alt="logo" width="100"
                                 class="shadow-sm rounded-circle">
@@ -56,23 +66,12 @@
                                         <div class="d-block">
                                             <label for="password" class="control-label">Password</label>
                                         </div>
-                                        <input onclick="window.location.href='/dashboard'" id="password" type="password" class="form-control" name="password"
+                                        <input id="password" type="password" class="form-control" name="password"
                                             tabindex="2" required autocomplete="off">
                                         <div class="invalid-feedback">
                                             Please fill in your password
                                         </div>
                                     </div>
-
-                                    @if(session('message'))
-                                    <div class="alert alert-warning alert-dismissible show fade">
-                                        <div class="alert-body">
-                                            <button class="close" data-dismiss="alert">
-                                                <span>×</span>
-                                            </button>
-                                            {{ session('message') }}
-                                        </div>
-                                    </div>
-                                    @endif
 
                                     <div class="form-group">
                                         <button type="submit" class="btn btn-warning btn-lg btn-block" tabindex="4">

@@ -24,7 +24,7 @@
                   | {{ $message }}
                 @enderror
               </label>
-              <input type="text" name="nama" value="{{old('nama')}}" class="form-control" autocomplete="off">  
+              <input type="text" name="nama_admin" value="{{old('nama')}}" class="form-control" autocomplete="off">  
             </div>
           </div>
 
@@ -54,7 +54,7 @@
             </div>
           </div>
 
-            {{-- kompetensi --}}
+            {{-- no. hp --}}
           <div class="col-md-6">
             <div class="form-group">
               <label @error('telp') class="text-danger" @enderror>
@@ -67,16 +67,16 @@
             </div>
           </div>
 
-          {{-- kompetensi --}}
+          {{-- role --}}
           <div class="col-md-6">
             <div class="form-group">
-              <label @error('level') class="text-danger" @enderror>
-                Level
-                @error('level')
+              <label @error('role') class="text-danger" @enderror>
+                Role
+                @error('role')
                   | {{ $message }}
                 @enderror
               </label>
-              <select name="level" class="form-control" id="select2">
+              <select name="role" class="form-control" id="select2">
                   <option value="admin" class="form-control">Admin Tenant 1</option>
                   <option value="petugas" class="form-control">Admin Tenant 2</option>
               </select>

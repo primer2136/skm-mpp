@@ -3,7 +3,8 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LayananController;
 use App\Http\Controllers\LoginController;
-use App\Http\Controllers\AdminController;
+use App\Http\Controllers\TenantController;
+use App\Http\Controllers\UsersController;
 
 /*
 |--------------------------------------------------------------------------
@@ -15,8 +16,8 @@ use App\Http\Controllers\AdminController;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
-// Use the AdminController class in your code
-// $adminController = new AdminController();
+// Use the UsersController class in your code
+// $UsersController = new UsersController();
 
 Route::get('/', function () {
     return view('masyarakat/home');
@@ -38,10 +39,10 @@ Route::get('/dashboard', function () {
     return view('admin/dashboard/index');
 });
 
-Route::resource('ds-admin', AdminController::class);
-Route::get('ds-admin/create', [AdminController::class, 'create'])->name('admin.create');;
-Route::get('ds-admin/store', [AdminController::class, 'store'])->name('admin.store');;
-Route::post('ds-admin/store', [AdminController::class, 'store'])->name('admin.store');;
+Route::resource('ds-admin', UsersController::class);
+Route::get('ds-admin/create', [UsersController::class, 'create'])->name('admin.create');;
+Route::get('ds-admin/store', [UsersController::class, 'store'])->name('admin.store');;
+Route::post('ds-admin/store', [UsersController::class, 'store'])->name('admin.store');;
 
 Route::get('/layanan/{nomor}', [LayananController::class, 'show']);
 
@@ -58,6 +59,8 @@ Route::get('/ds-admin', function () {
 Route::get('/ds-masyarakat', function () {
     return view('admin/ds-masyarakat/index');
 });
+
+Route::resource('/tenant', TenantController::class);
 
 Route::get('/penilaian', function () {
     return view('admin/penilaian/index');

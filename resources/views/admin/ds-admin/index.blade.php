@@ -56,13 +56,13 @@
                             @php
                                 $no = 1
                             @endphp
-                            {{-- @foreach ($data as $item)
+                            @foreach ($data as $item)
                                 <tr>
                                     <td>{{ $no++ }}</td>
                                     <td>{{ $item->nama_admin }}</td>
                                     <td>{{ $item->username }}</td>
                                     <td>{{ $item->telp }}</td>
-                                    <td>{{ $item->status }}</td>
+                                    <td>{{ $item->role }}</td>
                                     <td>
                                         <a href="{{ route('admin.edit',$item->id_admin) }}" class="btn btn-warning"><i class="fas fa-edit mb-2"></i></a>
                                         <a href="#" data-id="" class="btn btn-danger confirm_script-{{$item->id_admin}} mr-3">
@@ -101,10 +101,10 @@
                                 });
                                 </script>
                                 @endpush
-                            {{-- @endforeach --}}
+                            @endforeach
                         </tbody>
                     </table>
-                    {{-- {{ $data->links() }} --}}
+                    {{ $data->links() }}
                 </div>
             </div>
         </div>
