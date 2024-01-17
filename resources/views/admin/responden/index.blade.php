@@ -1,9 +1,9 @@
 @extends('admin/layout.master')
 
-@section('title', 'Tenant')
+@section('title', 'Responden')
 @section('title2', 'index')
-@section('tenant', 'active')
-<title>Tenant</title>
+@section('responden', 'active')
+<title>Responden</title>
 
 @section('konten')
     <div class="container-fluid">
@@ -13,7 +13,7 @@
                     <div class="card-body">
 
                         {{-- Button tambah --}}
-                        <a href="{{ route('tenant.create') }}" class="btn btn-warning mb-4"><i
+                        <a href="{{ route('responden.create') }}" class="btn btn-warning mb-4"><i
                                 class="fas fa-plus text-light"></i></a>
 
                         {{-- Form search --}}
@@ -48,8 +48,11 @@
                             <thead>
                                 <tr>
                                     <th>No.</th>
-                                    <th>Logo</th>
-                                    <th>Nama Tenant</th>
+                                    <th>Nama</th>
+                                    <th>Tahun Lahir</th>
+                                    <th>Jenis Kelamin</th>
+                                    <th>Riwayat Pendidikan</th>
+                                    <th>Pekerjaan</th>
                                     <th>Aksi</th>
                                 </tr>
                             </thead>
@@ -57,26 +60,21 @@
                                 @php
                                     $no = 1;
                                 @endphp
-                                @foreach ($tenants as $tenant)
+                                @foreach ($respondens as $responden)
                                     <tr>
                                         <td>{{ $no++ }}</td>
+                                        <td>{{ $responden->nama_responden }}</td>
+                                        <td>{{ $responden->tahun_lahir }}</td>
+                                        <td>{{ $responden->jenis_kelamin }}</td>
+                                        <td>{{ $responden->riwayat_pendidikan }}</td>
+                                        <td>{{ $responden->pekerjaan }}</td>
                                         <td>
-                                            @if ($tenant->logo)
-                                                <img src="data:image/png;base64,{{ base64_encode($tenant->logo) }}"
-                                                    alt="Logo Tenant"
-                                                    style="margin-top: 10px; max-width: 75px; max-height: 75px;">
-                                            @else
-                                                No Logo
-                                            @endif
-                                        </td>
-                                        <td>{{ $tenant->nama_tenant }}</td>
-                                        <td>
-                                            <a href="{{ route('tenant.edit', $tenant->id_tenant) }}"
+                                            <a href="{{ route('responden.edit', $responden->id_responden) }}"
                                                 class="btn btn-warning p-0" style="vertical-align: baseline;">
                                                 {{-- <i class="fas fa-edit mb-2"></i> --}}
                                                 <button class="btn btn-warning m-0">Edit</button>
                                             </a>
-                                            <form action="{{ route('tenant.destroy', $tenant->id_tenant) }}" method="POST"
+                                            <form action="{{ route('responden.destroy', $responden->id_responden) }}" method="POST"
                                                 class="btn btn-danger p-0" style="vertical-align: baseline;"
                                                 onsubmit="return confirm('Apakah yakin ingin dihapus?')">
                                                 @csrf
@@ -84,9 +82,9 @@
                                                 <button class="btn btn-danger m-0">Hapus</button>
                                             </form>
                                             {{-- <a href="#" data-id=""
-                                                class="btn btn-danger confirm_script-{{ $tenant->id_tenant }} mr-3">
-                                                <form action="{{ route('tenant.destroy', $tenant->id_tenant) }}"
-                                                    class="delete_form-{{ $tenant->id_tenant }}" method="POST">
+                                                class="btn btn-danger confirm_script-{{ $responden->id_responden }} mr-3">
+                                                <form action="{{ route('responden.destroy', $responden->id_responden) }}"
+                                                    class="delete_form-{{ $responden->id_responden }}" method="POST">
                                                     @method('DELETE')
                                                     @csrf
                                                 </form>
@@ -100,7 +98,7 @@
 
                                     @push('after-scripts')
                                         <script>
-                                            $(".confirm_script-{{ $tenant->id_tenant }}").click(function(e) {
+                                            $(".confirm_script-{{ $responden->id_responden }}").click(function(e) {
                                                 // id = e.target.dataset.id;
                                                 swal({
                                                         title: 'Yakin hapus data?',
@@ -111,7 +109,7 @@
                                                     })
                                                     .then((willDelete) => {
                                                         if (willDelete) {
-                                                            $('.delete_form-{{ $tenant->id_tenant }}').submit();
+                                                            $('.delete_form-{{ $responden->id_responden }}').submit();
                                                         } else {
                                                             swal('Hapus data telah di batalkan');
                                                         }
@@ -122,7 +120,7 @@
                                 @endforeach
                             </tbody>
                         </table>
-                        {{-- {{ $tenants->links() }} --}}
+                        {{-- {{ $respondens->links() }} --}}
                     </div>
                 </div>
             </div>

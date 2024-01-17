@@ -39,12 +39,4 @@ class LoginController extends Controller
         }
         return redirect('/login');
     }
-
-    public function logoutmasyarakat()
-    {
-        if (Auth::guard('masyarakat')->check()) {
-            Auth::guard('masyarakat')->logout();
-        }
-        return redirect('/loginmasyarakat');
-    }
 }
