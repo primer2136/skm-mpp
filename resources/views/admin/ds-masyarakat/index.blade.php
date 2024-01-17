@@ -1,9 +1,9 @@
 @extends('admin/layout.master')
 
-@section('title','Masyarakat')
+@section('title','Responden')
 @section('title2','index')
-@section('masyarakat','active')
-<title>Masyarakat</title>
+@section('responden','active')
+<title>Responden</title>
 
 @section('konten')
 <div class="container-fluid">

@@ -15,7 +15,8 @@
             {{-- Entry data --}}
             <li class="menu-header">Entry data</li>
             <li class="@yield('admin')"><a class="nav-link" href="/ds-admin"><i class="fas fa-user"></i> <span>Admin</span></a></li>
-            <li class="@yield('masyarakat')"><a class="nav-link" href="/ds-masyarakat"><i class="fas fa-user"></i> <span>Masyarakat</span></a></li>
+            <li class="@yield('responden')"><a class="nav-link" href="/ds-masyarakat"><i class="fas fa-user"></i> <span>Responden</span></a></li>
+            <li class="@yield('tenant')"><a class="nav-link" href="{{ route('tenant.index') }}"><i class="fas fa-user"></i> <span>Tenant</span></a></li>
 
             {{-- @endif --}}
 
