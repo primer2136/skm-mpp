@@ -3,7 +3,7 @@
 }
 
 .max-w-xs {
-    max-width: 20rem;
+    max-width: 100%;
 }
 
 .p-2 {
@@ -65,8 +65,8 @@
 }
 
 .-mx-4 {
-    margin-left: -32rem;
-    margin-right: -32rem;
+    margin-left: 0rem;
+    margin-right: 0rem;
 }
 
 .lg\:-mx-4 {
@@ -305,10 +305,6 @@ object {
     padding-bottom: 0.75rem;
 }
 
-.rounded-lg {
-    border-radius: 0.5rem;
-}
-
 .right-2 {
     right: 0.5rem;
 }
@@ -330,7 +326,7 @@ object {
 
 .form-input:focus {
     border-color: #f19e00;
-    border-width: 3px;
+    border-width: 1.5px;
     outline: none;
 }
 
@@ -381,10 +377,6 @@ object {
 .py-3 {
     padding-top: 0.75rem;
     padding-bottom: 0.75rem;
-}
-
-.rounded-lg {
-    border-radius: 0.5rem;
 }
 
 .inset-y-2 {
@@ -545,7 +537,7 @@ object {
 .search-result .logo {
     max-width: 100%;
     height: auto;
-    margin: 0 auto; /* Memastikan gambar berada di tengah */
+    margin: 0 auto; 
 }
 
 .service-title {

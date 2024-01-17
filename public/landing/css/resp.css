@@ -33,3 +33,9 @@
 		width: 300px;
 	}
 }
+
+@media (max-width: 768px) {
+	.navbar-brand img {
+		height: 90px; /* Sesuaikan ukuran yang diinginkan */
+	}
+}
