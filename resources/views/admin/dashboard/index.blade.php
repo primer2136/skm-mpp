@@ -17,7 +17,8 @@
       </div>
       <div class="card-wrap">
         <div class="card-header">
-          <h4>Total Penilaian </h4>
+          <h4>Total Penilaian</h4>
+          <h3>13</h3>
         </div>
         <div class="card-body">
           {{-- {{ $penilaian }} --}}
@@ -33,6 +34,7 @@
       <div class="card-wrap">
         <div class="card-header">
           <h4>Belum diproses</h4>
+          <h3>3</h3>
         </div>
         <div class="card-body">
           {{-- {{  $terkirim }} --}}
@@ -48,6 +50,7 @@
       <div class="card-wrap">
         <div class="card-header">
           <h4>Diproses</h4>
+          <h3>6</h3>
         </div>
         <div class="card-body">
           {{-- {{ $proses }} --}}
@@ -63,6 +66,7 @@
       <div class="card-wrap">
         <div class="card-header">
           <h4>Selesai</h4>
+          <h3>4</h3>
         </div>
         <div class="card-body">
           {{-- {{ $selesai }} --}}
