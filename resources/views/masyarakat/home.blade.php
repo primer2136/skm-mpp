@@ -48,7 +48,7 @@
             <div class="kotak-container">
                 <div class="kotak">
                     <h2>Indeks Kepuasan (%)</h2>
-                    <p>80</p>
+                    <p>100</p>
                 </div>
                 <div class="kotak">
                     <h2>Total Responden</h2>
