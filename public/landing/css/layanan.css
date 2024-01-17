@@ -28,6 +28,15 @@
     height: auto;
 }
 
+.kotak h2 {
+    font-size: 2vw;
+    font-weight: bold; 
+}
+
+.kotak p {
+    font-size: 3vw; 
+}
+
 .garis-horizontal {
     width: 100%;
     box-sizing: border-box;
