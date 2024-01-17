@@ -114,6 +114,12 @@
     width: 25%;
 }
 
+@media (max-width: 1000px) {
+    .md\:w-1\/4 {
+        width: 100% !important;
+    }
+}
+
 .flex {
     display: flex;
 }
@@ -285,7 +291,6 @@ object {
     /* vertical-align: middle; */
 }
 
-
 .text-lg {
     font-size: 1.125rem;
     line-height: 1.75rem;
@@ -305,7 +310,7 @@ object {
 }
 
 .right-2 {
-    right: 21rem;
+    right: 0.5rem;
 }
 
 .inset-y-2 {
@@ -324,7 +329,9 @@ object {
 }
 
 .form-input:focus {
-    border-color: transparent;
+    border-color: #f19e00;
+    border-width: 3px;
+    outline: none;
 }
 
 .form-input {
@@ -337,7 +344,7 @@ object {
 }
 
 .form-input {
-    width: 50%;
+    width: 100%;
     border-radius: 0.25rem;
     border-width: 1px;
     --tw-border-opacity: 1;
@@ -387,6 +394,7 @@ object {
 
 .form-button {
     border-radius: 0.25rem;
+    border: none;
     --tw-bg-opacity: 1;
     background-color: rgba(230, 120, 23, var(--tw-bg-opacity));
     padding-left: 1rem;
@@ -486,7 +494,7 @@ object {
     background-color: #ff9900;
     padding: 20px;
     text-align: center;
-    font-family: 'Poppins', sans-serif;
+    font-family: "Poppins", sans-serif;
 }
 
 .footer p {
@@ -506,6 +514,14 @@ object {
     color: #fff; /* warna tulisan putih pada hover */
     text-shadow: 0 0 10px rgba(255, 255, 255, 0.8),
         0 0 20px rgba(255, 255, 255, 0.8), 0 0 30px rgba(255, 255, 255, 0.8);
+}
+
+/* .box {
+    display: block; 
+} */
+
+.box.hidden {
+    display: none;
 }
 
 .text-sm {
@@ -532,9 +548,6 @@ object {
     margin: 0 auto; /* Memastikan gambar berada di tengah */
 }
 
-
-
-
 .service-title {
     text-align: center;
     font-size: 1.125rem;
@@ -550,7 +563,7 @@ object {
 
 .feather-search {
     position: absolute;
-    left: 335px;
+    left: 0.75rem;
     top: 50%;
     transform: translateY(-50%);
 }
@@ -570,5 +583,12 @@ object {
 
 .highlight-letter {
     font-weight: bold;
+    font-size: 65px;
     color: #f19e00;
+}
+
+@media (min-width: 768px) {
+    .md\:w-1\/2 {
+        width: 50%;
+    }
 }
