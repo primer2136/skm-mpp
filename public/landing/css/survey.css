@@ -1,8 +1,10 @@
 body {
-    font-family: Arial, sans-serif;
-    text-align: center;
     margin: 0;
     padding: 0;
+}
+
+html, body {
+    height: 100%;
 }
 
 form {
@@ -89,6 +91,19 @@ input[type="submit"]:hover {
     flex-basis: calc(50% - 5px);
 }
 
+/* Default styles for larger screens */
+.double-column {
+    display: flex;
+    justify-content: space-between;
+}
+
+/* Media query for smaller screens */
+@media only screen and (max-width: 600px) {
+    .double-column {
+        flex-direction: column;
+    }
+}
+
 #saran {
     width: 100%; /* Sesuaikan dengan lebar yang diinginkan */
     height: 150px; /* Sesuaikan dengan tinggi yang diinginkan */
@@ -143,6 +158,11 @@ input[type="submit"]:hover {
     color: #333; /* Warna untuk brand/logo */
     text-decoration: none;
     font-weight: bold;
+}
+
+.navbar a {
+    display: block;
+    margin-left: 10px;
 }
 
 .navbar-nav {
@@ -264,4 +284,15 @@ input[type="submit"]:hover {
 #timer {
     font-size: 24px; /* Sesuaikan ukuran font sesuai kebutuhan */
     font-weight: bold;
+}
+
+@media screen and (max-width: 600px) {
+    .container {
+        width: 80%; /* Sesuaikan dengan kebutuhan */
+    }
+    .navbar-brand {
+        font-size: 5vw; /* Ukuran font untuk brand/logo */
+        text-align: center !important;
+        margin: 10px auto !important;
+    }
 }
