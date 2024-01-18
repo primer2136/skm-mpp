@@ -51,7 +51,7 @@
                             </div>
 
                             <div class="card-body">
-                                <form method="POST" action="/proseslogin" class="needs-validation" novalidate="">
+                                <form method="POST" action="/login" class="needs-validation" novalidate="">
                                     @csrf
                                     <div class="form-group" style="margin-bottom: 5px">
                                         <label for="username">Username</label>
