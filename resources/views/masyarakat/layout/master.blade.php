@@ -30,9 +30,13 @@
         <div class="container-fluid">
             <a href="/" class="navbar-brand">
                 <div class="d-flex align-items-center">
-                    <img src="{{ asset('assets/img/logoMPP2.png') }}" height="110px" class="mr-2">
+                    <img src="{{ asset('assets/img/Kota Cimahi.png') }}" height="90px" class="mr-2">
+                    <img src="{{ asset('assets/img/logoMPP2.png') }}" height="100px" class="mr-2">
                     <a href="https://www.itenas.ac.id" target="_blank">
-                        <img src="{{ asset('assets/img/logoitenas.png') }}" height="70px">
+                        <img src="{{ asset('assets/img/logoitenas.png') }}" height="55px">
+                    </a>
+                    <a href="https://www.stialanbandung.ac.id" target="_blank">
+                        <img src="{{ asset('assets/img/logo_LAN.png') }}" height="80px">
                     </a>
                 </div>
             </a>
