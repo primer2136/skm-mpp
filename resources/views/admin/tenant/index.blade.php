@@ -62,7 +62,7 @@
                                         <td>{{ $no++ }}</td>
                                         <td>
                                             @if ($tenant->logo)
-                                                <img src="data:image/png;base64,{{ base64_encode($tenant->logo) }}"
+                                                <img src="{{ Storage::url($tenant->logo) }}"
                                                     alt="Logo Tenant"
                                                     style="margin-top: 10px; max-width: 75px; max-height: 75px;">
                                             @else

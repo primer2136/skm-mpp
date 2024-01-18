@@ -45,8 +45,8 @@
 
                 <label for="pendidikan">Riwayat Pendidikan:</label>
                 <select id="pendidikan" name="pendidikan">
-                    <option value="" disabled selected>Pilih</option>
-                    <option value="Tidak tamat"> Tidak Tamat</option>
+                    <option value="" disabled selected> -- Pilih --</option>
+                    <option value="Tidak tamat">Tidak Tamat</option>
                     <option value="sd">SD</option>
                     <option value="smp">SMP</option>
                     <option value="sma">SMA</option>
@@ -58,7 +58,7 @@
             </div>
             <label for="kerjaan">Pekerjaan:</label>
             <select id="kerjaan" name="kerjaan">
-                <option value="" disabled selected>Pilih</option>
+                <option value="" disabled selected>-- Pilih --</option>
                 <option value="pegawai Negeri">Pegawai Negeri</option>
                 <option value="pegawai Swasta">Pegawai Swasta</option>
                 <option value="pegawai">Mahasiswa</option>

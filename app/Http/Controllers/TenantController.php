@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\Tenant;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
+
 
 class TenantController extends Controller
 {
@@ -30,9 +32,21 @@ class TenantController extends Controller
      */
     public function store(Request $request)
     {
-        Tenant::create($request->all());
+        $request->validate([
+            'logo' => 'image|mimes:jpeg,png,jpg|max:2048',
+        ]);
 
-        return redirect()->route('tenant.index')->with('message', 'Berhasil ditambahkan');
+        // Simpan gambar ke penyimpanan dan dapatkan path-nya
+        $logoPath = $request->file('logo')->store('public/logos');
+
+        // Simpan data ke database
+        Tenant::create([
+            'nama_tenant' => $request->input('nama_tenant'),
+            'logo' => $logoPath, // Simpan path gambar
+            // ... (Tambahkan kolom lainnya sesuai kebutuhan)
+        ]);
+
+        return redirect()->route('tenant.index')->with('message', 'Layanan Tenant Berhasil ditambahkan');
     }
 
     /**
@@ -60,14 +74,29 @@ class TenantController extends Controller
     {
         $tenants = Tenant::findOrFail($id_tenant);
 
-        $tenants->update($request->all());
+        // Periksa apakah file gambar baru diunggah
+        if ($request->hasFile('logo')) {
+            // Lakukan pemrosesan untuk menyimpan gambar baru
+            $request->validate([
+                'logo' => 'image|mimes:jpeg,png,jpg,gif|max:2048', // Sesuaikan dengan kebutuhan Anda
+            ]);
 
-        return redirect()->route('tenant.index')->with('message', 'Berhasil diperbarui');
+            // Hapus gambar lama jika ada
+            if ($tenants->logo) {
+                Storage::delete($tenants->logo);
+            }
+
+            // Simpan gambar baru
+            $logoPath = $request->file('logo')->store('public/logos');
+            $tenants->update(['logo' => $logoPath]);
+        }
+
+        // Lanjutkan pembaruan data lainnya
+        $tenants->update($request->except('logo'));
+
+        return redirect()->route('tenant.index')->with('message', 'Layanan Tenant Berhasil diperbarui');
     }
 
-    /**
-     * Remove the specified resource from storage.
-     */
     public function destroy(string $id_tenant)
     {
         // DB::table('tenants')->where('id_tenant', $id)->delete();

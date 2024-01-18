@@ -72,10 +72,14 @@
                             <select name="riwayat_pendidikan" class="form-control" autocomplete="off">
                                 <option disabled selected>-- Pilih --</option>
                                 <hr style="margin: 5px 0; border: 0; border-top: 1px solid #ccc;">
-                                <option value="sd">SD</option>
-                                <option value="smp">SMP</option>
-                                <option value="sma">SMA</option>
-                                <option value="perguruan tinggi">Perguruan Tinggi</option>
+                                <option value="Tidak Tamat">Tidak Tamat</option>
+                                <option value="SD">SD</option>
+                                <option value="SMP">SMP</option>
+                                <option value="SMA">SMA</option>
+                                <option value="Tamat D3">Tamat D3</option>
+                                <option value="Tamat D4/S1">Tamat D4/S1</option>
+                                <option value="Tamat S2">Tamat S2</option>
+                                <option value="Tamat S3">Tamat S3</option>
                             </select>
                         </div>
                     </div>
@@ -89,7 +93,16 @@
                                     | {{ $message }}
                                 @enderror
                             </label>
-                            <input type="text" name="pekerjaan" class="form-control" autocomplete="off">
+                            <select name="pekerjaan" class="form-control" autocomplete="off">
+                                <option disabled selected>-- Pilih --</option>
+                                <hr style="margin: 5px 0; border: 0; border-top: 1px solid #ccc;">
+                                <option value="Pegawai Negeri">Pegawai Negeri</option>
+                                <option value="Pegawai Swasta">Pegawai Swasta</option>
+                                <option value="Mahasiswa">Mahasiswa</option>
+                                <option value="Pelajar">Pelajar</option>
+                                <option value="Wiraswasta/Pengusaha">Wiraswasta/Pengusaha</option>
+                                <option value="Lainnya">Lainnya</option>
+                            </select>
                         </div>
                     </div>
 
