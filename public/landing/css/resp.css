@@ -36,6 +36,19 @@
 
 @media (max-width: 768px) {
 	.navbar-brand img {
-		height: 90px; /* Sesuaikan ukuran yang diinginkan */
+		height: 60px; /* Sesuaikan ukuran yang diinginkan */
 	}
+	/* CSS for the itenas logo */
+.itenas-logo {
+    height: 40px;
+    /* Add additional styles specific to the itenas logo */
 }
+
+/* CSS for the LAN logo */
+.lan-logo {
+    height: 65px;
+    /* Add additional styles specific to the LAN logo */
+}
+}
+
+
