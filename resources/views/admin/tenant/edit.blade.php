@@ -27,9 +27,10 @@
                             </label>
                             <input type="file" name="logo" id="logoInput" class="form-control-file" autocomplete="off"
                                 accept="image/*">
+                            <!-- Hidden input for storing previous logo path -->
+                            <input type="hidden" name="prev_logo" value="{{ $tenants->logo ?? '' }}">
                             @if ($tenants->logo)
-                                <img src="{{ asset('path/to/your/logo/folder/' . $tenants->logo) }}" alt="Logo Preview"
-                                    id="logoPreview">
+                                <img src="{{ asset('storage/' . $tenants->logo) }}" alt="Logo Preview" id="logoPreview">
                             @else
                                 <img src="#" alt="Logo Preview" id="logoPreview" style="display: none;">
                             @endif
@@ -47,8 +48,8 @@
                             </label>
                             <input type="text" name="nama_tenant"
                                 @if (old('nama_tenant')) value="{{ old('nama_tenant') }}"
-              @else
-                  value="{{ $tenants->nama_tenant }}" @endif
+                    @else
+                value="{{ $tenants->nama_tenant }}" @endif
                                 class="form-control" autocomplete="off">
                         </div>
                     </div>
@@ -65,30 +66,44 @@
 
 @endsection
 @push('page-scripts')
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
     <script type="text/javascript">
-        $('#select2').select2();
-    </script>
+        $(document).ready(function() {
+            $('#select2').select2();
 
-    <script>
-        document.getElementById('logoInput').addEventListener('change', function(e) {
-            var logoPreview = document.getElementById('logoPreview');
-            var fileInput = e.target;
+            document.addEventListener('DOMContentLoaded', function() {
+                var logoPreview = document.getElementById('logoPreview');
+                var prevLogoPath = document.querySelector('input[name="prev_logo"]').value;
 
-            if (fileInput.files && fileInput.files[0]) {
-                var reader = new FileReader();
-
-                reader.onload = function(e) {
-                    logoPreview.src = e.target.result;
+                if (prevLogoPath) {
+                    // Display previous logo if available
+                    logoPreview.src = "{{ asset('storage/') }}" + '/' + prevLogoPath;
                     logoPreview.style.display = 'block';
-                };
+                } else {
+                    logoPreview.src = '#';
+                    logoPreview.style.display = 'none';
+                }
 
-                reader.readAsDataURL(fileInput.files[0]);
-            } else {
-                logoPreview.src = '#';
-                logoPreview.style.display = 'none';
-            }
+                document.getElementById('logoInput').addEventListener('change', function(e) {
+                    var fileInput = e.target;
+
+                    if (fileInput.files && fileInput.files[0]) {
+                        var reader = new FileReader();
+
+                        reader.onload = function(e) {
+                            logoPreview.src = e.target.result;
+                            logoPreview.style.display = 'block';
+                        };
+
+                        reader.readAsDataURL(fileInput.files[0]);
+                    } else {
+                        logoPreview.src = '#';
+                        logoPreview.style.display = 'none';
+                    }
+                });
+            });
+
         });
     </script>
 @endpush
