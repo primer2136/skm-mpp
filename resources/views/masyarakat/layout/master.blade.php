@@ -65,7 +65,7 @@
                             </li>
                         @else --}}
                     <li class="nav-item">
-                        <a href="/login-admin" class="nav-link bg-custom rounded tebel-sedang shadow"
+                        <a href="/login" class="nav-link bg-custom rounded tebel-sedang shadow"
                             id="btn-sign">MASUK</a>
                     </li>
                     {{-- @endif --}}
