@@ -28,9 +28,13 @@
         <div class="container-fluid">
             <a href="/" class="navbar-brand">
                 <div class="d-flex align-items-center">
-                    <img src="{{ asset('assets/img/logoMPP2.png') }}" height="110px" class="mr-2">
+                    <img src="{{ asset('assets/img/Kota Cimahi.png') }}" height="90px" class="mr-2">
+                    <img src="{{ asset('assets/img/logoMPP2.png') }}" height="100px" class="mr-2">
                     <a href="https://www.itenas.ac.id" target="_blank">
-                        <img src="{{ asset('assets/img/logoitenas.png') }}" height="75px">
+                        <img src="{{ asset('assets/img/logoitenas.png') }}" height="55px" class="itenas-logo">
+                    </a>
+                    <a href="https://www.stialanbandung.ac.id" target="_blank">
+                        <img src="{{ asset('assets/img/logo_LAN.png') }}" height="80px" class="lan-logo">
                     </a>
                 </div>
             </a>
@@ -227,13 +231,13 @@
 
         <!-- Option 2: Separate Popper and Bootstrap JS -->
         <!--
-            <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"
-                integrity="sha384-q2kxQ16AaE6UbzuKqyBE9/u/KzioAlnx2maXQHiDX9d4/zp8Ok3f+M7DPm+Ib6IU" crossorigin="anonymous">
-            </script>
-            <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.min.js"
-                integrity="sha384-pQQkAEnwaBkjpqZ8RU1fF1AKtTcHJwFl3pblpTlHXybJjHpMYo79HY3hIi4NKxyj" crossorigin="anonymous">
-            </script>
-            -->
+                <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"
+                    integrity="sha384-q2kxQ16AaE6UbzuKqyBE9/u/KzioAlnx2maXQHiDX9d4/zp8Ok3f+M7DPm+Ib6IU" crossorigin="anonymous">
+                </script>
+                <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.min.js"
+                    integrity="sha384-pQQkAEnwaBkjpqZ8RU1fF1AKtTcHJwFl3pblpTlHXybJjHpMYo79HY3hIi4NKxyj" crossorigin="anonymous">
+                </script>
+                -->
     </body>
 
     </html>

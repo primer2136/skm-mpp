@@ -1,54 +1,49 @@
 @media screen and (max-width: 600px) {
-	.img {
-		display: none;
-		width: 500px;
-	}
+    .img {
+        display: none;
+        width: 500px;
+    }
 
-	.gambar {
-		display: block;
-	}
+    .gambar {
+        display: block;
+    }
 }
 
 @media screen and (max-width: 800px) {
-	.img {
-		display: none;
-		width: 500px;
-	}
+    .img {
+        display: none;
+        width: 500px;
+    }
 
-	.gambar {
-		display: block;
-	}
+    .gambar {
+        display: block;
+    }
 }
 
 @media screen and (max-width: 1199px) {
-	.img {
-		z-index: -1;
-		width: 500px;
-	}
+    .img {
+        z-index: -1;
+        width: 500px;
+    }
 }
 
 @media screen and (max-width: 992px) {
-	.img {
-		z-index: -1;
-		width: 300px;
-	}
+    .img {
+        z-index: -1;
+        width: 300px;
+    }
 }
 
 @media (max-width: 768px) {
-	.navbar-brand img {
-		height: 60px; /* Sesuaikan ukuran yang diinginkan */
-	}
-	/* CSS for the itenas logo */
-.itenas-logo {
-    height: 40px;
-    /* Add additional styles specific to the itenas logo */
-}
+    .navbar-brand img {
+        height: 50px; 
+    }
 
-/* CSS for the LAN logo */
-.lan-logo {
-    height: 65px;
-    /* Add additional styles specific to the LAN logo */
-}
-}
+    .itenas-logo {
+        height: 33px;
+    }
 
-
+    .lan-logo {
+        height: 50px;
+    }
+}
