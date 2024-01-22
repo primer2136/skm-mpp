@@ -24,26 +24,26 @@
             <h2>DATA RESPONDEN</h2>
 
             <div class="garis-horizontal"></div>
-            <label for="nama">Nama:</label>
+            <label for="nama">Nama :</label>
             <input type="text" id="nama" name="nama">
 
             <div class="double-column">
-                <label for="tahun-lahir">Tahun Lahir:</label>
+                <label for="tahun-lahir">Tahun Lahir :</label>
                 <input class="asd" type="number" id="tahun-lahir" name="tahun-lahir" min="1900" max="2024">
 
-                <label for="jenis-kelamin">Jenis Kelamin:</label>
+                <label for="jenis-kelamin">Jenis Kelamin :</label>
                 <select id="jenis-kelamin" name="jenis-kelamin">
-                    <option value="" disabled selected>Pilih</option>
+                    <option value="" disabled selected>-- Pilih --</option>
                     <option value="pria">Pria</option>
                     <option value="wanita">Wanita</option>
                 </select>
             </div><br>
 
             <div class="double-column">
-                <label for="nomor-antrian">Nomor Antrian:</label>
+                <label for="nomor-antrian">Nomor Antrian :</label>
                 <input class="asd" type="text" id="nomor-antrian" name="nomor-antrian">
 
-                <label for="pendidikan">Riwayat Pendidikan:</label>
+                <label for="pendidikan">Riwayat Pendidikan :</label>
                 <select id="pendidikan" name="pendidikan">
                     <option value="" disabled selected> -- Pilih --</option>
                     <option value="Tidak tamat">Tidak Tamat</option>
@@ -56,7 +56,7 @@
                     <option value="Tamat S3">Tamat S3</option>
                 </select>
             </div>
-            <label for="kerjaan">Pekerjaan:</label>
+            <label for="kerjaan">Pekerjaan :</label>
             <select id="kerjaan" name="kerjaan">
                 <option value="" disabled selected>-- Pilih --</option>
                 <option value="pegawai Negeri">Pegawai Negeri</option>

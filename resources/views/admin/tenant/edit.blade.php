@@ -30,10 +30,12 @@
                             <!-- Hidden input for storing previous logo path -->
                             <input type="hidden" name="prev_logo" value="{{ $tenants->logo ?? '' }}">
                             @if ($tenants->logo)
-                                <img src="{{ asset('storage/' . $tenants->logo) }}" alt="Logo Preview" id="logoPreview">
+                                <img src="{{ asset('storage/logos/' . $tenants->logo) }}" alt="Logo Preview"
+                                    id="logoPreview">
                             @else
                                 <img src="#" alt="Logo Preview" id="logoPreview" style="display: none;">
                             @endif
+
                         </div>
                     </div>
 
@@ -70,40 +72,44 @@
     <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
     <script type="text/javascript">
         $(document).ready(function() {
-            $('#select2').select2();
+            var logoPreview = document.getElementById('logoPreview');
+            var logoInput = document.getElementById('logoInput');
+            var prevLogoPath = document.querySelector('input[name="prev_logo"]').value;
 
-            document.addEventListener('DOMContentLoaded', function() {
-                var logoPreview = document.getElementById('logoPreview');
-                var prevLogoPath = document.querySelector('input[name="prev_logo"]').value;
+            // Display previous logo if available
+            if (prevLogoPath) {
+                logoPreview.src = "{{ asset('storage/') }}" + '/' + prevLogoPath;
+                logoPreview.style.display = 'block';
+            } else {
+                logoPreview.src = '#';
+                logoPreview.style.display = 'none';
+            }
 
-                if (prevLogoPath) {
-                    // Display previous logo if available
-                    logoPreview.src = "{{ asset('storage/') }}" + '/' + prevLogoPath;
-                    logoPreview.style.display = 'block';
-                } else {
+            // Change event for logo input
+            logoInput.addEventListener('change', function(e) {
+                var fileInput = e.target;
+
+                if (fileInput.files && fileInput.files[0]) {
+                    var reader = new FileReader();
+
+                    reader.onload = function(e) {
+                        logoPreview.src = e.target.result;
+                        logoPreview.style.display = 'block';
+                    };
+
+                    reader.readAsDataURL(fileInput.files[0]);
+                } else if (!fileInput.files.length && !prevLogoPath) {
+                    // Hide preview if no new file and no previous logo
                     logoPreview.src = '#';
                     logoPreview.style.display = 'none';
                 }
-
-                document.getElementById('logoInput').addEventListener('change', function(e) {
-                    var fileInput = e.target;
-
-                    if (fileInput.files && fileInput.files[0]) {
-                        var reader = new FileReader();
-
-                        reader.onload = function(e) {
-                            logoPreview.src = e.target.result;
-                            logoPreview.style.display = 'block';
-                        };
-
-                        reader.readAsDataURL(fileInput.files[0]);
-                    } else {
-                        logoPreview.src = '#';
-                        logoPreview.style.display = 'none';
-                    }
-                });
             });
 
+            // Trigger change event on logo input when the page loads
+            // This will ensure that the preview is updated based on the initial logo
+            document.addEventListener('DOMContentLoaded', function() {
+                logoInput.dispatchEvent(new Event('change'));
+            });
         });
     </script>
 @endpush

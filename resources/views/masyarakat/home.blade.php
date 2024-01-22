@@ -499,34 +499,47 @@
                 </div>
                 <h3 class="service-title">PENGADILAN NEGERI BALE BANDUNG</h3>
             </a>
+            {{-- @foreach ($layananData['layananTenant'] as $layanan)
+                <a href="layanan/{{ $layanan->id_tenant }}" class="box">
+                    <div class="logo-container">
+                        @if ($layanan->logo)
+                            <img class="logo" src="{{ asset('storage/logos/' . $layanan->logo) }}"
+                                alt="{{ $layanan->nama_tenant }}">
+                        @else
+                            <span>Logo not available</span>
+                        @endif
+                    </div>
+                    <h3 class="service-title">{{ $layanan->nama_tenant }}</h3>
+                </a>
+            @endforeach --}}
 
         </div>
 
     </div>
 
     <!-- <div>
-                        <div style="margin-top:2%">
-                            <nav>
-                                <ul class="pagination">
+                            <div style="margin-top:2%">
+                                <nav>
+                                    <ul class="pagination">
 
 
-                                    <li class="page-item disabled" aria-disabled="true" aria-label="&laquo; Previous">
-                                        <span class="page-link" aria-hidden="true">
-                                            <</span>
-                                    </li>
-                                    <li class="page-item active" aria-current="page"><span class="page-link">1</span>
-                                    </li>
-                                    <li class="page-item"><a class="page-link" href="http://mpp.cimahikota.go.id?page=2">2</a></li>
-                                    <li class="page-item"><a class="page-link" href="http://mpp.cimahikota.go.id?page=3">3</a></li>
-                                    <li class="page-item"><a class="page-link" href="http://mpp.cimahikota.go.id?page=4">4</a></li>
-                                    <li class="page-item"><a class="page-link" href="http://mpp.cimahikota.go.id?page=5">5</a></li>
-                                    <li class="page-item"><a class="page-link" href="http://mpp.cimahikota.go.id?page=6">6</a></li>
-                                    <li class="page-item"><a class="page-link" href="http://mpp.cimahikota.go.id?page=2" rel="next" aria-label="Next »">></a>
-                                    </li>
+                                        <li class="page-item disabled" aria-disabled="true" aria-label="&laquo; Previous">
+                                            <span class="page-link" aria-hidden="true">
+                                                <</span>
+                                        </li>
+                                        <li class="page-item active" aria-current="page"><span class="page-link">1</span>
+                                        </li>
+                                        <li class="page-item"><a class="page-link" href="http://mpp.cimahikota.go.id?page=2">2</a></li>
+                                        <li class="page-item"><a class="page-link" href="http://mpp.cimahikota.go.id?page=3">3</a></li>
+                                        <li class="page-item"><a class="page-link" href="http://mpp.cimahikota.go.id?page=4">4</a></li>
+                                        <li class="page-item"><a class="page-link" href="http://mpp.cimahikota.go.id?page=5">5</a></li>
+                                        <li class="page-item"><a class="page-link" href="http://mpp.cimahikota.go.id?page=6">6</a></li>
+                                        <li class="page-item"><a class="page-link" href="http://mpp.cimahikota.go.id?page=2" rel="next" aria-label="Next »">></a>
+                                        </li>
 
-                                </ul>
-                            </nav>
-                        </div> -->
+                                    </ul>
+                                </nav>
+                            </div> -->
     <br><br>
 
     <div class="footer">
