@@ -79,4 +79,23 @@ class RespondenController extends Controller
 
         return redirect()->route('responden.index')->with('message', 'Berhasil dihapus');
     }
+
+    public function simpanSurvey(Request $request)
+    {
+        // Validasi data dari formulir survey
+        $validatedData = $request->validate([
+            'nama_responden' => 'required',
+            'tahun_lahir' => 'required|numeric|min:1900|max:' . date('Y'),
+            'jenis_kelamin' => 'required',
+            'riwayat_pendidikan' => 'required',
+            'pekerjaan' => 'required',
+            // ... tambahkan validasi untuk pertanyaan lainnya sesuai kebutuhan
+        ]);
+
+        // Simpan data responden ke dalam tabel responden
+        $responden = Responden::create($validatedData);
+
+        // Menanggapi dengan data atau pesan sukses jika diperlukan
+        return response()->json(['message' => 'Survey berhasil disimpan', 'responden' => $responden]);
+    }
 }
