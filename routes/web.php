@@ -55,7 +55,7 @@ Route::get('ds-admin/create', [UserController::class, 'create'])->name('admin.cr
 Route::get('ds-admin/store', [UserController::class, 'store'])->name('admin.store');;
 Route::post('ds-admin/store', [UserController::class, 'store'])->name('admin.store');;
 
-Route::resource('/responden', RespondenController::class);
+Route::resource('/responden', [RespondenController::class, 'store'])->name('responden.store');
 
 Route::resource('/tenant', TenantController::class);
 

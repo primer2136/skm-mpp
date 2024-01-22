@@ -20,7 +20,7 @@
     </nav>
 
     <div class="container">
-        <form id="formSurvey">
+        <form id="formSurvey" action="{{ url('/responden') }}" method="post">
             <h2>DATA RESPONDEN</h2>
 
             <div class="garis-horizontal"></div>
@@ -68,6 +68,7 @@
             </select><br><br>
             <button class="btn-back" type="button" onclick="goback()">Kembali</button>
             <button type="button" onclick="tampilkanPertanyaan()">Lanjutkan</button>
+            @csrf
         </form>
 
         <form id="formPertanyaan" style="display: none;">
