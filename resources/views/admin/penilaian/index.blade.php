@@ -1,61 +1,64 @@
 @extends('admin/layout.master')
 
-@section('title','Penilaian')
-@section('title2','index')
-@section('penilaian','active')
+@section('title', 'Penilaian')
+@section('title2', 'index')
+@section('penilaian', 'active')
 <title>Entry Penilaian</title>
 
 @section('konten')
-<div class="container-fluid">
-    <div class="row">
-        <div class="col-md-12">
-            <div class="card">
-                <div class="card-body">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-body">
 
-                    {{-- Alert --}}
-                    @if(session('message'))
-                    <div class="alert alert-success alert-dismissible show fade">
-                        <div class="alert-body">
-                        <button class="close" data-dismiss="alert">
-                            <span>×</span>
-                        </button>
-                        {{ session('message') }}
-                        </div>
-                    </div>
-                    @endif
-                    {{-- Button tambah --}}
-                    {{-- <a href="{{ route('penilaian.create') }}" class="btn btn-violet mb-4"><i class="fas fa-plus text-light"></i></a> --}}
-                    
-                    {{-- Form search --}}
-                    <div class="float-right">
-                        <form action="?" method="GET">
-                          <div class="input-group mb-3">
-                            <input name="keyword" id="caribuku" type="text" class="form-control" placeholder="Cari..." aria-label="Cari" aria-describedby="button-addon2" value="{{ Request()->keyword }}" autocomplete="off">
-                            <div class="input-group-append">
-                              <button id="btncaribuku" class="btn btn-outline-warning bg-warning" type="submit" id="button-addon2"><i class="fas fa-search text-light"></i></button>
+                        {{-- Alert --}}
+                        @if (session('message'))
+                            <div class="alert alert-success alert-dismissible show fade">
+                                <div class="alert-body">
+                                    <button class="close" data-dismiss="alert">
+                                        <span>×</span>
+                                    </button>
+                                    {{ session('message') }}
+                                </div>
                             </div>
-                          </div>
-                        </form>
-                    </div>
+                        @endif
+                        {{-- Button tambah --}}
+                        {{-- <a href="{{ route('penilaian.create') }}" class="btn btn-violet mb-4"><i class="fas fa-plus text-light"></i></a> --}}
 
-                    
+                        {{-- Form search --}}
+                        <div class="float-right">
+                            <form action="?" method="GET">
+                                <div class="input-group mb-3">
+                                    <input name="keyword" id="caribuku" type="text" class="form-control"
+                                        placeholder="Cari..." aria-label="Cari" aria-describedby="button-addon2"
+                                        value="{{ Request()->keyword }}" autocomplete="off">
+                                    <div class="input-group-append">
+                                        <button id="btncaribuku" class="btn btn-outline-warning bg-warning" type="submit"
+                                            id="button-addon2"><i class="fas fa-search text-light"></i></button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
 
-                    {{-- tabel --}}
-                    <table class="table">
-                        <thead>
-                            <tr>
-                                <th>No.</th>
-                                <th>Nama</th>
-                                <th>Tanggal Penilaian</th>
-                                <th>Status</th>
-                                <th></th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            @php
-                                $no = 1
-                            @endphp
-                            {{-- @foreach ($data as $item)
+
+
+                        {{-- tabel --}}
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th>No.</th>
+                                    <th>Nama</th>
+                                    <th>Tanggal Penilaian</th>
+                                    <th>Status</th>
+                                    <th></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @php
+                                    $no = 1;
+                                @endphp
+                                {{-- @foreach ($data as $item)
                                 <tr>
                                     <td>{{ $no++ }}</td>
                                     <td>{{ $item->nik }}</td>
@@ -101,12 +104,12 @@
                                 </script>
                                 @endpush
                             @endforeach --}}
-                        </tbody>
-                    </table>
-                    {{-- {{ $data->links() }} --}}
+                            </tbody>
+                        </table>
+                        {{-- {{ $data->links() }} --}}
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-</div>
 @endsection

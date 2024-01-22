@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Tenant;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Str;
 
 
 class TenantController extends Controller
@@ -36,20 +37,20 @@ class TenantController extends Controller
             'logo' => 'required|image|mimes:jpeg,png,jpg,gif',
         ]);
 
-        // Pastikan direktori penyimpanan sudah ada
-        $storagePath = 'public/logos';
+        $storagePath = '/public/logos';
         if (!Storage::exists($storagePath)) {
             Storage::makeDirectory($storagePath);
         }
 
-        // Simpan gambar ke penyimpanan dengan nama yang unik
-        $uniqueFileName = uniqid('logo_') . '.' . $request->file('logo')->getClientOriginalExtension();
-        $logoPath = $request->file('logo')->storeAs($storagePath, $uniqueFileName);
+        // Simpan gambar ke penyimpanan tanpa mengompres atau mengubah kualitas
+        $fileName = $request->file('logo')->getClientOriginalName();
+        $logoPath = $request->file('logo')->storeAs('public/logos',$fileName);
+
 
         // Simpan data ke database
         Tenant::create([
             'nama_tenant' => $request->input('nama_tenant'),
-            'logo' => $logoPath, // Simpan path gambar
+            'logo' => $logoPath,
         ]);
 
         return redirect()->route('tenant.index')->with('message', 'Layanan Tenant Berhasil ditambahkan');
@@ -93,12 +94,14 @@ class TenantController extends Controller
                 Storage::delete($tenants->logo);
             }
 
-            // Simpan gambar baru
-            $logoPath = $request->file('logo')->store('public/logos');
+            $file = $request->file('logo');
+            $originalFileName = pathinfo($file->getClientOriginalName(), PATHINFO_FILENAME);
+            $uniqueFileName = Str::slug($originalFileName) . '.' . $file->getClientOriginalExtension();
+            $logoPath = $file->storeAs('public/logos', $uniqueFileName);
+
             $tenants->update(['logo' => $logoPath]);
         }
 
-        // Lanjutkan pembaruan data lainnya
         $tenants->update($request->except('logo'));
 
         return redirect()->route('tenant.index')->with('message', 'Layanan Tenant Berhasil diperbarui');

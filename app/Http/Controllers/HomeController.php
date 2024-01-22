@@ -9,9 +9,11 @@ class HomeController extends Controller
 {
     public function index()
     {
+        $tenant = Tenant::first();
+
         $layananData = [
-            'layananTenant' => Tenant::all(), // Misalnya, mengambil semua data tenant dari model Tenant
-            // ... tambahkan data lain sesuai kebutuhan
+            'layananTenant' => Tenant::all(),
+            'info' => $tenant->nama_tenant ?? '',
         ];
 
         return view('masyarakat.home', compact('layananData'));

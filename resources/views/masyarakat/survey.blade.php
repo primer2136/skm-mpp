@@ -377,28 +377,6 @@
             return false; // Tidak ada opsi yang dipilih
         }
 
-        function hapusTandaBiru(question) {
-            var radioButtons = question.querySelectorAll('input[type="radio"]');
-            for (var i = 0; i < radioButtons.length; i++) {
-                radioButtons[i].classList.remove('selected');
-            }
-        }
-
-        // Tambahkan event listener untuk menambahkan efek tanda biru saat memilih opsi
-        document.getElementById('formPertanyaan').addEventListener('change', function(event) {
-            if (event.target.type === 'radio') {
-                var selectedRadio = event.target;
-                var question = selectedRadio.closest('.question');
-                hapusTandaBiru(question);
-
-                if (!selectedRadio.classList.contains('selected')) {
-                    selectedRadio.classList.add('selected');
-                } else {
-                    selectedRadio.checked = false;
-                }
-            }
-        });
-
         function kembaliKePertanyaanSebelumnya(currentQuestionId, previousQuestionId) {
             var currentQuestion = document.getElementById(currentQuestionId);
             var previousQuestion = document.getElementById(previousQuestionId);
@@ -412,31 +390,45 @@
         }
 
         function submitSurvey() {
-            // ... (Proses pengiriman survei ke server atau operasi lainnya)
+            // Mengambil data dari formulir survey
+            var formData = new FormData(document.getElementById('formSurvey'));
 
-            // Menampilkan tanda terima kasih
-            document.getElementById('kritik_saran').style.display = 'none'; // Sembunyikan bagian kritik dan saran
-            document.getElementById('terima_kasih').style.display = 'block'; // Tampilkan tanda terima kasih
-            document.getElementById('formPertanyaan').style.display = 'none';
-            document.getElementById('formSurvey').style.display = 'none';
-            document.querySelector('.container').style.display = 'none';
+            // Menggunakan fetch API untuk mengirim data ke server
+            fetch('/responden', {
+                    method: 'POST',
+                    body: formData
+                })
+                .then(response => response.json())
+                .then(data => {
+                    // Menangani respons dari server (jika diperlukan)
+                    console.log(data);
 
+                    // Menampilkan tanda terima kasih
+                    document.getElementById('kritik_saran').style.display = 'none'; // Sembunyikan bagian kritik dan saran
+                    document.getElementById('terima_kasih').style.display = 'block'; // Tampilkan tanda terima kasih
+                    document.getElementById('formPertanyaan').style.display = 'none';
+                    document.getElementById('formSurvey').style.display = 'none';
+                    document.querySelector('.container').style.display = 'none';
 
-            // Pengaturan hitungan mundur
-            var seconds = 3; // Hitungan mundur dalam detik
-            var countdown = document.getElementById('timer');
+                    // Pengaturan hitungan mundur
+                    var seconds = 3; // Hitungan mundur dalam detik
+                    var countdown = document.getElementById('timer');
 
-            var timer = setInterval(function() {
-                seconds--;
-                countdown.textContent = seconds;
+                    var timer = setInterval(function() {
+                        seconds--;
+                        countdown.textContent = seconds;
 
-                if (seconds <= 0) {
-                    clearInterval(timer);
-                    // Kode untuk kembali ke halaman awal atau halaman lain setelah hitungan mundur selesai
-                    window.location.href = "/"; // Ganti dengan halaman awal yang sesuai
-                }
-            }, 1000); // Waktu pengurangan 1 detik
-
+                        if (seconds <= 0) {
+                            clearInterval(timer);
+                            // Kode untuk kembali ke halaman awal atau halaman lain setelah hitungan mundur selesai
+                            window.location.href = "/"; // Ganti dengan halaman awal yang sesuai
+                        }
+                    }, 1000); // Waktu pengurangan 1 detik
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                    alert('Terjadi kesalahan saat menyimpan survey.');
+                });
         }
 
         function goback() {
@@ -456,4 +448,5 @@
 
 
 </body>
+
 </html>

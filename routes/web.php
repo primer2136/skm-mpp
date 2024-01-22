@@ -31,9 +31,9 @@ Route::get('/survey', function () {
     return view('survey');
 });
 
-Route::get('/layanan/{nomor}', [LayananController::class, 'show']);
+Route::get('/layanan/{id_tenant}', [LayananController::class, 'show']);
 
-Route::get('layanan/{nomor}/survey', [LayananController::class, 'showSurveyForm'])->name('layanan.survey');;
+Route::get('layanan/{id_tenant}/survey', [LayananController::class, 'showSurveyForm'])->name('layanan.survey');;
 
 Route::middleware(['guest'])->group(function () {
     Route::get('login', [LoginController::class, 'getLogin'])->name('login');;
@@ -59,6 +59,7 @@ Route::get('ds-admin/store', [UserController::class, 'store'])->name('admin.stor
 Route::post('ds-admin/store', [UserController::class, 'store'])->name('admin.store');;
 
 Route::resource('/responden', RespondenController::class);
+Route::post('/responden', [RespondenController::class, 'simpanSurvey']);
 
 Route::resource('/tenant', TenantController::class);
 

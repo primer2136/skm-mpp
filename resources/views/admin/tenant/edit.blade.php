@@ -29,13 +29,8 @@
                                 accept="image/*">
                             <!-- Hidden input for storing previous logo path -->
                             <input type="hidden" name="prev_logo" value="{{ $tenants->logo ?? '' }}">
-                            @if ($tenants->logo)
-                                <img src="{{ asset('storage/logos/' . $tenants->logo) }}" alt="Logo Preview"
-                                    id="logoPreview">
-                            @else
-                                <img src="#" alt="Logo Preview" id="logoPreview" style="display: none;">
-                            @endif
-
+                            <img src="{{ $tenants->logo ? Storage::url($tenants->logo) : '#' }}" alt="Logo Preview"
+                                id="logoPreview">
                         </div>
                     </div>
 
@@ -76,10 +71,15 @@
             var logoInput = document.getElementById('logoInput');
             var prevLogoPath = document.querySelector('input[name="prev_logo"]').value;
 
+            // Function to set the logo preview
+            function setLogoPreview(path) {
+                logoPreview.src = path;
+                logoPreview.style.display = 'block';
+            }
+
             // Display previous logo if available
             if (prevLogoPath) {
-                logoPreview.src = "{{ asset('storage/') }}" + '/' + prevLogoPath;
-                logoPreview.style.display = 'block';
+                setLogoPreview("{{ Storage::url($tenants->logo) }}");
             } else {
                 logoPreview.src = '#';
                 logoPreview.style.display = 'none';
@@ -93,8 +93,7 @@
                     var reader = new FileReader();
 
                     reader.onload = function(e) {
-                        logoPreview.src = e.target.result;
-                        logoPreview.style.display = 'block';
+                        setLogoPreview(e.target.result);
                     };
 
                     reader.readAsDataURL(fileInput.files[0]);
