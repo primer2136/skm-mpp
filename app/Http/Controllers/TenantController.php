@@ -33,21 +33,28 @@ class TenantController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'logo' => 'image|mimes:jpeg,png,jpg|max:2048',
+            'logo' => 'required|image|mimes:jpeg,png,jpg,gif',
         ]);
 
-        // Simpan gambar ke penyimpanan dan dapatkan path-nya
-        $logoPath = $request->file('logo')->store('public/logos');
+        // Pastikan direktori penyimpanan sudah ada
+        $storagePath = 'public/logos';
+        if (!Storage::exists($storagePath)) {
+            Storage::makeDirectory($storagePath);
+        }
+
+        // Simpan gambar ke penyimpanan dengan nama yang unik
+        $uniqueFileName = uniqid('logo_') . '.' . $request->file('logo')->getClientOriginalExtension();
+        $logoPath = $request->file('logo')->storeAs($storagePath, $uniqueFileName);
 
         // Simpan data ke database
         Tenant::create([
             'nama_tenant' => $request->input('nama_tenant'),
             'logo' => $logoPath, // Simpan path gambar
-            // ... (Tambahkan kolom lainnya sesuai kebutuhan)
         ]);
 
         return redirect()->route('tenant.index')->with('message', 'Layanan Tenant Berhasil ditambahkan');
     }
+
 
     /**
      * Display the specified resource.
@@ -78,7 +85,7 @@ class TenantController extends Controller
         if ($request->hasFile('logo')) {
             // Lakukan pemrosesan untuk menyimpan gambar baru
             $request->validate([
-                'logo' => 'image|mimes:jpeg,png,jpg,gif|max:2048', // Sesuaikan dengan kebutuhan Anda
+                'logo' => 'required|image|mimes:jpeg,png,jpg',
             ]);
 
             // Hapus gambar lama jika ada

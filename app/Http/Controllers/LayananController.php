@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
+use App\Models\Layanan;
+use App\Models\Tenant;
 
 class LayananController extends Controller
 {
@@ -14,8 +16,6 @@ class LayananController extends Controller
             'judul' => $this->getJudulByNomor($nomor),
             'info' => $this->getInfoByNomor($nomor),
         ];
-
-        // Kembalikan tampilan atau lakukan operasi lain sesuai kebutuhan Anda
         return view('masyarakat.layanan', compact('layananData'));
     }
 
