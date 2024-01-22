@@ -12,7 +12,7 @@ class RespondenController extends Controller
      */
     public function index()
     {
-        $respondens = Responden::orderBy('created_at')->get();
+        $respondens = Responden::all();
 
         return view('admin.responden.index', compact('respondens'));
     }

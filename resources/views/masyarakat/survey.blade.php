@@ -20,7 +20,8 @@
     </nav>
 
     <div class="container">
-        <form id="formSurvey">
+        <form id="formSurvey" action="{{ route('responden.store') }}" method="post">
+            @csrf
             <h2>DATA RESPONDEN</h2>
 
             <div class="garis-horizontal"></div>
@@ -456,4 +457,5 @@
 
 
 </body>
+
 </html>
