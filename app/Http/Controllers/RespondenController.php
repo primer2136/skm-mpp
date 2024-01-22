@@ -30,7 +30,16 @@ class RespondenController extends Controller
      */
     public function store(Request $request)
     {
-        Responden::create($request->all());
+        $validatedData = $request->validate([
+            'nama' => 'required|string',
+            'tahun_lahir' => 'required|integer|min:1900|max:2024',
+            'jenis_kelamin' => 'required|string',
+            'nomor_antrian' => 'required|string',
+            'pendidikan' => 'required|string',
+            'pekerjaan' => 'required|string',
+        ]);
+
+        Responden::create($validatedData);
 
         return redirect()->route('responden.index')->with('message', 'Berhasil ditambahkan');
     }
@@ -39,7 +48,7 @@ class RespondenController extends Controller
      * Display the specified resource.
      */
     public function show(string $id)
-    {
+    {   
         //
     }
 
@@ -58,9 +67,17 @@ class RespondenController extends Controller
      */
     public function update(Request $request, string $id_responden)
     {
-        $respondens = Responden::findOrFail($id_responden);
+        $validatedData = $request->validate([
+            'nama' => 'required|string',
+            'tahun_lahir' => 'required|integer|min:1900|max:2024',
+            'jenis_kelamin' => 'required|string',
+            'nomor_antrian' => 'required|string',
+            'pendidikan' => 'required|string',
+            'pekerjaan' => 'required|string',
+        ]);
 
-        $respondens->update($request->all());
+        $respondens = Responden::findOrFail($id_responden);
+        $respondens->update($validatedData);
 
         return redirect()->route('responden.index')->with('message', 'Berhasil diperbarui');
     }
