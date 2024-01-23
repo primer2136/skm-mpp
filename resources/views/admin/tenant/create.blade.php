@@ -51,7 +51,7 @@
                 </div>
                 <div class="card-footer text-right">
                     <button class="btn btn-primary mr-1" type="submit">Submit</button>
-                    <a href="/ds-admin" class="btn btn-secondary" type="reset">Cancel</a>
+                    <a href="/tenant" class="btn btn-secondary" type="reset">Cancel</a>
                 </div>
             </form>
         </div>

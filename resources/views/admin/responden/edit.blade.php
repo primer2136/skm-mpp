@@ -138,28 +138,4 @@
 @push('page-scripts')
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
-    <script type="text/javascript">
-        $('#select2').select2();
-    </script>
-
-    <script>
-        document.getElementById('logoInput').addEventListener('change', function(e) {
-            var logoPreview = document.getElementById('logoPreview');
-            var fileInput = e.target;
-
-            if (fileInput.files && fileInput.files[0]) {
-                var reader = new FileReader();
-
-                reader.onload = function(e) {
-                    logoPreview.src = e.target.result;
-                    logoPreview.style.display = 'block';
-                };
-
-                reader.readAsDataURL(fileInput.files[0]);
-            } else {
-                logoPreview.src = '#';
-                logoPreview.style.display = 'none';
-            }
-        });
-    </script>
 @endpush
