@@ -7,6 +7,7 @@ use App\Http\Controllers\RespondenController;
 use App\Http\Controllers\TenantController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\PertanyaanController;
 
 /*
 |--------------------------------------------------------------------------
@@ -62,6 +63,10 @@ Route::resource('/responden', RespondenController::class);
 // Route::post('/responden', [RespondenController::class, 'simpanSurvey']);
 
 Route::resource('/tenant', TenantController::class);
+
+Route::resource('/pertanyaan', PertanyaanController::class);
+
+
 
 Route::get('/penilaian', function () {
     return view('admin/penilaian/index');
