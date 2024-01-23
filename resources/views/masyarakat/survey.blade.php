@@ -68,7 +68,7 @@
             </select><br><br>
             <button class="btn-back" type="button" onclick="goback()">Kembali</button>
             <button type="button" onclick="tampilkanPertanyaan()">Lanjutkan</button>
-        </form>
+        </form> 
 
         <form id="formPertanyaan" style="display: none;">
             <h2 id="judul">PERTANYAAN</h2>
