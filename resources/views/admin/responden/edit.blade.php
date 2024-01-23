@@ -5,6 +5,8 @@
 @section('responden', 'active')
 <title>Responden</title>
 
+<link rel="shortcut icon" href="https://mpp.cimahikota.go.id/img/favicon.png" type="image/x-icon">
+
 @section('konten')
     <div class="card">
         <div class="card-header">
@@ -66,6 +68,23 @@
                                 <option value="Pria" @if (old('jenis_kelamin') == 'Pria' || $respondens->jenis_kelamin == 'Pria') selected @endif>Pria</option>
                                 <option value="Wanita" @if (old('jenis_kelamin') == 'Wanita' || $respondens->jenis_kelamin == 'Wanita') selected @endif>Wanita</option>
                             </select>
+                        </div>
+                    </div>
+
+                    {{-- nomor antrian --}}
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label @error('nmr_antrn') class="text-danger" @enderror>
+                                Nomor Antrian
+                                @error('nmr_antrn')
+                                    | {{ $message }}
+                                @enderror
+                            </label>
+                            <input type="text" name="nomor_antrian"
+                                @if (old('nomor_antrian')) value="{{ old('nomor_antrian') }}"
+              @else
+                  value="{{ $respondens->nomor_antrian }}" @endif
+                                class="form-control" autocomplete="off">
                         </div>
                     </div>
 

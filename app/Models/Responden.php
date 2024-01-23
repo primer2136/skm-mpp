@@ -15,6 +15,7 @@ class Responden extends Model
         'nama_responden',
         'tahun_lahir',
         'jenis_kelamin',
+        'nomor_antrian',
         'riwayat_pendidikan',
         'pekerjaan',
     ];

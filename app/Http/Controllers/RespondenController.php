@@ -87,6 +87,7 @@ class RespondenController extends Controller
             'nama_responden' => 'required',
             'tahun_lahir' => 'required|numeric|min:1900|max:' . date('Y'),
             'jenis_kelamin' => 'required',
+            'nomor_antrian' => 'required',
             'riwayat_pendidikan' => 'required',
             'pekerjaan' => 'required',
             // ... tambahkan validasi untuk pertanyaan lainnya sesuai kebutuhan

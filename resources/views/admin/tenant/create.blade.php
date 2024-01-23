@@ -3,7 +3,9 @@
 @section('title', 'Tenant')
 @section('title2', 'index')
 @section('tenant', 'active')
-<title>Tenant</title>
+<title>Tenant - Tambah</title>
+
+<link rel="shortcut icon" href="https://mpp.cimahikota.go.id/img/favicon.png" type="image/x-icon">
 
 @section('konten')
     <div class="card">

@@ -5,6 +5,8 @@
 @section('responden', 'active')
 <title>Responden</title>
 
+<link rel="shortcut icon" href="https://mpp.cimahikota.go.id/img/favicon.png" type="image/x-icon">
+
 @section('konten')
     <div class="container-fluid">
         <div class="row">
@@ -20,11 +22,11 @@
                         <div class="float-right">
                             <form action="?" method="GET">
                                 <div class="input-group mb-3">
-                                    <input name="keyword" id="caribuku" type="text" class="form-control"
+                                    <input name="keyword" id="cariresponden" type="text" class="form-control"
                                         placeholder="Cari..." aria-label="Cari" aria-describedby="button-addon2"
                                         value="{{ Request()->keyword }}" autocomplete="off">
                                     <div class="input-group-append">
-                                        <button id="btncaribuku" class="btn btn-outline-warning bg-warning" type="submit"
+                                        <button id="btncariresponden" class="btn btn-outline-warning bg-warning" type="submit"
                                             id="button-addon2"><i class="fas fa-search text-light"></i></button>
                                     </div>
                                 </div>
@@ -51,6 +53,7 @@
                                     <th>Nama</th>
                                     <th>Tahun Lahir</th>
                                     <th>Jenis Kelamin</th>
+                                    <th>Nomor Antrian</th>
                                     <th>Riwayat Pendidikan</th>
                                     <th>Pekerjaan</th>
                                     <th>Aksi</th>
@@ -66,6 +69,7 @@
                                         <td>{{ $responden->nama_responden }}</td>
                                         <td>{{ $responden->tahun_lahir }}</td>
                                         <td>{{ $responden->jenis_kelamin }}</td>
+                                        <td>{{ $responden->nomor_antrian }}</td>
                                         <td>{{ $responden->riwayat_pendidikan }}</td>
                                         <td>{{ $responden->pekerjaan }}</td>
                                         <td>

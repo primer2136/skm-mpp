@@ -5,6 +5,8 @@
 @section('penilaian', 'active')
 <title>Entry Penilaian</title>
 
+<link rel="shortcut icon" href="https://mpp.cimahikota.go.id/img/favicon.png" type="image/x-icon">
+
 @section('konten')
     <div class="container-fluid">
         <div class="row">
@@ -30,11 +32,11 @@
                         <div class="float-right">
                             <form action="?" method="GET">
                                 <div class="input-group mb-3">
-                                    <input name="keyword" id="caribuku" type="text" class="form-control"
+                                    <input name="keyword" id="caripenilaian" type="text" class="form-control"
                                         placeholder="Cari..." aria-label="Cari" aria-describedby="button-addon2"
                                         value="{{ Request()->keyword }}" autocomplete="off">
                                     <div class="input-group-append">
-                                        <button id="btncaribuku" class="btn btn-outline-warning bg-warning" type="submit"
+                                        <button id="btncaripenilaian" class="btn btn-outline-warning bg-warning" type="submit"
                                             id="button-addon2"><i class="fas fa-search text-light"></i></button>
                                     </div>
                                 </div>

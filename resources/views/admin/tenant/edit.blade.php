@@ -5,6 +5,8 @@
 @section('tenant', 'active')
 <title>Tenant</title>
 
+<link rel="shortcut icon" href="https://mpp.cimahikota.go.id/img/favicon.png" type="image/x-icon">
+
 @section('konten')
     <div class="card">
         <div class="card-header">

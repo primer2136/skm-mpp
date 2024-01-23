@@ -1,19 +1,20 @@
 @extends('admin/layout.master')
 
 @section('title', 'Admin')
-@section('title2', 'Tambah')
+@section('title2', 'index')
 @section('admin', 'active')
-<title>Admin - Tambah</title>
+<title>Admin</title>
 
 <link rel="shortcut icon" href="https://mpp.cimahikota.go.id/img/favicon.png" type="image/x-icon">
 
 @section('konten')
     <div class="card">
         <div class="card-header">
-            <h4>Tambah Admin</h4>
+            <h4>Edit Admin</h4>
         </div>
         <div class="card-body">
-            <form action="{{ route('admin.store') }}" method="POST">
+            <form action="{{ route('ds-admin.update', $data->id_admin) }}" method="POST" enctype="multipart/form-data">
+                @method('PATCH')
                 @csrf
                 <div class="row">
 
@@ -26,8 +27,11 @@
                                     | {{ $message }}
                                 @enderror
                             </label>
-                            <input type="text" name="nama_admin" value="{{ old('nama_admin') }}" class="form-control"
-                                autocomplete="off">
+                            <input type="text" name="nama_admin"
+                                @if (old('nama_admin')) value="{{ old('nama_admin') }}"
+              @else
+                  value="{{ $data->nama_admin }}" @endif
+                                class="form-control" autocomplete="off">
                         </div>
                     </div>
 
@@ -40,8 +44,11 @@
                                     | {{ $message }}
                                 @enderror
                             </label>
-                            <input type="text" name="username" value="{{ old('username') }}" class="form-control"
-                                autocomplete="off">
+                            <input type="text" name="username"
+                                @if (old('username')) value="{{ old('username') }}"
+              @else
+                  value="{{ $data->username }}" @endif
+                                class="form-control" autocomplete="off">
                         </div>
                     </div>
 
@@ -54,12 +61,15 @@
                                     | {{ $message }}
                                 @enderror
                             </label>
-                            <input type="password" name="password" value="{{ old('password') }}" class="form-control"
-                                autocomplete="off">
+                            <input type="text" name="password"
+                                @if (old('password')) value="{{ old('password') }}"
+              @else
+                  value="{{ $data->password }}" @endif
+                                class="form-control" autocomplete="off">
                         </div>
                     </div>
 
-                    {{-- no. hp --}}
+                    {{-- no hp --}}
                     <div class="col-md-6">
                         <div class="form-group">
                             <label @error('telp') class="text-danger" @enderror>
@@ -68,8 +78,11 @@
                                     | {{ $message }}
                                 @enderror
                             </label>
-                            <input type="text" name="telp" value="{{ old('telp') }}" class="form-control"
-                                autocomplete="off">
+                            <input type="text" name="telp"
+                                @if (old('telp')) value="{{ old('telp') }}"
+              @else
+                  value="{{ $data->telp }}" @endif
+                                class="form-control" autocomplete="off">
                         </div>
                     </div>
 
@@ -82,30 +95,24 @@
                                     | {{ $message }}
                                 @enderror
                             </label>
-                            <select name="role" class="form-control" autocomplete="off">
-                                <option disabled selected>-- Pilih --</option>
-                                <hr style="margin: 5px 0; border: 0; border-top: 1px solid #ccc;">
-                                <option value="super admin">Super Admin</option>
-                                <option value="admin tenant 1">Admin Tenant 1</option>
-                                <option value="admin tenant 2">Admin Tenant 2</option>
-                            </select>
+                            <input type="text" name="role"
+                                @if (old('role')) value="{{ old('role') }}"
+              @else
+                  value="{{ $data->role }}" @endif
+                                class="form-control" autocomplete="off">
                         </div>
                     </div>
 
-                </div>
-                <div class="card-footer text-right">
-                    <button class="btn btn-primary mr-1" type="submit">Submit</button>
-                    <a href="/ds-admin" class="btn btn-secondary" type="reset">Cancel</a>
-                </div>
+                    <div class="card-footer text-right">
+                        <button class="btn btn-primary mr-1" type="submit">Submit</button>
+                        <a href="/tenant" class="btn btn-secondary" type="reset">Cancel</a>
+                    </div>
             </form>
         </div>
     </div>
 
 @endsection
 @push('page-scripts')
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
-    <script type="text/javascript">
-        $('#select2').select2();
-    </script>
 @endpush

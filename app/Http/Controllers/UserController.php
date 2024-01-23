@@ -67,11 +67,11 @@ class UserController extends Controller
         $this->_validation($request);
         $password = $request->password;
         DB::table('users')->insert([
-            'nama_admin' => $request->nama,
+            'nama_admin' => $request->nama_admin,
             'username' => $request->username,
             'password' => bcrypt($password),
             'telp' => $request->telp,
-            'role' => $request->level
+            'role' => $request->role,
         ]);
         return redirect('ds-admin')->with('message', 'Berhasil ditambahkan');
     }
@@ -111,11 +111,11 @@ class UserController extends Controller
         $this->_validation($request);
         $password = $request->password;
         DB::table('users')->where('id_admin', $id)->update([
-            'nama_admin' => $request->nama,
+            'nama_admin' => $request->nama_admin,
             'username' => $request->username,
             'password' => bcrypt($password),
             'telp' => $request->telp,
-            'role' => $request->level
+            'role' => $request->role,
         ]);
         return redirect('ds-admin')->with('message', 'Berhasil diubah');
     }
