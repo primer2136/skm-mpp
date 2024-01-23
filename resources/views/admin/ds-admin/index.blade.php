@@ -4,6 +4,12 @@
 @section('title2', 'index')
 @section('admin', 'active')
 <title>Admin</title>
+<style>
+    td.password-col {
+        max-width: 350px;
+    }
+</style>
+
 
 <link rel="shortcut icon" href="https://mpp.cimahikota.go.id/img/favicon.png" type="image/x-icon">
 
@@ -67,7 +73,7 @@
                                         <td>{{ $no++ }}</td>
                                         <td>{{ $item->nama_admin }}</td>
                                         <td>{{ $item->username }}</td>
-                                        <td>{{ $item->password }}</td>
+                                        <td class="password-col">{{ $item->password }}</td>
                                         <td>{{ $item->telp }}</td>
                                         <td>{{ $item->role }}</td>
                                         <td>
