@@ -30,7 +30,14 @@ class RespondenController extends Controller
      */
     public function store(Request $request)
     {
-        Responden::create($request->all());
+        $responden = new Responden($request->all());
+        $responden->save();
+        $validatedData = $request->validate([
+            'nama' => 'required|string|max:255',
+            'tahun-lahir' => 'required|integer|min:1900|max:2024',
+            'jenis-kelamin' => 'required|in:pria,wanita',
+        ]);
+        Responden::create($validatedData);
 
         return redirect()->route('responden.index')->with('message', 'Berhasil ditambahkan');
     }
@@ -58,9 +65,14 @@ class RespondenController extends Controller
      */
     public function update(Request $request, string $id_responden)
     {
+        $validatedData = $request->validate([
+            'nama' => 'required|string|max:255',
+            'tahun-lahir' => 'required|integer|min:1900|max:2024',
+            'jenis-kelamin' => 'required|in:pria,wanita',
+            // tambahkan validasi lainnya sesuai kebutuhan
+        ]);
         $respondens = Responden::findOrFail($id_responden);
-
-        $respondens->update($request->all());
+        $respondens->update($validatedData);
 
         return redirect()->route('responden.index')->with('message', 'Berhasil diperbarui');
     }

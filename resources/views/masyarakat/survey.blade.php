@@ -20,7 +20,7 @@
     </nav>
 
     <div class="container">
-        <form id="formSurvey">
+        <form id="formSurvey" method="POST" action="{{ route('responden.store') }}">
             <h2>DATA RESPONDEN</h2>
 
             <div class="garis-horizontal"></div>
