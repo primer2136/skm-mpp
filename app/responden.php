@@ -22,6 +22,6 @@ class responden extends Authenticatable
 
     protected $fillable = [
         'nama_responden', 'tahun_lahir', 'jenis_kelamin',
-        'riwayat_pendidikan', 'pekerjaan'
+        'nomor_antrian', 'riwayat_pendidikan', 'pekerjaan'
     ];
 }

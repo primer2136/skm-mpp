@@ -3,7 +3,9 @@
 @section('title', 'Responden')
 @section('title2', 'index')
 @section('responden', 'active')
-<title>Responden</title>
+<title>Responden - Tambah</title>
+
+<link rel="shortcut icon" href="https://mpp.cimahikota.go.id/img/favicon.png" type="image/x-icon">
 
 @section('konten')
     <div class="card">
@@ -57,6 +59,19 @@
                                 <option value="pria">Pria</option>
                                 <option value="wanita">Wanita</option>
                             </select>
+                        </div>
+                    </div>
+
+                    {{-- nomor antrian --}}
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label @error('nmr_antrn') class="text-danger" @enderror>
+                                Nomor Antrian
+                                @error('nmr_antrn')
+                                    | {{ $message }}
+                                @enderror
+                            </label>
+                            <input type="text" name="nomor_antrian" class="form-control" autocomplete="off">
                         </div>
                     </div>
 
