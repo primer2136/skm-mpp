@@ -24,7 +24,7 @@
             {{-- Penilaian --}}
             <li class="menu-header">Penilaian</li>
             <li class="@yield('penilaian')"><a class="nav-link" href="/penilaian"><i class="fas fa-database"></i> <span>Entri Penilaian</span></a></li>
-            {{-- <li class="@yield('tanggapan')"><a class="nav-link" href="/tanggapan"><i class="fas fa-database"></i> <span>Entry Tanggapan</span></a></li> --}}
+            {{-- <li class="@yield('tanggapan')"><a class="nav-link" href="/tanggapan"><i class="fas fa-database"></i> <span>Entri Tanggapan</span></a></li> --}}
 
             {{-- @if (Auth::guard('admin')->user()->status == 'admin') --}}
             {{-- Laporan --}}
