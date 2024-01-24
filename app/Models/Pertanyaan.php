@@ -9,9 +9,9 @@ class Pertanyaan extends Model
 {
     use HasFactory;
 
-    protected $primaryKey = 'id_pertanyaan'; // Tipe data VARCHAR
-    public $incrementing = false; // Non-incrementing key
-    protected $keyType = 'string'; // Tipe data kunci adalah string
+    protected $primaryKey = 'id_pertanyaan'; 
+    public $incrementing = false; 
+    protected $keyType = 'string';
 
     protected $fillable = [
         'pertanyaan',

@@ -112,7 +112,7 @@ $pertanyaans = Pertanyaan::orderBy('id_pertanyaan')->get();
     </div>
 
     <!-- Bagian HTML untuk tampilan terima kasih -->
-    <div class="question" id="terima_kasih" style="display: none;">
+    <div class="question" id="terima_kasih" style="display: none; text-align: center;">
         <h2>Terima Kasih!</h2>
         <p>Terima kasih telah mengisi survei.</p>
         <p id="countdown">Kembali ke halaman awal dalam <span id="timer">3</span> detik.</p>
@@ -142,32 +142,32 @@ $pertanyaans = Pertanyaan::orderBy('id_pertanyaan')->get();
             }
 
             if (inputNama.trim() === "") {
-                Swal.fire("Error", "Nama harus diisi", "error");
+                Swal.fire("Peringatan", "Nama harus diisi", "warning");
                 return false;
             }
 
             if (inputYear < 1900 || inputYear > currentYear) {
-                Swal.fire("Error", "Tahun lahir harus di antara 1900 dan " + currentYear, "error");
+                Swal.fire("Peringatan", "Tahun lahir harus di antara 1900 dan " + currentYear, "warning");
                 return false;
             }
 
             if (inputJenisKelamin === "") {
-                Swal.fire("Error", "Jenis kelamin harus dipilih", "error");
+                Swal.fire("Peringatan", "Jenis kelamin harus dipilih", "warning");
                 return false;
             }
 
             if (inputNomorAntrian.trim() === "") {
-                Swal.fire("Error", "Nomor antrian harus diisi", "error");
+                Swal.fire("Peringatan", "Nomor antrian harus diisi", "warning");
                 return false;
             }
 
             if (inputPendidikan === "") {
-                Swal.fire("Error", "Riwayat pendidikan harus dipilih", "error");
+                Swal.fire("Peringatan", "Riwayat pendidikan harus dipilih", "warning");
                 return false;
             }
 
             if (inputKerjaan === "") {
-                Swal.fire("Error", "Pekerjaan harus dipilih", "error");
+                Swal.fire("Peringatan", "Pekerjaan harus dipilih", "warning");
                 return false;
             }
             return true;
@@ -194,7 +194,7 @@ $pertanyaans = Pertanyaan::orderBy('id_pertanyaan')->get();
                         nextQuestion.style.display = 'block'; // Tampilkan pertanyaan selanjutnya
                     }
                 } else {
-                    Swal.fire("Error", "Pilih salah satu opsi sebelum melanjutkan.", "error");
+                    Swal.fire("Peringatan", "Pilih salah satu opsi sebelum melanjutkan.", "warning");
                 }
             }
         }
@@ -210,7 +210,7 @@ $pertanyaans = Pertanyaan::orderBy('id_pertanyaan')->get();
                     document.getElementById('judul').style.display = 'none';
                     document.getElementById('garis').style.display = 'none';
                 } else {
-                    Swal.fire("Error", "Pilih salah satu opsi sebelum melanjutkan.", "error");
+                    Swal.fire("Peringatan", "Pilih salah satu opsi sebelum melanjutkan.", "warning");
                 }
             }
         }
@@ -240,11 +240,17 @@ $pertanyaans = Pertanyaan::orderBy('id_pertanyaan')->get();
         function submitSurvey() {
 
             // Menampilkan tanda terima kasih
-            document.getElementById('kritik_saran').style.display = 'none'; // Sembunyikan bagian kritik dan saran
-            document.getElementById('terima_kasih').style.display = 'block'; // Tampilkan tanda terima kasih
+            document.getElementById('kritik_saran').style.display = 'none';
+            document.getElementById('terima_kasih').style.display = 'block';
             document.getElementById('formPertanyaan').style.display = 'none';
             document.getElementById('formSurvey').style.display = 'none';
             document.querySelector('.container').style.display = 'none';
+
+            var closing = document.getElementById('terima_kasih');
+            closing.style.position = 'absolute';
+            closing.style.top = '50%';
+            closing.style.left = '50%';
+            closing.style.transform = 'translate(-50%, -50%)';
 
             // Pengaturan hitungan mundur
             var seconds = 3; // Hitungan mundur dalam detik
