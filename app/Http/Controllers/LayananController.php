@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
+use Illuminate\Http\Request;
+use App\Models\Pertanyaan;
+use App\Models\Responden;
 use App\Models\Tenant;
 
 class LayananController extends Controller
@@ -30,6 +33,7 @@ class LayananController extends Controller
     public function showSurveyForm($id_tenant)
     {
         $layanan = Tenant::where('id_tenant', $id_tenant)->first();
+        $pertanyaans = Pertanyaan::orderBy('id_pertanyaan')->get();
 
         // Jika Layanan tidak ditemukan, arahkan ke halaman 404
         if (!$layanan) {
@@ -40,7 +44,24 @@ class LayananController extends Controller
             'nomor' => $id_tenant,
         ];
 
-        return view('masyarakat.survey', compact('layananData'));
+        return view('masyarakat.survey', compact('layananData', 'pertanyaans'));
+    }
+
+    public function storeSurvey(Request $request)
+    {
+        $data = $request->all();
+        dd($data);
+
+        // Simpan data survei
+        $survey = Responden::create([
+            'id_tenant' => $data['id_tenant'],
+            'nama_responden' => $data['nama'],
+            'tahun_lahir' => $data['tahun-lahir'],
+            'jenis_kelamin' => $data['jenis-kelamin'],
+            'nomor_antrian' => $data['nomor-antrian'],
+            'riwayat_pendidikan' => $data['pendidikan'],
+            'pekerjaan' => $data['kerjaan'],
+        ]);
     }
 
 

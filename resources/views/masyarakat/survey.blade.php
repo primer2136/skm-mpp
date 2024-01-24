@@ -1,9 +1,3 @@
-<?php
-use App\Models\Pertanyaan;
-
-$pertanyaans = Pertanyaan::orderBy('id_pertanyaan')->get();
-?>
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -30,6 +24,7 @@ $pertanyaans = Pertanyaan::orderBy('id_pertanyaan')->get();
             <h2>DATA RESPONDEN</h2>
 
             <div class="garis-horizontal"></div>
+            <input type="hidden" name="id_tenant" value="{{ $layananData['nomor'] }}">
             <label for="nama">Nama :</label>
             <input type="text" id="nama" name="nama">
 
@@ -105,7 +100,9 @@ $pertanyaans = Pertanyaan::orderBy('id_pertanyaan')->get();
                 <textarea id="saran" name="saran" rows="4" cols="50"></textarea><br><br><br>
                 <button class="btn-back" type="button"
                     onclick="kembaliKePertanyaanSebelumnya('kritik_saran', 'question_<?php echo count($pertanyaans); ?>')">Kembali</button>
-                <button class="btn-next" type="button" onclick="submitSurvey()">Kirim Survey</button>
+                <button class="btn-next" type="button"
+                    onclick="submitSurvey('{{ route('layanan.storeSurvey', ['id_tenant' => $layananData['nomor']]) }}')">Kirim
+                    Survey</button>
             </div>
         </form>
 
@@ -237,35 +234,68 @@ $pertanyaans = Pertanyaan::orderBy('id_pertanyaan')->get();
             }
         }
 
-        function submitSurvey() {
-
-            // Menampilkan tanda terima kasih
-            document.getElementById('kritik_saran').style.display = 'none';
-            document.getElementById('terima_kasih').style.display = 'block';
-            document.getElementById('formPertanyaan').style.display = 'none';
-            document.getElementById('formSurvey').style.display = 'none';
-            document.querySelector('.container').style.display = 'none';
-
-            var closing = document.getElementById('terima_kasih');
-            closing.style.position = 'absolute';
-            closing.style.top = '50%';
-            closing.style.left = '50%';
-            closing.style.transform = 'translate(-50%, -50%)';
-
-            // Pengaturan hitungan mundur
-            var seconds = 3; // Hitungan mundur dalam detik
-            var countdown = document.getElementById('timer');
-
-            var timer = setInterval(function() {
-                seconds--;
-                countdown.textContent = seconds;
-
-                if (seconds <= 0) {
-                    clearInterval(timer);
-                    window.location.href = "/";
-                }
-            }, 1000);
+        // Function untuk membuat mock fetch
+        function mockFetch(data) {
+            return new Promise((resolve) => {
+                resolve({
+                    json: () => Promise.resolve(data),
+                });
+            });
         }
+
+        // Function untuk submit survei (tanpa server)
+        function submitSurvey() {
+            if (validateForm()) {
+                // Mengambil id_tenant dari URL
+                var urlParams = new URLSearchParams(window.location.search);
+                var idTenant = urlParams.get('id_tenant');
+
+                // Memasukkan id_tenant ke dalam FormData
+                var formData = new FormData(document.getElementById('formSurvey'));
+                formData.append('id_tenant', idTenant);
+
+                // Menggantikan fetch dengan mockFetch untuk simulasi
+                mockFetch({
+                        message: 'Simulasi sukses'
+                    })
+                    .then(data => {
+                        // Handle respon dari server jika diperlukan
+                        console.log(data);
+
+                        // Menampilkan tanda terima kasih dan mengatur countdown
+                        document.getElementById('formSurvey').style.display = 'none';
+                        document.getElementById('kritik_saran').style.display = 'none';
+                        document.getElementById('formPertanyaan').style.display = 'none';
+                        document.getElementById('terima_kasih').style.display = 'block';
+
+                        var closing = document.getElementById('terima_kasih');
+                        closing.style.position = 'absolute';
+                        closing.style.top = '50%';
+                        closing.style.left = '50%';
+                        closing.style.transform = 'translate(-50%, -50%)';
+
+                        var seconds = 3; // Hitungan mundur dalam detik
+                        var countdown = document.getElementById('timer');
+
+                        var timer = setInterval(function() {
+                            seconds--;
+                            countdown.textContent = seconds;
+
+                            if (seconds <= 0) {
+                                clearInterval(timer);
+                                window.location.href = "/";
+                            }
+                        }, 1000);
+                    })
+                    .catch(error => {
+                        console.error('Error:', error);
+                        Swal.fire("Error", "Terjadi kesalahan saat mengirim data.", "error");
+                    });
+            } else {
+                Swal.fire("Peringatan", "Data harap dilengkapi dengan benar.", "warning");
+            }
+        }
+
 
         function goback() {
             var formSurvey = document.getElementById('formSurvey');

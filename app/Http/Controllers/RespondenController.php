@@ -15,6 +15,7 @@ class RespondenController extends Controller
     {
         $respondens = Responden::orderBy('id_responden')->get();
 
+
         return view('admin.responden.index', compact('respondens'));
     }
 
@@ -52,7 +53,7 @@ class RespondenController extends Controller
     {
         $respondens = Responden::findOrFail($id_responden);
         $tenants = Tenant::all();
-        
+
 
         return view('admin.responden.edit', compact('respondens', 'tenants'));
     }
