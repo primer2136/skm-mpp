@@ -12,6 +12,7 @@ class Responden extends Model
     protected $primaryKey = 'id_responden';
 
     protected $fillable = [
+        'id_tenant',
         'nama_responden',
         'tahun_lahir',
         'jenis_kelamin',
@@ -19,4 +20,9 @@ class Responden extends Model
         'riwayat_pendidikan',
         'pekerjaan',
     ];
+
+    public function tenant()
+    {
+        return $this->belongsTo(Tenant::class, 'id_tenant', 'id_tenant');
+    }
 }

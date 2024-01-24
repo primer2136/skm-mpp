@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Responden;
+use App\Models\Tenant;
 use Illuminate\Http\Request;
 
 class RespondenController extends Controller
@@ -12,7 +13,7 @@ class RespondenController extends Controller
      */
     public function index()
     {
-        $respondens = Responden::orderBy('created_at')->get();
+        $respondens = Responden::orderBy('id_responden')->get();
 
         return view('admin.responden.index', compact('respondens'));
     }
@@ -22,7 +23,8 @@ class RespondenController extends Controller
      */
     public function create()
     {
-        return view('admin.responden.create');
+        $tenants = Tenant::all();
+        return view('admin.responden.create', compact('tenants'));
     }
 
     /**
@@ -49,8 +51,10 @@ class RespondenController extends Controller
     public function edit(string $id_responden)
     {
         $respondens = Responden::findOrFail($id_responden);
+        $tenants = Tenant::all();
+        
 
-        return view('admin.responden.edit', compact('respondens'));
+        return view('admin.responden.edit', compact('respondens', 'tenants'));
     }
 
     /**
@@ -78,25 +82,5 @@ class RespondenController extends Controller
         $respondens->delete();
 
         return redirect()->route('responden.index')->with('message', 'Berhasil dihapus');
-    }
-
-    public function simpanSurvey(Request $request)
-    {
-        // Validasi data dari formulir survey
-        $validatedData = $request->validate([
-            'nama_responden' => 'required',
-            'tahun_lahir' => 'required|numeric|min:1900|max:' . date('Y'),
-            'jenis_kelamin' => 'required',
-            'nomor_antrian' => 'required',
-            'riwayat_pendidikan' => 'required',
-            'pekerjaan' => 'required',
-            // ... tambahkan validasi untuk pertanyaan lainnya sesuai kebutuhan
-        ]);
-
-        // Simpan data responden ke dalam tabel responden
-        $responden = Responden::create($validatedData);
-
-        // Menanggapi dengan data atau pesan sukses jika diperlukan
-        return response()->json(['message' => 'Survey berhasil disimpan', 'responden' => $responden]);
     }
 }
