@@ -26,7 +26,9 @@ $pertanyaans = Pertanyaan::orderBy('id_pertanyaan')->get();
     </nav>
 
     <div class="container">
-        <form id="formSurvey">
+        <form id="formSurvey" method="post"
+            action="{{ route('layanan.survey', ['id_tenant' => $layananData['nomor']]) }}">
+            @csrf
             <h2>DATA RESPONDEN</h2>
 
             <div class="garis-horizontal"></div>
@@ -67,9 +69,9 @@ $pertanyaans = Pertanyaan::orderBy('id_pertanyaan')->get();
                 <option value="" disabled selected>-- Pilih --</option>
                 <option value="pegawai Negeri">Pegawai Negeri</option>
                 <option value="pegawai Swasta">Pegawai Swasta</option>
-                <option value="pegawai">Mahasiswa</option>
+                <option value="mahasiswa">Mahasiswa</option>
                 <option value="pelajar">Pelajar</option>
-                <option value="wiraswasta">Wiraswasta/Pengusaha</option>
+                <option value="wiraswasta/pengusaha">Wiraswasta/Pengusaha</option>
                 <option value="lainnya">Lainnya</option>
             </select><br><br>
             <button class="btn-back" type="button" onclick="goback()">Kembali</button>
@@ -177,7 +179,7 @@ $pertanyaans = Pertanyaan::orderBy('id_pertanyaan')->get();
             if (validateForm()) {
                 document.getElementById('formSurvey').style.display = 'none';
                 document.getElementById('formPertanyaan').style.display = 'block';
-                document.getElementById('question_1').style.display = 'block'; // Menampilkan pertanyaan pertama
+                document.getElementById('question_1').style.display = 'block'; 
             }
         }
 
@@ -238,6 +240,7 @@ $pertanyaans = Pertanyaan::orderBy('id_pertanyaan')->get();
         }
 
         function submitSurvey() {
+            document.getElementById("formSurvey").submit();
 
             // Menampilkan tanda terima kasih
             document.getElementById('kritik_saran').style.display = 'none';
