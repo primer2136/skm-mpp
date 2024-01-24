@@ -26,7 +26,7 @@
       </div>
     </div>
   </div>
-  <div class="col-lg-3 col-md-6 col-sm-6 col-12">
+  {{-- <div class="col-lg-3 col-md-6 col-sm-6 col-12">
     <div class="card card-statistic-1">
       <div class="card-icon bg-success d-flex justify-content-center align-items-center">
         <i class="fas fa-envelope"></i>
@@ -37,11 +37,11 @@
           <h3>3</h3>
         </div>
         <div class="card-body">
-          {{-- {{  $terkirim }} --}}
+          {{  $terkirim }}
         </div>
       </div>
     </div>
-  </div>
+  </div> --}}
   <div class="col-lg-3 col-md-6 col-sm-6 col-12">
     <div class="card card-statistic-1">
       <div class="card-icon bg-warning d-flex justify-content-center align-items-center">
