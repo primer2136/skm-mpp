@@ -1,9 +1,11 @@
 @extends('admin/layout.master')
 
 @section('title', 'Pertanyaan')
-@section('title2', 'index')
+@section('title2', 'tambah')
 @section('pertanyaan', 'active')
 <title>Pertanyaan</title>
+
+<link rel="shortcut icon" href="https://mpp.cimahikota.go.id/img/favicon.png" type="image/x-icon">
 
 @section('konten')
     <div class="card">

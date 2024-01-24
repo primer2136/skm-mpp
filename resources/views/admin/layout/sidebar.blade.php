@@ -13,7 +13,7 @@
             <li class="@yield('dashboard')"><a class="nav-link" href="/dashboard"><i class="fas fa-fire"></i> <span>Dashboard</span></a></li>
 
             {{-- Entry data --}}
-            <li class="menu-header">Entry data</li>
+            <li class="menu-header">Entri data</li>
             <li class="@yield('admin')"><a class="nav-link" href="/ds-admin"><i class="fas fa-user"></i> <span>Admin</span></a></li>
             <li class="@yield('responden')"><a class="nav-link" href="/responden"><i class="fas fa-user"></i> <span>Responden</span></a></li>
             <li class="@yield('tenant')"><a class="nav-link" href="/tenant"><i class="fas fa-user"></i> <span>Tenant</span></a></li>
@@ -23,8 +23,8 @@
 
             {{-- Penilaian --}}
             <li class="menu-header">Penilaian</li>
-            <li class="@yield('penilaian')"><a class="nav-link" href="/penilaian"><i class="fas fa-database"></i> <span>Entry Penilaian</span></a></li>
-            {{-- <li class="@yield('tanggapan')"><a class="nav-link" href="/tanggapan"><i class="fas fa-database"></i> <span>Entry Tanggapan</span></a></li> --}}
+            <li class="@yield('penilaian')"><a class="nav-link" href="/penilaian"><i class="fas fa-database"></i> <span>Entri Penilaian</span></a></li>
+            {{-- <li class="@yield('tanggapan')"><a class="nav-link" href="/tanggapan"><i class="fas fa-database"></i> <span>Entri Tanggapan</span></a></li> --}}
 
             {{-- @if (Auth::guard('admin')->user()->status == 'admin') --}}
             {{-- Laporan --}}
