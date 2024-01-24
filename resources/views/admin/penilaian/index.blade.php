@@ -53,7 +53,7 @@
                                     <th>Nama</th>
                                     <th>Tanggal Penilaian</th>
                                     <th>Status</th>
-                                    <th></th>
+                                    <th>Aksi</th>
                                 </tr>
                             </thead>
                             <tbody>

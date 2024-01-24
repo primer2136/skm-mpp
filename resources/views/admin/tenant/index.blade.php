@@ -45,7 +45,7 @@
                             </div>
                         @endif
 
-                        {{-- tabel --}}
+                        {{-- Tabel --}}
                         <table class="table">
                             <thead>
                                 <tr>
@@ -64,8 +64,7 @@
                                         <td>{{ $no++ }}</td>
                                         <td>
                                             @if ($tenant->logo)
-                                                <img src="{{ Storage::url($tenant->logo) }}"
-                                                    alt="Logo Tenant"
+                                                <img src="{{ Storage::url($tenant->logo) }}" alt="Logo Tenant"
                                                     style="margin-top: 10px; max-width: 75px; max-height: 75px;">
                                             @else
                                                 No Logo
@@ -74,60 +73,55 @@
                                         <td>{{ $tenant->nama_tenant }}</td>
                                         <td>
                                             <a href="{{ route('tenant.edit', $tenant->id_tenant) }}"
-                                                class="btn btn-warning p-0" style="vertical-align: baseline;">
-                                                {{-- <i class="fas fa-edit mb-2"></i> --}}
+                                                class="btn btn-warning p-0" style="vertical-align: baseline">
                                                 <button class="btn btn-warning m-0">Edit</button>
                                             </a>
                                             <form action="{{ route('tenant.destroy', $tenant->id_tenant) }}" method="POST"
-                                                class="btn btn-danger p-0" style="vertical-align: baseline;"
-                                                onsubmit="return confirm('Apakah yakin ingin dihapus?')">
+                                                class="btn btn-danger p-0 delete-tenant" style="vertical-align: baseline">
                                                 @csrf
                                                 @method('DELETE')
                                                 <button class="btn btn-danger m-0">Hapus</button>
                                             </form>
-                                            {{-- <a href="#" data-id=""
-                                                class="btn btn-danger confirm_script-{{ $tenant->id_tenant }} mr-3">
-                                                <form action="{{ route('tenant.destroy', $tenant->id_tenant) }}"
-                                                    class="delete_form-{{ $tenant->id_tenant }}" method="POST">
-                                                    @method('DELETE')
-                                                    @csrf
-                                                </form>
-                                                <i class="fas fa-trash"></i>
-                                            </a> --}}
                                         </td>
                                     </tr>
-                                    {{-- @push('page-scripts')
-                                        <script src="{{ asset('node_modules/sweetalert/dist/sweetalert.min.js') }}"></script>
-                                    @endpush
-
-                                    @push('after-scripts')
-                                        <script>
-                                            $(".confirm_script-{{ $tenant->id_tenant }}").click(function(e) {
-                                                // id = e.target.dataset.id;
-                                                swal({
-                                                        title: 'Yakin hapus data?',
-                                                        text: 'Data yang dihapus tidak bisa di kembalikan',
-                                                        icon: 'warning',
-                                                        buttons: true,
-                                                        dangerMode: true,
-                                                    })
-                                                    .then((willDelete) => {
-                                                        if (willDelete) {
-                                                            $('.delete_form-{{ $tenant->id_tenant }}').submit();
-                                                        } else {
-                                                            swal('Hapus data telah di batalkan');
-                                                        }
-                                                    });
-                                            });
-                                        </script>
-                                    @endpush --}}
                                 @endforeach
                             </tbody>
                         </table>
-                        {{-- {{ $tenants->links() }} --}}
                     </div>
                 </div>
             </div>
         </div>
     </div>
+
+    {{-- Skrip untuk SweetAlert --}}
+    @push('page-scripts')
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    @endpush
+
+    {{-- Skrip untuk Konfirmasi Penghapusan --}}
+    @push('after-scripts')
+        <script>
+            $(document).ready(function() {
+                $(".delete-tenant").on("click", function(e) {
+                    e.preventDefault();
+                    var form = $(this).closest("form");
+
+                    Swal.fire({
+                        title: 'Apakah Anda yakin?',
+                        text: 'Data yang dihapus tidak dapat dikembalikan!',
+                        icon: 'warning',
+                        showCancelButton: true,
+                        confirmButtonColor: '#d33',
+                        cancelButtonColor: '#3085d6',
+                        confirmButtonText: 'Ya, hapus!',
+                        cancelButtonText: 'Batal'
+                    }).then((result) => {
+                        if (result.isConfirmed) {
+                            form.submit();
+                        }
+                    });
+                });
+            });
+        </script>
+    @endpush
 @endsection

@@ -13,7 +13,6 @@ $pertanyaans = Pertanyaan::orderBy('id_pertanyaan')->get();
     <title>Isi Survei</title>
     <link rel="shortcut icon" href="https://mpp.cimahikota.go.id/img/favicon.png" type="image/x-icon">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11">
-    </link>
     <link rel="stylesheet" type="text/css" href="{{ asset('landing/css/survey.css') }}">
 </head>
 
