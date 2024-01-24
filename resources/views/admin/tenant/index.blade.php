@@ -14,11 +14,11 @@
                 <div class="card">
                     <div class="card-body">
 
-                        {{-- Tombol tambah --}}
+                        {{-- Button tambah --}}
                         <a href="{{ route('tenant.create') }}" class="btn btn-warning mb-4"><i
                                 class="fas fa-plus text-light"></i></a>
 
-                        {{-- Form pencarian --}}
+                        {{-- Form search --}}
                         <div class="float-right">
                             <form action="?" method="GET">
                                 <div class="input-group mb-3">
@@ -64,8 +64,7 @@
                                         <td>{{ $no++ }}</td>
                                         <td>
                                             @if ($tenant->logo)
-                                                <img src="{{ Storage::url($tenant->logo) }}"
-                                                    alt="Logo Tenant"
+                                                <img src="{{ Storage::url($tenant->logo) }}" alt="Logo Tenant"
                                                     style="margin-top: 10px; max-width: 75px; max-height: 75px;">
                                             @else
                                                 No Logo
