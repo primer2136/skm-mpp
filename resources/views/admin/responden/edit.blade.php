@@ -1,7 +1,7 @@
 @extends('admin/layout.master')
 
 @section('title', 'Responden')
-@section('title2', 'index')
+@section('title2', 'tambah')
 @section('responden', 'active')
 <title>Responden</title>
 

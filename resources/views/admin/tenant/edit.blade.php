@@ -1,7 +1,7 @@
 @extends('admin/layout.master')
 
 @section('title', 'Tenant')
-@section('title2', 'index')
+@section('title2', 'tambah')
 @section('tenant', 'active')
 <title>Tenant</title>
 
@@ -64,6 +64,7 @@
     </div>
 
 @endsection
+
 @push('page-scripts')
     <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>

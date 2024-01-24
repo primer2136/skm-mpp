@@ -61,7 +61,7 @@
                                     <th>Password</th>
                                     <th>No. HP</th>
                                     <th>Role</th>
-                                    <th></th>
+                                    <th>Aksi</th>
                                 </tr>
                             </thead>
                             <tbody>
