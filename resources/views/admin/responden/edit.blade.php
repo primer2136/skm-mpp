@@ -19,11 +19,32 @@
                 @csrf
                 <div class="row">
 
+                    {{-- dropdown untuk memilih tenant --}}
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            <label @error('id_tenant') class="text-danger" @enderror>
+                                Nama Tenant
+                                @error('id_tenant')
+                                    | {{ $message }}
+                                @enderror
+                            </label>
+                            <select name="id_tenant" class="form-control" autocomplete="off">
+                                <option disabled>-- Pilih Tenant --</option>
+                                @foreach ($tenants as $tenant)
+                                    <option value="{{ $tenant->id_tenant }}"
+                                        {{ $tenant->id_tenant == $respondens->id_tenant ? 'selected' : '' }}>
+                                        {{ $tenant->nama_tenant }}
+                                    </option>
+                                @endforeach
+                            </select>
+                        </div>
+                    </div>
+
                     {{-- nama --}}
                     <div class="col-md-6">
                         <div class="form-group">
                             <label @error('nama') class="text-danger" @enderror>
-                                Nama Responden
+                                Nama
                                 @error('nama')
                                     | {{ $message }}
                                 @enderror

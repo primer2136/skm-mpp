@@ -60,7 +60,6 @@ Route::get('ds-admin/store', [UserController::class, 'store'])->name('admin.stor
 Route::post('ds-admin/store', [UserController::class, 'store'])->name('admin.store');;
 
 Route::resource('/responden', RespondenController::class);
-// Route::post('/responden', [RespondenController::class, 'simpanSurvey']);
 
 Route::resource('/tenant', TenantController::class);
 
