@@ -1,10 +1,10 @@
 <div class="main-sidebar">
     <aside id="sidebar-wrapper">
         <div class="sidebar-brand">
-            <a href="dashboard">SURVEI KEPUASAN</a>
+            <a href="/dashboard">SURVEI KEPUASAN</a>
         </div>
         <div class="sidebar-brand sidebar-brand-sm">
-            <a href="dashboard">SKM</a>
+            <a href="/dashboard">SKM</a>
         </div>
         <ul class="sidebar-menu">
             {{-- @if (Auth::guard('admin')->user()->status == 'admin') --}}
