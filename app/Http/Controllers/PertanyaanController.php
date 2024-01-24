@@ -19,7 +19,9 @@ class PertanyaanController extends Controller
      */
     public function create()
     {
-        return view('admin.pertanyaan.create');
+        $pertanyaans = Pertanyaan::all();
+
+        return view('admin.pertanyaan.create', compact('pertanyaans'));
     }
 
     /**
