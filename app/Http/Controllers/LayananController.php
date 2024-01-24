@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use App\Models\Tenant;
+use App\Models\Responden;
 
 class LayananController extends Controller
 {
@@ -42,6 +43,49 @@ class LayananController extends Controller
 
         return view('masyarakat.survey', compact('layananData'));
     }
+
+    public function submitSurvey($id_tenant)
+    {
+        // Validate the request data
+        $validatedData = request()->validate([
+            'nama' => 'required|string|max:255',
+            'tahun-lahir' => 'required|numeric|min:1900|max:' . date('Y'),
+            'jenis-kelamin' => 'required|string|in:pria,wanita',
+            'nomor-antrian' => 'required|string|max:10',
+            'pendidikan' => 'required|string',
+            'kerjaan' => 'required|string',
+            'saran' => 'nullable|string',
+        ]);
+
+        // Find the tenant
+        $tenant = Tenant::where('id_tenant', $id_tenant)->first();
+
+        // If tenant not found, return 404
+        if (!$tenant) {
+            abort(404);
+        }
+
+        // Create a new Responden instance and fill it with validated data
+        $responden = new Responden($validatedData);
+
+        $responden->nama_responden = request('nama');
+        $responden->tahun_lahir = request('tahun-lahir');
+        $responden->jenis_kelamin = request('jenis-kelamin');
+        $responden->nomor_antrian = request('nomor-antrian');
+        $responden->pekerjaan = request('kerjaan');
+        $responden->riwayat_pendidikan = request('pendidikan');
+
+        // Associate the Responden with the Tenant
+        $responden->tenant()->associate($tenant);
+
+        // Save the Responden to the database
+        $responden->save();
+
+        // dd($responden);
+
+        return redirect('/')->with('success', 'Survey berhasil disubmit!');
+    }
+
 
 
 
