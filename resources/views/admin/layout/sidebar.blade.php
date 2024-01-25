@@ -14,6 +14,7 @@
 
             {{-- Entry data --}}
             <li class="menu-header">Entri data</li>
+data
             <li class="@yield('admin')"><a class="nav-link" href="/ds-admin"><i class="fas fa-user"></i> <span>Admin</span></a></li>
             <li class="@yield('responden')"><a class="nav-link" href="/responden"><i class="fas fa-user"></i> <span>Responden</span></a></li>
             <li class="@yield('tenant')"><a class="nav-link" href="/tenant"><i class="fas fa-user"></i> <span>Tenant</span></a></li>
@@ -21,6 +22,8 @@
             <li class="@yield('publish')"><a class="nav-link" href="/publish"><i class="fas fa-user"></i> <span>Publish</span></a></li>
 
             {{-- @endif
+=======
+main
             @if (Auth::guard('admin')->user()->role == 'super admin')
                 <li class="@yield('admin')"><a class="nav-link" href="/ds-admin"><i class="fas fa-user"></i> <span>Admin</span></a></li>
                 <li class="@yield('responden')"><a class="nav-link" href="/responden"><i class="fas fa-user"></i> <span>Responden</span></a></li>
@@ -30,7 +33,11 @@
                 <li class="@yield('admin')"><a class="nav-link" href="/ds-admin"><i class="fas fa-user"></i> <span>Admin</span></a></li>
             @elseif (Auth::guard('admin')->user()->role == 'admin tenant 2')
                 <li class="@yield('responden')"><a class="nav-link" href="/responden"><i class="fas fa-user"></i> <span>Responden</span></a></li>
+data
             @endif --}}
+=======
+            @endif
+main
 
             {{-- Penilaian --}}
             <li class="menu-header">Penilaian</li>
