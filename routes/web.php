@@ -72,6 +72,16 @@ Route::get('/penilaian', function () {
     return view('admin/penilaian/index');
 });
 
+Route::group(['middleware' => ['role:admin']], function () {
+    // Rute yang hanya dapat diakses oleh admin
+    Route::get('/admin-dashboard', [UserController::class, 'adminDashboard']);
+});
+
+Route::group(['middleware' => ['role:superadmin']], function () {
+    // Rute yang hanya dapat diakses oleh super admin
+    Route::get('/superadmin-dashboard', [UserController::class, 'superAdminDashboard']);
+});
+
 // Route::group(['middleware' => 'auth:admin'], function () {
 //     Route::get('dashboard', 'DashboardController@index');
 

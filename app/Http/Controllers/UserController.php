@@ -131,4 +131,13 @@ class UserController extends Controller
         DB::table('users')->where('id_admin', $id)->delete();
         return redirect()->back()->with('message', 'Berhasil dihapus');
     }
+    public function roles()
+    {
+        return $this->belongsToMany(Role::class);
+    }
+
+    public function hasAnyRole($roles)
+    {
+        return $this->roles->pluck('name')->intersect($roles)->count();
+    }
 }
