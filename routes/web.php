@@ -72,6 +72,17 @@ Route::get('/penilaian', function () {
     return view('admin/penilaian/index');
 });
 
+
+// routes/web.php
+
+Route::group(['middleware' => 'role:super_admin'], function () {
+    // Routes accessible only by super_admin
+});
+
+Route::group(['middleware' => 'role:admin'], function () {
+    // Routes accessible only by admin
+});
+
 // Route::group(['middleware' => 'auth:admin'], function () {
 //     Route::get('dashboard', 'DashboardController@index');
 
