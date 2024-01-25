@@ -24,8 +24,8 @@ class LoginController extends Controller
 
             $roleRedirects = [
                 'super admin' => 'dashboard',
-                'admin tenant 1' => 'responden',
-                'admin tenant 2' => 'tenant',
+                'admin tenant 1' => 'dashboard',
+                'admin tenant 2' => 'dashboard',
             ];
 
             if (array_key_exists($user->role, $roleRedirects)) {
