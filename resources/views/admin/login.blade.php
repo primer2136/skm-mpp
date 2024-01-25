@@ -81,9 +81,6 @@
                                             Kembali
                                         </button>
                                     </div>
-                                    {{-- <div class="mt-5 text-muted text-center">
-                                        Belum punya akun? <a href="register" class="text-warning">Buat sekarang</a>
-                                    </div> --}}
                                 </form>
                             </div>
                         </div>
@@ -115,14 +112,7 @@
     <!-- Template JS File -->
     <script src="{{ asset('assets/js/scripts.js')}}"></script>
     <script src="{{ asset('assets/js/custom.js')}}"></script>
-
-    <!-- Page Specific JS File -->
-    {{-- <script>
-        onclick="goBack()"
-        function goBack() {
-            window.history.back();
-        }
-    </script> --}}
+    
 </body>
 
 </html>

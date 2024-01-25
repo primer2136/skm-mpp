@@ -23,9 +23,15 @@
                         <i class="far fa-user"></i> Profil
                     </a>
                     <div class="dropdown-divider"></div>
-                    <a href="/login" class="dropdown-item has-icon text-danger">
+                    <form method="POST" action="{{ route('logout') }}">
+                        @csrf
+                        <button type="submit" class="dropdown-item has-icon text-danger" style="font-size: 0.85rem">
+                            <i class="fas fa-sign-out-alt" style="float: none"></i> Keluar
+                        </button>
+                    </form>
+                    {{-- <a href="/login" class="dropdown-item has-icon text-danger">
                         <i class="fas fa-sign-out-alt"></i> Keluar
-                    </a>
+                    </a> --}}
                 </div>
             @endif
         </li>

@@ -36,65 +36,74 @@ Route::get('/layanan/{id_tenant}', [LayananController::class, 'show']);
 
 Route::get('layanan/{id_tenant}/survey', [LayananController::class, 'showSurveyForm'])->name('layanan.survey');;
 
-Route::middleware(['guest'])->group(function () {
-    Route::get('login', [LoginController::class, 'getLogin'])->name('login');;
-    Route::post('login', [LoginController::class, 'postLogin']);
+Route::get('login', [LoginController::class, 'getLogin'])->name('login');;
+Route::post('login', [LoginController::class, 'postLogin']);
+
+Route::middleware(['auth'])->group(function () {
+    Route::post('logout', [LoginController::class, 'logout'])->name('logout');
+
+    Route::get('/dashboard', function () {
+        return view('admin/dashboard/index');
+    });
+
+    Route::resource('/responden', RespondenController::class);
+    Route::resource('/tenant', TenantController::class);
+    Route::resource('/pertanyaan', PertanyaanController::class);
 });
 
-Route::get('/home', function () {
-    return redirect('/');
-});
+// Route::get('/dashboard', function () {
+//     return view('admin/dashboard/index');
+// })->middleware('auth');
 
-Route::get('logout', [LoginController::class, 'logout']);
+// Route::resource('ds-admin', UserController::class);
+// Route::get('ds-admin/create', [UserController::class, 'create'])->name('admin.create');;
+// Route::get('ds-admin/store', [UserController::class, 'store'])->name('admin.store');;
+// Route::post('ds-admin/store', [UserController::class, 'store'])->name('admin.store');;
 
-Route::get('/dashboard', function () {
-    return view('admin/dashboard/index');
-});
+// Route::resource('/responden', RespondenController::class);
+// // Route::post('/responden', [RespondenController::class, 'simpanSurvey']);
 
-Route::get('/ds-admin', function () {
-    return view('admin/ds-admin/index');
-});
-Route::resource('ds-admin', UserController::class);
-Route::get('ds-admin/create', [UserController::class, 'create'])->name('admin.create');;
-Route::get('ds-admin/store', [UserController::class, 'store'])->name('admin.store');;
-Route::post('ds-admin/store', [UserController::class, 'store'])->name('admin.store');;
+// Route::resource('/tenant', TenantController::class);
 
-Route::resource('/responden', RespondenController::class);
-// Route::post('/responden', [RespondenController::class, 'simpanSurvey']);
+// Route::resource('/pertanyaan', PertanyaanController::class);
 
-Route::resource('/tenant', TenantController::class);
+// Route::get('/penilaian', function () {
+//     return view('admin/penilaian/index');
+// });
 
-Route::resource('/pertanyaan', PertanyaanController::class);
+// Route::middleware(['auth', 'super admin'])->group(function () {
+//     Route::get('/dashboard', function () {
+//         return view('admin/dashboard/index');
+//     });
 
+//     Route::resource('ds-admin', UserController::class)->except(['create', 'store']);
+//     Route::get('ds-admin/create', [UserController::class, 'create'])->name('admin.create');
+//     Route::post('ds-admin/store', [UserController::class, 'store'])->name('admin.store');
 
+//     Route::resource('/responden', RespondenController::class);
+//     Route::resource('/tenant', TenantController::class);
+//     Route::resource('/pertanyaan', PertanyaanController::class);
 
-Route::get('/penilaian', function () {
-    return view('admin/penilaian/index');
-});
+//     Route::get('/penilaian', function () {
+//         return view('admin/penilaian/index');
+//     });
+// });
 
-// Route::group(['middleware' => 'auth:admin'], function () {
-//     Route::get('dashboard', 'DashboardController@index');
+// Route::middleware(['auth', 'role:super admin'])->group(function () {
+//     // Routes untuk super admin
+//     Route::get('/dashboard', function () {
+//         return view('admin/dashboard/index');
+//     });
 
-//     // Petugas
-//     Route::resource('petugas', 'PetugasController');
+//     Route::resource('ds-admin', UserController::class)->except(['create', 'store']);
+//     Route::get('ds-admin/create', [UserController::class, 'create'])->name('admin.create');
+//     Route::post('ds-admin/store', [UserController::class, 'store'])->name('admin.store');
 
-//     // Masyarakat
-//     Route::resource('masyarakat', 'MasyarakatController');
+//     Route::resource('/responden', RespondenController::class);
+//     Route::resource('/tenant', TenantController::class);
+//     Route::resource('/pertanyaan', PertanyaanController::class);
 
-//     // Pengaduan
-//     Route::get('pengaduan', 'PengaduanController@index');
-//     Route::get('pengaduan_p/{id}', 'PengaduanController@proses')->name('pengaduan.proses');
-//     Route::get('pengaduan_s/{id}', 'PengaduanController@selesai')->name('pengaduan.selesai');
-//     Route::get('pengaduan_t/{id}', 'PengaduanController@tanggapan')->name('pengaduan.tanggapan');
-
-//     // Tanggapan
-//     Route::post('tambahtanggapan', 'TanggapanController@tambah');
-//     Route::get('tanggapan', 'TanggapanController@index');
-//     Route::get('tanggapan/{id}', 'TanggapanController@edit')->name('tanggapan.edit');
-//     Route::patch('tanggapans/{id}', 'TanggapanController@update')->name('tanggapan.update');
-//     Route::delete('tanggapand/{id}', 'TanggapanController@destroy')->name('tanggapan.destroy');
-
-//     //Laporan
-//     Route::view('laporan', 'admin/laporan.index');
-//     Route::get('rekap_laporan', 'LaporanController@rekap');
+//     Route::get('/penilaian', function () {
+//         return view('admin/penilaian/index');
+//     });
 // });

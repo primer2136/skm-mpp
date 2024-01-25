@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\admin;
 use App\User;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 
@@ -30,6 +31,7 @@ class LoginController extends Controller
                 ];
 
                 if (array_key_exists($user->role, $roleRedirects)) {
+                    // dd($user);
                     return redirect()->intended($roleRedirects[$user->role]);
                 } else {
                     return redirect('/login')->with('message', 'Role tidak valid');
@@ -40,11 +42,13 @@ class LoginController extends Controller
         }
     }
 
-    public function logout()
+    public function logout(Request $request): RedirectResponse
     {
-        if (Auth::guard('admin')->check()) {
-            Auth::guard('admin')->logout();
-        }
+        Auth::logout();
+
+        $request->session()->invalidate();
+        $request->session()->regenerateToken();
+
         return redirect('/login');
     }
 }
