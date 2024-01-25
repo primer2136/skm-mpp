@@ -106,7 +106,7 @@
                             </div>
                             <div class="kotak">
                                 <h2>Total Responden</h2>
-                                <p>500</p>
+                                <p>{{ $totalResponden }}</p>
                             </div>
                             <div class="kotak">
                                 <h2>Kualitas Pelayanan</h2>
@@ -175,10 +175,10 @@
             var doughnutChartEdu = new Chart(ctxDoughnutEdu, {
                 type: 'doughnut',
                 data: {
-                    labels: ['SD', 'SMP', 'SMA', 'S1', 'S2', 'S3'],
+                    labels: {!! json_encode($layananData['chartData']['eduData']->pluck('riwayat_pendidikan')) !!},
                     datasets: [{
                         label: 'Jumlah Responden',
-                        data: [20, 30, 25, 40, 15, 10],
+                        data: {!! json_encode($layananData['chartData']['eduData']->pluck('total')) !!},
                         backgroundColor: [
                             'rgba(255, 99, 132, 0.2)',
                             'rgba(54, 162, 235, 0.2)',
@@ -186,6 +186,8 @@
                             'rgba(75, 192, 192, 0.2)',
                             'rgba(153, 102, 255, 0.2)',
                             'rgba(255, 159, 64, 0.2)',
+                            'rgba(255, 0, 0, 0.2)',
+                            'rgba(0, 128, 0, 0.2)',
                         ],
                         borderColor: [
                             'rgba(255, 99, 132, 1)',
@@ -194,6 +196,8 @@
                             'rgba(75, 192, 192, 1)',
                             'rgba(153, 102, 255, 1)',
                             'rgba(255, 159, 64, 1)',
+                            'rgba(255, 0, 0, 1)',
+                            'rgba(0, 128, 0, 1)',
                         ],
                         borderWidth: 1
                     }]
@@ -205,23 +209,25 @@
             var doughnutChartJob = new Chart(ctxDoughnutJob, {
                 type: 'doughnut',
                 data: {
-                    labels: ['PNS', 'Swasta', 'Wiraswasta', 'Mahasiswa', 'Lainnya'],
+                    labels: {!! json_encode($layananData['chartData']['jobData']->pluck('pekerjaan')) !!},
                     datasets: [{
                         label: 'Jumlah Responden',
-                        data: [30, 25, 15, 20, 10],
+                        data: {!! json_encode($layananData['chartData']['jobData']->pluck('total')) !!},
                         backgroundColor: [
                             'rgba(255, 99, 132, 0.2)',
                             'rgba(54, 162, 235, 0.2)',
                             'rgba(255, 206, 86, 0.2)',
                             'rgba(75, 192, 192, 0.2)',
-                            'rgba(153, 102, 255, 0.2)'
+                            'rgba(153, 102, 255, 0.2)',
+                            'rgba(255, 0, 0, 0.2)',
                         ],
                         borderColor: [
                             'rgba(255, 99, 132, 1)',
                             'rgba(54, 162, 235, 1)',
                             'rgba(255, 206, 86, 1)',
                             'rgba(75, 192, 192, 1)',
-                            'rgba(153, 102, 255, 1)'
+                            'rgba(153, 102, 255, 1)',
+                            'rgba(255, 0, 0, 1)',
                         ],
                         borderWidth: 1
                     }]
@@ -231,13 +237,13 @@
 
         <!-- Option 2: Separate Popper and Bootstrap JS -->
         <!--
-                <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"
-                    integrity="sha384-q2kxQ16AaE6UbzuKqyBE9/u/KzioAlnx2maXQHiDX9d4/zp8Ok3f+M7DPm+Ib6IU" crossorigin="anonymous">
-                </script>
-                <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.min.js"
-                    integrity="sha384-pQQkAEnwaBkjpqZ8RU1fF1AKtTcHJwFl3pblpTlHXybJjHpMYo79HY3hIi4NKxyj" crossorigin="anonymous">
-                </script>
-                -->
+                    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"
+                        integrity="sha384-q2kxQ16AaE6UbzuKqyBE9/u/KzioAlnx2maXQHiDX9d4/zp8Ok3f+M7DPm+Ib6IU" crossorigin="anonymous">
+                    </script>
+                    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.min.js"
+                        integrity="sha384-pQQkAEnwaBkjpqZ8RU1fF1AKtTcHJwFl3pblpTlHXybJjHpMYo79HY3hIi4NKxyj" crossorigin="anonymous">
+                    </script>
+                    -->
     </body>
 
     </html>

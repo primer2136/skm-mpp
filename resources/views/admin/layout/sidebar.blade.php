@@ -18,6 +18,7 @@
             <li class="@yield('responden')"><a class="nav-link" href="/responden"><i class="fas fa-user"></i> <span>Responden</span></a></li>
             <li class="@yield('tenant')"><a class="nav-link" href="/tenant"><i class="fas fa-user"></i> <span>Tenant</span></a></li>
             <li class="@yield('pertanyaan')"><a class="nav-link" href="/pertanyaan"><i class="fas fa-user"></i> <span>Pertanyaan</span></a></li>
+            <li class="@yield('publish')"><a class="nav-link" href="/publish"><i class="fas fa-user"></i> <span>Publish</span></a></li>
 
             {{-- @endif --}}
 

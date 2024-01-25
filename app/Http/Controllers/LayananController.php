@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
 use App\Models\Tenant;
 use App\Models\Responden;
+use App\Models\Pertanyaan;
 
 class LayananController extends Controller
 {
@@ -17,20 +19,25 @@ class LayananController extends Controller
         if (!$layanan) {
             abort(404);
         }
-
         // Jika Layanan ditemukan, lemparkan data ke view
         $layananData = [
             'nomor' => $id_tenant,
             'judul' => $this->getJudulByNomor($id_tenant),
             'info' => $this->getInfoByNomor($id_tenant),
+            'chartData' => $this->getDataForCharts($id_tenant),
         ];
 
-        return view('masyarakat.layanan', compact('layananData'));
+        $totalResponden = Responden::whereHas('tenant', function ($query) use ($id_tenant) {
+            $query->where('id_tenant', $id_tenant);
+        })->count();
+
+        return view('masyarakat.layanan', compact('layananData', 'totalResponden'));
     }
 
     public function showSurveyForm($id_tenant)
     {
         $layanan = Tenant::where('id_tenant', $id_tenant)->first();
+        $pertanyaans = Pertanyaan::orderBy('id_pertanyaan')->get();
 
         // Jika Layanan tidak ditemukan, arahkan ke halaman 404
         if (!$layanan) {
@@ -41,7 +48,26 @@ class LayananController extends Controller
             'nomor' => $id_tenant,
         ];
 
-        return view('masyarakat.survey', compact('layananData'));
+        return view('masyarakat.survey', compact('layananData', 'pertanyaans'));
+    }
+
+    public function getDataForCharts($id_tenant)
+    {
+        // Ambil data jumlah responden berdasarkan riwayat pendidikan
+        $eduData = DB::table('respondens')
+            ->select('riwayat_pendidikan', DB::raw('count(*) as total'))
+            ->where('id_tenant', $id_tenant)
+            ->groupBy('riwayat_pendidikan')
+            ->get();
+
+        // Ambil data jumlah responden berdasarkan pekerjaan
+        $jobData = DB::table('respondens')
+            ->select('pekerjaan', DB::raw('count(*) as total'))
+            ->where('id_tenant', $id_tenant)
+            ->groupBy('pekerjaan')
+            ->get();
+
+        return compact('eduData', 'jobData');
     }
 
     public function submitSurvey($id_tenant)
@@ -83,11 +109,8 @@ class LayananController extends Controller
 
         // dd($responden);
 
-        return redirect('/')->with('success', 'Survey berhasil disubmit!');
+        return redirect('/');
     }
-
-
-
 
     private function getJudulByNomor($id_tenant)
     {

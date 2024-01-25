@@ -1,9 +1,3 @@
-<?php
-use App\Models\Pertanyaan;
-
-$pertanyaans = Pertanyaan::orderBy('id_pertanyaan')->get();
-?>
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -110,14 +104,6 @@ $pertanyaans = Pertanyaan::orderBy('id_pertanyaan')->get();
                 <button class="btn-next" type="button" onclick="submitSurvey()">Kirim Survey</button>
             </div>
         </form>
-
-    </div>
-
-    <!-- Bagian HTML untuk tampilan terima kasih -->
-    <div class="question" id="terima_kasih" style="display: none; text-align: center;">
-        <h2>Terima Kasih!</h2>
-        <p>Terima kasih telah mengisi survei.</p>
-        <p id="countdown">Kembali ke halaman awal dalam <span id="timer">3</span> detik.</p>
     </div>
 
     <!-- SWEETALERT -->
@@ -179,7 +165,7 @@ $pertanyaans = Pertanyaan::orderBy('id_pertanyaan')->get();
             if (validateForm()) {
                 document.getElementById('formSurvey').style.display = 'none';
                 document.getElementById('formPertanyaan').style.display = 'block';
-                document.getElementById('question_1').style.display = 'block'; 
+                document.getElementById('question_1').style.display = 'block';
             }
         }
 
@@ -240,34 +226,19 @@ $pertanyaans = Pertanyaan::orderBy('id_pertanyaan')->get();
         }
 
         function submitSurvey() {
-            document.getElementById("formSurvey").submit();
+            var formSurvey = document.getElementById("formSurvey");
+            // var formPertanyaan = document.getElementById("formPertanyaan");
 
-            // Menampilkan tanda terima kasih
-            document.getElementById('kritik_saran').style.display = 'none';
-            document.getElementById('terima_kasih').style.display = 'block';
-            document.getElementById('formPertanyaan').style.display = 'none';
-            document.getElementById('formSurvey').style.display = 'none';
-            document.querySelector('.container').style.display = 'none';
-
-            var closing = document.getElementById('terima_kasih');
-            closing.style.position = 'absolute';
-            closing.style.top = '50%';
-            closing.style.left = '50%';
-            closing.style.transform = 'translate(-50%, -50%)';
-
-            // Pengaturan hitungan mundur
-            var seconds = 3; // Hitungan mundur dalam detik
-            var countdown = document.getElementById('timer');
-
-            var timer = setInterval(function() {
-                seconds--;
-                countdown.textContent = seconds;
-
-                if (seconds <= 0) {
-                    clearInterval(timer);
-                    window.location.href = "/";
-                }
-            }, 1000);
+            Swal.fire({
+                icon: 'success',
+                title: 'Survei Berhasil Dikirim',
+                text: 'Terima kasih telah mengisi survei.',
+                timer: 3000, // Menunggu 3 detik
+                timerProgressBar: true,
+                showConfirmButton: false
+            }).then(() => {
+                formSurvey.submit();
+            });
         }
 
         function goback() {
