@@ -52,7 +52,7 @@
                 </div>
                 <div class="kotak">
                     <h2>Total Responden</h2>
-                    <p>500</p>
+                    <p>{{ $totalRespondenSemuaTenant }}</p>
                 </div>
                 <div class="kotak">
                     <h2>Kualitas Pelayanan</h2>
