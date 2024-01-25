@@ -10,7 +10,7 @@
 @section('konten')
 {{-- @if ($penilaian != '' | $terkirim != '' | $proses != '' | $selesai != '') --}}
 <div class="row">
-  <div class="col-lg-3 col-md-6 col-sm-6 col-12">
+  <div class="col-lg-4 col-md-6 col-sm-6 col-12">
     <div class="card card-statistic-1">
       <div class="card-icon bg-primary d-flex justify-content-center align-items-center">
         <i class="fas fa-box"></i>
@@ -42,7 +42,7 @@
       </div>
     </div>
   </div> --}}
-  <div class="col-lg-3 col-md-6 col-sm-6 col-12">
+  <div class="col-lg-4 col-md-6 col-sm-6 col-12">
     <div class="card card-statistic-1">
       <div class="card-icon bg-warning d-flex justify-content-center align-items-center">
         <i class="fas fa-box-open"></i>
@@ -58,7 +58,7 @@
       </div>
     </div>
   </div>
-  <div class="col-lg-3 col-md-6 col-sm-6 col-12">
+  <div class="col-lg-4 col-md-6 col-sm-6 col-12">
     <div class="card card-statistic-1">
       <div class="card-icon bg-danger d-flex justify-content-center align-items-center">
         <i class="fas fa-users"></i>

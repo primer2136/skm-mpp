@@ -38,9 +38,9 @@ Route::get('layanan/{id_tenant}/survey', [LayananController::class, 'showSurveyF
 Route::post('layanan/{id_tenant}/survey', [LayananController::class, 'submitSurvey']);
 
 Route::middleware(['guest'])->group(function () {
-    Route::get('login', [LoginController::class, 'getLogin'])->name('login');;
+    Route::get('login', [LoginController::class, 'getLogin'])->name('login');
     Route::post('login', [LoginController::class, 'postLogin']);
-});
+})->middleware('guest');
 
 Route::get('/home', function () {
     return redirect('/');
@@ -66,11 +66,33 @@ Route::resource('/tenant', TenantController::class);
 
 Route::resource('/pertanyaan', PertanyaanController::class);
 
-
-
 Route::get('/penilaian', function () {
     return view('admin/penilaian/index');
 });
+
+// Route::middleware(['checkRole:super admin'])->group(function () {
+//     Route::get('/dashboard', function () {
+//         return view('admin/dashboard/index');
+//     });
+
+//     Route::resource('/responden', RespondenController::class);
+// });
+
+// Route::middleware(['checkRole:admin tenant 1'])->group(function () {
+//     Route::get('/dashboard', function () {
+//         return view('admin/dashboard/index');
+//     });
+
+//     Route::resource('/responden', RespondenController::class);
+// });
+
+// Route::middleware(['checkRole:admin tenant 2'])->group(function () {
+//     Route::get('/dashboard', function () {
+//         return view('admin/dashboard/index');
+//     });
+
+//     Route::resource('/responden', RespondenController::class);
+// });
 
 // Route::group(['middleware' => 'auth:admin'], function () {
 //     Route::get('dashboard', 'DashboardController@index');

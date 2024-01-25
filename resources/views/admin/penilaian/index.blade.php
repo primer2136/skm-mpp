@@ -3,7 +3,7 @@
 @section('title', 'Penilaian')
 @section('title2', 'index')
 @section('penilaian', 'active')
-<title>Entry Penilaian</title>
+<title>Entri Penilaian</title>
 
 <link rel="shortcut icon" href="https://mpp.cimahikota.go.id/img/favicon.png" type="image/x-icon">
 
