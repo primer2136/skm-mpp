@@ -19,22 +19,20 @@ class LoginController extends Controller
     {
         $credentials = ['username' => $request->username, 'password' => $request->password];
 
-        if (Auth::attempt($credentials)) {
-            if (Auth::guard('admin')->attempt($credentials)) {
-                $user = Auth::guard('admin')->user();
+        if (Auth::guard('admin')->attempt($credentials)) {
+            $user = Auth::guard('admin')->user();
 
-                $roleRedirects = [
-                    'super admin' => 'dashboard',
-                    'admin tenant 1' => 'responden',
-                    'admin tenant 2' => 'tenant',
-                ];
+            $roleRedirects = [
+                'super admin' => 'dashboard',
+                'admin tenant 1' => 'responden',
+                'admin tenant 2' => 'tenant',
+            ];
 
-                if (array_key_exists($user->role, $roleRedirects)) {
-                    return redirect()->intended($roleRedirects[$user->role]);
-                } else {
-                    return redirect('/login')->with('message', 'Role tidak valid');
-                }
-            } 
+            if (array_key_exists($user->role, $roleRedirects)) {
+                return redirect()->intended($roleRedirects[$user->role]);
+            } else {
+                return redirect('/login')->with('message', 'Role tidak valid');
+            }
         } else {
             return redirect('/login')->with('message', 'Username atau password salah');
         }

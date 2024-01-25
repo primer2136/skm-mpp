@@ -48,28 +48,46 @@ Route::get('/home', function () {
 
 Route::get('logout', [LoginController::class, 'logout']);
 
-Route::get('/dashboard', function () {
-    return view('admin/dashboard/index');
+// Route::get('/dashboard', function () {
+//     return view('admin/dashboard/index');
+// });
+
+// Route::get('/ds-admin', function () {
+//     return view('admin/ds-admin/index');
+// });
+// Route::resource('ds-admin', UserController::class);
+// Route::get('ds-admin/create', [UserController::class, 'create'])->name('admin.create');;
+// Route::get('ds-admin/store', [UserController::class, 'store'])->name('admin.store');;
+// Route::post('ds-admin/store', [UserController::class, 'store'])->name('admin.store');;
+
+// Route::resource('/responden', RespondenController::class);
+
+// Route::resource('/tenant', TenantController::class);
+
+// Route::resource('/pertanyaan', PertanyaanController::class);
+
+// Route::get('/penilaian', function () {
+//     return view('admin/penilaian/index');
+// });
+
+Route::middleware(['checkRole:super admin'])->group(function () {
+    Route::get('/dashboard', function () {
+        return view('admin/dashboard/index');
+    });
+
+    Route::resource('/responden', RespondenController::class);
 });
 
-Route::get('/ds-admin', function () {
-    return view('admin/ds-admin/index');
+Route::middleware(['checkRole:admin tenant 1'])->group(function () {
+    Route::get('/dashboard', 'DashboardController@index')->name('dashboard');
+
+    Route::resource('/responden', RespondenController::class);
 });
-Route::resource('ds-admin', UserController::class);
-Route::get('ds-admin/create', [UserController::class, 'create'])->name('admin.create');;
-Route::get('ds-admin/store', [UserController::class, 'store'])->name('admin.store');;
-Route::post('ds-admin/store', [UserController::class, 'store'])->name('admin.store');;
 
-Route::resource('/responden', RespondenController::class);
+Route::middleware(['checkRole:admin tenant 2'])->group(function () {
+    Route::get('/dashboard', 'DashboardController@index')->name('dashboard');
 
-Route::resource('/tenant', TenantController::class);
-
-Route::resource('/pertanyaan', PertanyaanController::class);
-
-
-
-Route::get('/penilaian', function () {
-    return view('admin/penilaian/index');
+    Route::resource('/responden', RespondenController::class);
 });
 
 // Route::group(['middleware' => 'auth:admin'], function () {
