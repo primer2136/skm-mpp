@@ -236,7 +236,7 @@
 
         function submitSurvey() {
             var formSurvey = document.getElementById("formSurvey");
-            var kritik = document.getElementById("kritik_saran");
+            var saran = document.getElementById("saran");
             // var formPertanyaan = document.getElementById("formPertanyaan");
 
             if (validateForm()) {
@@ -244,24 +244,26 @@
                     icon: 'success',
                     title: 'Survei Berhasil Dikirim',
                     text: 'Terima kasih telah mengisi survei.',
-                    timer: 3000, 
+                    timer: 3000,
                     timerProgressBar: true,
                     showConfirmButton: false
                 }).then(() => {
                     formSurvey.submit();
-                    kritik.reset();
                     formSurvey.reset();
+                    saran.value = '';
                 });
             } else {
                 Swal.fire({
                     icon: 'error',
                     title: 'Gagal Mengirim Survei',
                     text: 'Mohon lengkapi formulir dengan benar sebelum mengirim survei.',
-                    timer: 3000, 
+                    timer: 3000,
                     timerProgressBar: true,
                     showConfirmButton: false
                 }).then(() => {
-                    window.location.href = '/'; 
+                    saran.value = '';
+                    formSurvey.reset();
+                    window.location.href = '/';
                 });
             }
         }
