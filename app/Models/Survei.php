@@ -15,7 +15,6 @@ class Survei extends Model
 
     protected $fillable = [
         'id_responden',
-        'ratanilai'
     ];
 
     // Relasi dengan tabel Responden
