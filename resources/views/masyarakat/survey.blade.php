@@ -73,7 +73,9 @@
         </form>
 
         <form id="formPertanyaan" style="display: none;">
-            <h2 id="judul">PERTANYAAN</h2>
+            <h2 id="judul" style="display: flex; justify-content: space-between; position: relative;">PERTANYAAN
+                <p id="hitung" style="text-align: right; margin: 0; font-size: 14px; position: absolute; bottom: 0; right: 0;">1 dari <?php echo count($pertanyaans); ?></p>
+            </h2>
             <div id="garis" class="garis-horizontal"></div>
             <?php foreach ($pertanyaans as $index => $pertanyaan): ?>
             <div class="question" id="question_<?php echo $index + 1; ?>" style="display: none;">
@@ -178,13 +180,22 @@
             }
         }
 
+        var nomorPertanyaanAktif = 1;
+
+        function updateNomorPertanyaan() {
+            var judulPertanyaan = document.getElementById('hitung');
+            judulPertanyaan.textContent = nomorPertanyaanAktif + " dari <?php echo count($pertanyaans); ?>";
+        }
+
         function tampilkanPertanyaanSelanjutnya(currentQuestionId, nextQuestionId) {
             var currentQuestion = document.getElementById(currentQuestionId);
             var nextQuestion = document.getElementById(nextQuestionId);
 
             if (currentQuestion && nextQuestion) {
                 if (validatePilihan(currentQuestion)) {
-                    currentQuestion.style.display = 'none'; // Sembunyikan pertanyaan saat ini
+                    currentQuestion.style.display = 'none';
+                    nomorPertanyaanAktif++;
+                    updateNomorPertanyaan();
                     if (nextQuestionId === 'kritik_saran') {
                         tampilkanPertanyaanTerakhir();
                     } else {
@@ -231,6 +242,8 @@
             if (currentQuestion && previousQuestion) {
                 currentQuestion.style.display = 'none';
                 previousQuestion.style.display = 'block';
+                nomorPertanyaanAktif--;
+                updateNomorPertanyaan();
             }
         }
 

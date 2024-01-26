@@ -8,6 +8,7 @@ use App\Http\Controllers\TenantController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\PertanyaanController;
+use App\Http\Controllers\PublishController;
 
 /*
 |--------------------------------------------------------------------------
@@ -66,9 +67,11 @@ Route::resource('/tenant', TenantController::class);
 
 Route::resource('/pertanyaan', PertanyaanController::class);
 
-Route::get('/publish', function () {
-    return view('admin/publish/index');
-});
+Route::resource('/publish', PublishController::class);
+
+// Route::get('/publish', function () {
+//     return view('admin/publish/index');
+// });
 
 // Route::middleware(['checkRole:super admin'])->group(function () {
 //     Route::get('/dashboard', function () {

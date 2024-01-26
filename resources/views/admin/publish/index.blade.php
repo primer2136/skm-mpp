@@ -26,7 +26,7 @@
                             </div>
                         @endif
                         {{-- Button tambah --}}
-                        {{-- <a href="{{ route('publish.create') }}" class="btn btn-violet mb-4"><i class="fas fa-plus text-light"></i></a> --}}
+                        <a href="{{ route('publish.create') }}" class="btn btn-violet mb-4"><i class="fas fa-plus text-light"></i></a>
 
                         {{-- Form search --}}
                         <div class="float-right">
@@ -59,23 +59,21 @@
                                 @php
                                     $no = 1;
                                 @endphp
-                                {{-- @foreach ($data as $item)
+                                @foreach ($surveis as $survei) 
                                 <tr>
                                     <td>{{ $no++ }}</td>
-                                    <td>{{ $item->nik }}</td>
-                                    <td>{{ $item->nama }}</td>
-                                    <td>{{ $item->tanggal_publish }}</td>
-                                    <td>{{ $item->status }}</td>
-                                    <td>
-                                        @if ($item->status == 'terkirim')
-                                            <a href="{{ route('publish.proses',$item->id_publish )}}" class="btn btn-primary"><i class="fas fa-keyboard"></i> Diproses</a>
-                                        @elseif($item->status == 'proses')
-                                            <a href="{{ route('publish.selesai',$item->id_publish )}}" class="btn btn-success"><i class="fas fa-check"></i> Selesaikan</a>
+                                    <td>{{ $survei->responden->nama_responden }}</td>
+                                    <td>{{ $survei->ratanilai }}</td>
+                                    {{-- <td>
+                                        @if ($survei->status == 'terkirim')
+                                            <a href="{{ route('publish.proses',$survei->id_publish )}}" class="btn btn-primary"><i class="fas fa-keyboard"></i> Diproses</a>
+                                        @elseif($survei->status == 'proses')
+                                            <a href="{{ route('publish.selesai',$survei->id_publish )}}" class="btn btn-success"><i class="fas fa-check"></i> Selesaikan</a>
                                         @else
                                             
                                         @endif
-                                        <a href="{{ route('publish.tanggapan',$item->id_publish) }}" class="btn btn-warning"><i class="far fa-comment-dots"></i> Tanggapi</a>
-                                    </td>
+                                        <a href="{{ route('publish.tanggapan',$survei->id_publish) }}" class="btn btn-warning"><i class="far fa-comment-dots"></i> Tanggapi</a>
+                                    </td> --}}
                                 </tr>
                                 @push('page-scripts')
                                 <script src="{{ asset('node_modules/sweetalert/dist/sweetalert.min.js')}}"></script>
@@ -85,7 +83,7 @@
                                 @push('after-scripts')
 
                                 <script>
-                                $(".confirm_script-{{$item->id_publish}}").click(function(e) {
+                                $(".confirm_script-{{$survei->id_publish}}").click(function(e) {
                                 // id = e.target.dataset.id;
                                 swal({
                                     title: 'Yakin hapus data?',
@@ -96,7 +94,7 @@
                                     })
                                     .then((willDelete) => {
                                     if (willDelete) {
-                                        $('.delete_form-{{$item->id_publish}}').submit();
+                                        $('.delete_form-{{$survei->id_publish}}').submit();
                                     } else {
                                     swal('Hapus data telah di batalkan');
                                     }
@@ -104,10 +102,10 @@
                                 });
                                 </script>
                                 @endpush
-                            @endforeach --}}
+                            @endforeach
                             </tbody>
                         </table>
-                        {{-- {{ $data->links() }} --}}
+                        {{-- {{ $survei->links() }} --}}
                     </div>
                 </div>
             </div>

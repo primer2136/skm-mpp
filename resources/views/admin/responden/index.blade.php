@@ -51,7 +51,6 @@
                             <thead>
                                 <tr>
                                     <th>No.</th>
-                                    {{-- <th>Nama Tenant</th> --}}
                                     <th>Nama</th>
                                     <th>Tahun Lahir</th>
                                     <th>Jenis Kelamin</th>
@@ -68,7 +67,6 @@
                                 @foreach ($respondens as $responden)
                                     <tr>
                                         <td>{{ $no++ }}</td>
-                                        {{-- <td>{{ $responden->tenant->nama_tenant }}</td> --}}
                                         <td>{{ $responden->nama_responden }}</td>
                                         <td>{{ $responden->tahun_lahir }}</td>
                                         <td>{{ $responden->jenis_kelamin }}</td>
