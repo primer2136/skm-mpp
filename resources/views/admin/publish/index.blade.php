@@ -1,9 +1,9 @@
 @extends('admin/layout.master')
 
-@section('title', 'Penilaian')
+@section('title', 'Publish')
 @section('title2', 'index')
-@section('penilaian', 'active')
-<title>Entri Penilaian</title>
+@section('publish', 'active')
+<title>Publish</title>
 
 <link rel="shortcut icon" href="https://mpp.cimahikota.go.id/img/favicon.png" type="image/x-icon">
 
@@ -26,17 +26,17 @@
                             </div>
                         @endif
                         {{-- Button tambah --}}
-                        {{-- <a href="{{ route('penilaian.create') }}" class="btn btn-violet mb-4"><i class="fas fa-plus text-light"></i></a> --}}
+                        {{-- <a href="{{ route('publish.create') }}" class="btn btn-violet mb-4"><i class="fas fa-plus text-light"></i></a> --}}
 
                         {{-- Form search --}}
                         <div class="float-right">
                             <form action="?" method="GET">
                                 <div class="input-group mb-3">
-                                    <input name="keyword" id="caripenilaian" type="text" class="form-control"
+                                    <input name="keyword" id="caripublish" type="text" class="form-control"
                                         placeholder="Cari..." aria-label="Cari" aria-describedby="button-addon2"
                                         value="{{ Request()->keyword }}" autocomplete="off">
                                     <div class="input-group-append">
-                                        <button id="btncaripenilaian" class="btn btn-outline-warning bg-warning" type="submit"
+                                        <button id="btncaripublish" class="btn btn-outline-warning bg-warning" type="submit"
                                             id="button-addon2"><i class="fas fa-search text-light"></i></button>
                                     </div>
                                 </div>
@@ -50,9 +50,8 @@
                             <thead>
                                 <tr>
                                     <th>No.</th>
-                                    <th>Nama</th>
-                                    <th>Tanggal Penilaian</th>
-                                    <th>Status</th>
+                                    <th>Nama Responden</th>
+                                    <th>Nilai Rata-Rata</th>
                                     <th>Aksi</th>
                                 </tr>
                             </thead>
@@ -65,17 +64,17 @@
                                     <td>{{ $no++ }}</td>
                                     <td>{{ $item->nik }}</td>
                                     <td>{{ $item->nama }}</td>
-                                    <td>{{ $item->tanggal_penilaian }}</td>
+                                    <td>{{ $item->tanggal_publish }}</td>
                                     <td>{{ $item->status }}</td>
                                     <td>
                                         @if ($item->status == 'terkirim')
-                                            <a href="{{ route('penilaian.proses',$item->id_penilaian )}}" class="btn btn-primary"><i class="fas fa-keyboard"></i> Diproses</a>
+                                            <a href="{{ route('publish.proses',$item->id_publish )}}" class="btn btn-primary"><i class="fas fa-keyboard"></i> Diproses</a>
                                         @elseif($item->status == 'proses')
-                                            <a href="{{ route('penilaian.selesai',$item->id_penilaian )}}" class="btn btn-success"><i class="fas fa-check"></i> Selesaikan</a>
+                                            <a href="{{ route('publish.selesai',$item->id_publish )}}" class="btn btn-success"><i class="fas fa-check"></i> Selesaikan</a>
                                         @else
                                             
                                         @endif
-                                        <a href="{{ route('penilaian.tanggapan',$item->id_penilaian) }}" class="btn btn-warning"><i class="far fa-comment-dots"></i> Tanggapi</a>
+                                        <a href="{{ route('publish.tanggapan',$item->id_publish) }}" class="btn btn-warning"><i class="far fa-comment-dots"></i> Tanggapi</a>
                                     </td>
                                 </tr>
                                 @push('page-scripts')
@@ -86,7 +85,7 @@
                                 @push('after-scripts')
 
                                 <script>
-                                $(".confirm_script-{{$item->id_penilaian}}").click(function(e) {
+                                $(".confirm_script-{{$item->id_publish}}").click(function(e) {
                                 // id = e.target.dataset.id;
                                 swal({
                                     title: 'Yakin hapus data?',
@@ -97,7 +96,7 @@
                                     })
                                     .then((willDelete) => {
                                     if (willDelete) {
-                                        $('.delete_form-{{$item->id_penilaian}}').submit();
+                                        $('.delete_form-{{$item->id_publish}}').submit();
                                     } else {
                                     swal('Hapus data telah di batalkan');
                                     }

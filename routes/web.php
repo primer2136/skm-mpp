@@ -66,8 +66,8 @@ Route::resource('/tenant', TenantController::class);
 
 Route::resource('/pertanyaan', PertanyaanController::class);
 
-Route::get('/penilaian', function () {
-    return view('admin/penilaian/index');
+Route::get('/publish', function () {
+    return view('admin/publish/index');
 });
 
 // Route::middleware(['checkRole:super admin'])->group(function () {
