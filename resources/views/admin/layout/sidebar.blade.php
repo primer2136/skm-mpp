@@ -32,6 +32,7 @@
                 <li class="@yield('responden')"><a class="nav-link" href="/responden"><i class="fas fa-user"></i> <span>Responden</span></a></li>
             @endif --}}
 
+
             {{-- Penilaian --}}
             <li class="menu-header">Penilaian</li>
             <li class="@yield('publish')"><a class="nav-link" href="/publish"><i class="fas fa-database"></i> <span>Publish</span></a></li>
