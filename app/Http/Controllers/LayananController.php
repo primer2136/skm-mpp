@@ -48,7 +48,9 @@ class LayananController extends Controller
             'nomor' => $id_tenant,
         ];
 
-        return view('masyarakat.survey', compact('layananData', 'pertanyaans'));
+        $totalPertanyaan = count($pertanyaans);
+
+        return view('masyarakat.survey', compact('layananData', 'pertanyaans', 'totalPertanyaan'));
     }
 
     public function getDataForCharts($id_tenant)

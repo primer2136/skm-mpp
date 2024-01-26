@@ -9,13 +9,16 @@ class Survei extends Model
 {
     use HasFactory;
 
+    protected $table = 'surveis';
     protected $primaryKey = 'id_survei';
+    public $timestamps = true;
 
     protected $fillable = [
         'id_responden',
-        'ratanilai',
+        'ratanilai'
     ];
 
+    // Relasi dengan tabel Responden
     public function responden()
     {
         return $this->belongsTo(Responden::class, 'id_responden', 'id_responden');
