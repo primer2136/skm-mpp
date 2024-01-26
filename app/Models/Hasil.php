@@ -17,7 +17,6 @@ class Hasil extends Model
         'id_survei',
         'id_pertanyaan',
         'bobot',
-        'ratanilai'
     ];
 
     // Relasi dengan tabel Survei

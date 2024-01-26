@@ -3,7 +3,7 @@
 @section('title', 'Publish')
 @section('title2', 'index')
 @section('publish', 'active')
-<title>Publish</title>
+<title>Detail Jawaban</title>
 
 <link rel="shortcut icon" href="https://mpp.cimahikota.go.id/img/favicon.png" type="image/x-icon">
 
@@ -51,35 +51,20 @@
                         <table class="table">
                             <thead>
                                 <tr>
-                                    <th>No.</th>
-                                    <th>Nama Responden</th>
-                                    <th>Nilai Rata-Rata</th>
-                                    <th>Aksi</th>
+                                    <th>Kode</th>
+                                    <th>Pertanyaan</th>
+                                    <th>Bobot jawaban</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 @php
                                     $no = 1;
                                 @endphp
-                                @foreach ($surveis as $survei)
+                                @foreach ($hasils as $jawaban)
                                     <tr>
-                                        <td>{{ $no++ }}</td>
-                                        <td>{{ $survei->responden->nama_responden }}</td>
-                                        <td>{{ $survei->ratanilai }}</td>
-                                        <td>
-                                            <a href="{{ route('publish.view', $survei->id_survei) }}"
-                                                class="btn btn-warning p-0" style="vertical-align: baseline">
-                                                <button class="btn btn-warning m-0"><i class="fas fa-eye"></i></button>
-                                            </a>
-                                            {{-- @if ($survei->status == 'terkirim')
-                                            <a href="{{ route('publish.proses',$survei->id_publish )}}" class="btn btn-primary"><i class="fas fa-keyboard"></i> Diproses</a>
-                                        @elseif($survei->status == 'proses')
-                                            <a href="{{ route('publish.selesai',$survei->id_publish )}}" class="btn btn-success"><i class="fas fa-check"></i> Selesaikan</a>
-                                        @else
-                                            
-                                        @endif
-                                        <a href="{{ route('publish.tanggapan',$survei->id_publish) }}" class="btn btn-warning"><i class="far fa-comment-dots"></i> Tanggapi</a> --}}
-                                        </td>
+                                        <td>{{ $jawaban->pertanyaan->id_pertanyaan }}</td>
+                                        <td>{{ $jawaban->pertanyaan->pertanyaan }}</td>
+                                        <td>{{ $jawaban->pertanyaan->bobot1}}</td>
                                     </tr>
                                     @push('page-scripts')
                                         <script src="{{ asset('node_modules/sweetalert/dist/sweetalert.min.js') }}"></script>
@@ -87,7 +72,7 @@
 
                                     @push('after-scripts')
                                         <script>
-                                            $(".confirm_script-{{ $survei->id_publish }}").click(function(e) {
+                                            $(".confirm_script-{{ $jawaban->id_jawaban }}").click(function(e) {
                                                 // id = e.target.dataset.id;
                                                 swal({
                                                         title: 'Yakin hapus data?',
@@ -98,7 +83,7 @@
                                                     })
                                                     .then((willDelete) => {
                                                         if (willDelete) {
-                                                            $('.delete_form-{{ $survei->id_publish }}').submit();
+                                                            $('.delete_form-{{ $jawaban->id_jawaban }}').submit();
                                                         } else {
                                                             swal('Hapus data telah di batalkan');
                                                         }
