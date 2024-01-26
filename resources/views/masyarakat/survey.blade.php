@@ -273,7 +273,7 @@
             var formPertanyaan = document.getElementById('formPertanyaan');
 
             if (formSurvey.style.display === 'none') {
-                // Jika sedang menampilkan pertanyaan, kembali ke formulir survei
+                
                 formSurvey.style.display = 'block';
                 formPertanyaan.style.display = 'none';
             } else {
