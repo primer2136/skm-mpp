@@ -28,15 +28,7 @@
                                     | {{ $message }}
                                 @enderror
                             </label>
-                            <select name="id_tenant" class="form-control" autocomplete="off">
-                                <option disabled>-- Pilih Tenant --</option>
-                                @foreach ($tenants as $tenant)
-                                    <option value="{{ $tenant->id_tenant }}"
-                                        {{ $tenant->id_tenant == $respondens->id_tenant ? 'selected' : '' }}>
-                                        {{ $tenant->nama_tenant }}
-                                    </option>
-                                @endforeach
-                            </select>
+                            <input type="text" class="form-control" value="{{ $respondens->tenant->nama_tenant }}" disabled>
                         </div>
                     </div>
 
