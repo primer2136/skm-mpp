@@ -10,7 +10,7 @@
 @section('konten')
 {{-- @if ($penilaian != '' | $terkirim != '' | $proses != '' | $selesai != '') --}}
 <div class="row">
-  <div class="col-lg-4 col-md-6 col-sm-6 col-12">
+  <div class="col-lg-6 col-md-6 col-sm-6 col-12">
     <div class="card card-statistic-1">
       <div class="card-icon bg-primary d-flex justify-content-center align-items-center">
         <i class="fas fa-box"></i>
@@ -18,10 +18,9 @@
       <div class="card-wrap">
         <div class="card-header">
           <h4>Total Penilaian</h4>
-          <h3>13</h3>
+          <h3>{{ $totalRespondenSemuaTenant }}</h3>
         </div>
         <div class="card-body">
-          {{-- {{ $penilaian }} --}}
         </div>
       </div>
     </div>
@@ -42,7 +41,7 @@
       </div>
     </div>
   </div> --}}
-  <div class="col-lg-4 col-md-6 col-sm-6 col-12">
+  {{-- <div class="col-lg-4 col-md-6 col-sm-6 col-12">
     <div class="card card-statistic-1">
       <div class="card-icon bg-warning d-flex justify-content-center align-items-center">
         <i class="fas fa-box-open"></i>
@@ -53,12 +52,12 @@
           <h3>6</h3>
         </div>
         <div class="card-body">
-          {{-- {{ $proses }} --}}
+          {{ $proses }}
         </div>
       </div>
     </div>
-  </div>
-  <div class="col-lg-4 col-md-6 col-sm-6 col-12">
+  </div> --}}
+  <div class="col-lg-6 col-md-6 col-sm-6 col-12">
     <div class="card card-statistic-1">
       <div class="card-icon bg-danger d-flex justify-content-center align-items-center">
         <i class="fas fa-users"></i>
