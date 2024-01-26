@@ -149,6 +149,15 @@
                 return false;
             }
 
+            if (inputNomorAntrian.length > 10) {
+                Swal.fire(
+                    "Error",
+                    "Nomor antrian tidak valid",
+                    "warning"
+                );
+                return false;
+            }
+
             if (inputPendidikan === "") {
                 Swal.fire("Peringatan", "Riwayat pendidikan harus dipilih", "warning");
                 return false;
@@ -227,18 +236,34 @@
 
         function submitSurvey() {
             var formSurvey = document.getElementById("formSurvey");
+            var kritik = document.getElementById("kritik_saran");
             // var formPertanyaan = document.getElementById("formPertanyaan");
 
-            Swal.fire({
-                icon: 'success',
-                title: 'Survei Berhasil Dikirim',
-                text: 'Terima kasih telah mengisi survei.',
-                timer: 3000, // Menunggu 3 detik
-                timerProgressBar: true,
-                showConfirmButton: false
-            }).then(() => {
-                formSurvey.submit();
-            });
+            if (validateForm()) {
+                Swal.fire({
+                    icon: 'success',
+                    title: 'Survei Berhasil Dikirim',
+                    text: 'Terima kasih telah mengisi survei.',
+                    timer: 3000, 
+                    timerProgressBar: true,
+                    showConfirmButton: false
+                }).then(() => {
+                    formSurvey.submit();
+                    kritik.reset();
+                    formSurvey.reset();
+                });
+            } else {
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Gagal Mengirim Survei',
+                    text: 'Mohon lengkapi formulir dengan benar sebelum mengirim survei.',
+                    timer: 3000, 
+                    timerProgressBar: true,
+                    showConfirmButton: false
+                }).then(() => {
+                    window.location.href = '/'; 
+                });
+            }
         }
 
         function goback() {
