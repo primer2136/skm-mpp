@@ -11,9 +11,22 @@ class RespondenController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
-        $respondens = Responden::orderBy('id_responden')->get();
+        $keyword = $request->input('keyword');
+
+        $respondens = Responden::query();
+        if ($keyword) {
+            $respondens->where(function ($query) use ($keyword) {
+                $query->where('nama_responden', 'like', "%$keyword%")
+                    ->orWhere('tahun_lahir', 'like', "%$keyword%")
+                    ->orWhere('jenis_kelamin', 'like', "%$keyword%")
+                    ->orWhere('nomor_antrian', 'like', "%$keyword%")
+                    ->orWhere('riwayat_pendidikan', 'like', "%$keyword%")
+                    ->orWhere('pekerjaan', 'like', "%$keyword%");
+            });
+        }
+        $respondens = $respondens->orderBy('id_responden')->get();
 
         return view('admin.responden.index', compact('respondens'));
     }
@@ -52,7 +65,7 @@ class RespondenController extends Controller
     {
         $respondens = Responden::findOrFail($id_responden);
         $tenants = Tenant::all();
-        
+
 
         return view('admin.responden.edit', compact('respondens', 'tenants'));
     }

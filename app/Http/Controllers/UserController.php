@@ -36,14 +36,19 @@ class UserController extends Controller
      */
     public function index(Request $request)
     {
+        $keyword = $request->input('keyword');
+
         $data = DB::table('users')
-            ->where('nama_admin', 'like', "%{$request->keyword}%")
-            ->orWhere('username', 'like', "%{$request->keyword}%")
-            ->orWhere('password', 'like', "%{$request->keyword}%")
-            ->orWhere('telp', 'like', "%{$request->keyword}%")
-            ->orWhere('role', 'like', "%{$request->keyword}%")
+            ->where(function ($query) use ($keyword) {
+                $query->where('nama_admin', 'like', "%{$keyword}%")
+                    ->orWhere('username', 'like', "%{$keyword}%")
+                    ->orWhere('password', 'like', "%{$keyword}%")
+                    ->orWhere('telp', 'like', "%{$keyword}%")
+                    ->orWhere('role', 'like', "%{$keyword}%");
+            })
             ->paginate(5);
-        return view('admin/ds-admin.index', ['data' => $data]);
+
+        return view('admin/ds-admin.index', compact('data'));
     }
 
     /**
