@@ -24,7 +24,7 @@
                                 <div class="input-group mb-3">
                                     <input name="keyword" id="cariresponden" type="text" class="form-control"
                                         placeholder="Cari..." aria-label="Cari" aria-describedby="button-addon2"
-                                        value="{{ Request()->keyword }}" autocomplete="off">
+                                        value="{{ Request::get('keyword') }}" autocomplete="off">
                                     <div class="input-group-append">
                                         <button id="btncariresponden" class="btn btn-outline-warning bg-warning"
                                             type="submit" id="button-addon2"><i
@@ -89,6 +89,12 @@
                                 @endforeach
                             </tbody>
                         </table>
+                        <!-- Penanganan jika tidak ada data -->
+                        @if ($respondens->isEmpty())
+                            <div class="alert alert-danger mt-3">
+                                Data tidak ditemukan.
+                            </div>
+                        @endif
                     </div>
                 </div>
             </div>
