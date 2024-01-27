@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\Survei;
 use App\Models\Jawaban;
 use App\Models\Responden;
 
