@@ -25,4 +25,9 @@ class Responden extends Model
     {
         return $this->belongsTo(Tenant::class, 'id_tenant', 'id_tenant');
     }
+
+    public function survei()
+    {
+        return $this->hasMany(Survei::class, 'id_responden', 'id_responden');
+    }
 }

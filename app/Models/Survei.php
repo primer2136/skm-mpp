@@ -22,4 +22,9 @@ class Survei extends Model
     {
         return $this->belongsTo(Responden::class, 'id_responden', 'id_responden');
     }
+
+    public function pertanyaan()
+    {
+        return $this->hasMany(Pertanyaan::class, 'id_survei', 'id_survei');
+    }
 }
