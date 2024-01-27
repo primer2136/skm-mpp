@@ -80,13 +80,13 @@
                                             <a href="{{ route('ds-admin.edit', $item->id_admin) }}"
                                                 class="btn btn-warning p-0" style="vertical-align: baseline;">
                                                 {{-- <i class="fas fa-edit mb-2"></i> --}}
-                                                <button class="btn btn-warning m-0">Edit</button>
+                                                <button class="btn btn-warning m-0"><i class="fas fa-edit"></i></button>
                                             </a>
                                             <form action="{{ route('ds-admin.destroy', $item->id_admin) }}" method="POST"
                                                 class="btn btn-danger p-0 delete-tenant" style="vertical-align: baseline">
                                                 @csrf
                                                 @method('DELETE')
-                                                <button class="btn btn-danger m-0">Hapus</button>
+                                                <button class="btn btn-danger m-0"><i class="fas fa-trash-alt"></i></button>
                                             </form>
                                         </td>
                                     </tr>

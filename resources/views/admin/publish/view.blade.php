@@ -3,7 +3,7 @@
 @section('title', 'Publish')
 @section('title2', 'index')
 @section('publish', 'active')
-<title>Detail Jawaban</title>
+<title>Publish</title>
 
 <link rel="shortcut icon" href="https://mpp.cimahikota.go.id/img/favicon.png" type="image/x-icon">
 
@@ -12,6 +12,9 @@
         <div class="row">
             <div class="col-md-12">
                 <div class="card">
+                    <div class="card-header">
+                        <h4>Detail Jawaban</h4>
+                    </div>
                     <div class="card-body">
 
                         {{-- Alert --}}
@@ -25,25 +28,6 @@
                                 </div>
                             </div>
                         @endif
-                        {{-- Button tambah --}}
-                        <a href="{{ route('publish.create') }}" class="btn btn-violet mb-4"><i
-                                class="fas fa-plus text-light"></i></a>
-
-                        {{-- Form search --}}
-                        <div class="float-right">
-                            <form action="?" method="GET">
-                                <div class="input-group mb-3">
-                                    <input name="keyword" id="caripublish" type="text" class="form-control"
-                                        placeholder="Cari..." aria-label="Cari" aria-describedby="button-addon2"
-                                        value="{{ Request()->keyword }}" autocomplete="off">
-                                    <div class="input-group-append">
-                                        <button id="btncaripublish" class="btn btn-outline-warning bg-warning"
-                                            type="submit" id="button-addon2"><i
-                                                class="fas fa-search text-light"></i></button>
-                                    </div>
-                                </div>
-                            </form>
-                        </div>
 
 
 
@@ -53,18 +37,15 @@
                                 <tr>
                                     <th>Kode</th>
                                     <th>Pertanyaan</th>
-                                    <th>Bobot jawaban</th>
+                                    <th>Bobot</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                @php
-                                    $no = 1;
-                                @endphp
-                                @foreach ($hasils as $jawaban)
+                                @foreach ($jawabanSurvei as $jawaban)
                                     <tr>
                                         <td>{{ $jawaban->pertanyaan->id_pertanyaan }}</td>
                                         <td>{{ $jawaban->pertanyaan->pertanyaan }}</td>
-                                        <td>{{ $jawaban->pertanyaan->bobot1}}</td>
+                                        <td>{{ $jawaban->bobot }}</td>
                                     </tr>
                                     @push('page-scripts')
                                         <script src="{{ asset('node_modules/sweetalert/dist/sweetalert.min.js') }}"></script>
@@ -92,8 +73,17 @@
                                         </script>
                                     @endpush
                                 @endforeach
+                                {{-- Baris untuk rata-rata nilai --}}
+                                <tr>
+                                    <td colspan="2" style="text-align: center">Rata-rata Nilai</td>
+                                    <td>{{ number_format($rataRata, 2) }}</td>
+                                </tr>
+                            </tbody>
                             </tbody>
                         </table>
+                        <div class="mt-4">
+                            <a href="{{ route('publish.index') }}" class="btn btn-primary">Kembali</a>
+                        </div>
                         {{-- {{ $survei->links() }} --}}
                     </div>
                 </div>

@@ -74,13 +74,13 @@
                                         <td>
                                             <a href="{{ route('tenant.edit', $tenant->id_tenant) }}"
                                                 class="btn btn-warning p-0" style="vertical-align: baseline">
-                                                <button class="btn btn-warning m-0">Edit</button>
+                                                <button class="btn btn-warning m-0"><i class="fas fa-edit"></i></button>
                                             </a>
                                             <form action="{{ route('tenant.destroy', $tenant->id_tenant) }}" method="POST"
                                                 class="btn btn-danger p-0 delete-tenant" style="vertical-align: baseline">
                                                 @csrf
                                                 @method('DELETE')
-                                                <button class="btn btn-danger m-0">Hapus</button>
+                                                <button class="btn btn-danger m-0"><i class="fas fa-trash-alt"></i></button>
                                             </form>
                                         </td>
                                     </tr>

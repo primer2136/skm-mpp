@@ -68,7 +68,7 @@ Route::resource('/tenant', TenantController::class);
 Route::resource('/pertanyaan', PertanyaanController::class);
 
 Route::resource('/publish', PublishController::class);
-Route::get('/publish/view', [PublishController::class, 'view'])->name('publish.view');
+Route::get('/publish/{id_responden}', [PublishController::class, 'view'])->name('publish.view');
 
 // Route::get('/publish', function () {
 //     return view('admin/publish/index');
