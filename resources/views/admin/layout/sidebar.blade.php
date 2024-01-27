@@ -36,7 +36,6 @@
             <li class="menu-header">Penilaian</li>
             <li class="@yield('publish')"><a class="nav-link" href="/publish"><i class="fas fa-database"></i> <span>Publish</span></a></li>
 
-            {{-- Laporan (komentar ini dihilangkan sesuai permintaan) --}}
             {{-- @if (Auth::guard('admin')->user()->status == 'admin') --}}
             {{-- <li class="menu-header">Laporan</li>
             <li class="@yield('laporan')"><a class="nav-link" href="/laporan"><i class="fas fa-print"></i> <span>Rekap Laporan</span></a></li> --}}

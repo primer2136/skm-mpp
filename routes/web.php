@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\DashboardController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LayananController;
 use App\Http\Controllers\LoginController;
@@ -9,6 +10,7 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\PertanyaanController;
 use App\Http\Controllers\PublishController;
+use SebastianBergmann\CodeCoverage\Report\Html\Dashboard;
 
 /*
 |--------------------------------------------------------------------------
@@ -22,10 +24,6 @@ use App\Http\Controllers\PublishController;
 */
 // Use the UserController class in your code
 // $UserController = new UserController();
-
-Route::get('/', function () {
-    return view('masyarakat/home');
-});
 
 Route::get('/', [HomeController::class, 'index']);
 
@@ -49,9 +47,7 @@ Route::get('/home', function () {
 
 Route::get('logout', [LoginController::class, 'logout']);
 
-Route::get('/dashboard', function () {
-    return view('admin/dashboard/index');
-});
+Route::resource('/dashboard', DashboardController::class);
 
 Route::get('/ds-admin', function () {
     return view('admin/ds-admin/index');

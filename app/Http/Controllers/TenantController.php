@@ -13,9 +13,17 @@ class TenantController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
-        $tenants = Tenant::orderBy('created_at')->get();
+        $keyword = $request->input('keyword');
+
+        $tenants = Tenant::query();
+        if ($keyword) {
+            $tenants->where(function ($query) use ($keyword) {
+                $query->where('nama_tenant', 'like', "%$keyword%");
+            });
+        }
+        $tenants = $tenants->orderBy('created_at')->get();
 
         return view('admin.tenant.index', compact('tenants'));
     }
@@ -44,7 +52,7 @@ class TenantController extends Controller
 
         // Simpan gambar ke penyimpanan tanpa mengompres atau mengubah kualitas
         $fileName = $request->file('logo')->getClientOriginalName();
-        $logoPath = $request->file('logo')->storeAs('public/logos',$fileName);
+        $logoPath = $request->file('logo')->storeAs('public/logos', $fileName);
 
 
         // Simpan data ke database
