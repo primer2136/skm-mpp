@@ -61,13 +61,13 @@
                                 @php
                                     $no = 1;
                                 @endphp
-                                @foreach ($surveis as $survei)
+                                @foreach ($jawabans as $jawaban)
                                     <tr>
                                         <td>{{ $no++ }}</td>
-                                        <td>{{ $survei->responden->nama_responden }}</td>
-                                        <td>{{ $survei->ratanilai }}</td>
+                                        <td>{{ $jawaban->nama_responden }}</td>
+                                        <td>{{ number_format($jawaban->rataRata, 2) }}</td>
                                         <td>
-                                            <a href="{{ route('publish.view', $survei->id_survei) }}"
+                                            <a href="{{ route('publish.view', ['id_responden' => $jawaban->id_responden]) }}"
                                                 class="btn btn-warning p-0" style="vertical-align: baseline">
                                                 <button class="btn btn-warning m-0"><i class="fas fa-eye"></i></button>
                                             </a>
@@ -87,7 +87,7 @@
 
                                     @push('after-scripts')
                                         <script>
-                                            $(".confirm_script-{{ $survei->id_publish }}").click(function(e) {
+                                            $(".confirm_script-{{ $jawaban->id_publish }}").click(function(e) {
                                                 // id = e.target.dataset.id;
                                                 swal({
                                                         title: 'Yakin hapus data?',
@@ -98,7 +98,7 @@
                                                     })
                                                     .then((willDelete) => {
                                                         if (willDelete) {
-                                                            $('.delete_form-{{ $survei->id_publish }}').submit();
+                                                            $('.delete_form-{{ $jawaban->id_publish }}').submit();
                                                         } else {
                                                             swal('Hapus data telah di batalkan');
                                                         }
