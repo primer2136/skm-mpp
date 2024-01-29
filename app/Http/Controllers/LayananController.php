@@ -2,11 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
 use App\Models\Tenant;
 use App\Models\Responden;
 use App\Models\Pertanyaan;
+use App\Models\Jawaban;
 
 class LayananController extends Controller
 {
@@ -72,8 +74,10 @@ class LayananController extends Controller
         return compact('eduData', 'jobData');
     }
 
-    public function submitSurvey($id_tenant)
+    public function submitResponden($id_tenant)
     {
+        // dd(request()->all());
+
         // Validate the request data
         $validatedData = request()->validate([
             'nama' => 'required|string|max:255',
@@ -82,7 +86,6 @@ class LayananController extends Controller
             'nomor-antrian' => 'required|string|max:10',
             'pendidikan' => 'required|string',
             'kerjaan' => 'required|string',
-            'saran' => 'nullable|string',
         ]);
 
         // Find the tenant
@@ -95,7 +98,6 @@ class LayananController extends Controller
 
         // Create a new Responden instance and fill it with validated data
         $responden = new Responden($validatedData);
-
         $responden->nama_responden = request('nama');
         $responden->tahun_lahir = request('tahun-lahir');
         $responden->jenis_kelamin = request('jenis-kelamin');
@@ -109,7 +111,62 @@ class LayananController extends Controller
         // Save the Responden to the database
         $responden->save();
 
-        // dd($responden);
+        $id_responden = $responden->id;
+
+        // Arahkan pengguna ke formulir pertanyaan
+        return redirect()->route('masyarakat.pertanyaan', ['id_tenant' => $id_tenant, 'id_responden' => $id_responden]);
+    }
+
+    public function showPertanyaanForm($id_tenant, $id_responden)
+    {
+        // Dapatkan data responden berdasarkan ID
+        $responden = Responden::find($id_responden);
+
+        // Dapatkan pertanyaan dari database
+        $pertanyaans = Pertanyaan::orderBy('id_pertanyaan')->get();
+
+        // Jika responden atau pertanyaan tidak ditemukan, kembalikan 404
+        if (!$responden || !$pertanyaans) {
+            abort(404);
+        }
+
+        // Kirim data responden dan pertanyaan ke view
+        $data = [
+            'layananData' => [
+                'nomor' => $id_tenant,
+            ],
+            'responden' => $id_responden,
+            'pertanyaans' => $pertanyaans,
+        ];
+
+        return view('masyarakat.pertanyaan', $data);
+    }
+
+    public function submitJawaban(Request $request, $id_tenant)
+    {
+        // Ambil data input dari formPertanyaan
+        $id_responden = $request->input('id_responden');
+
+        // Periksa apakah id_responden valid
+        $responden = Responden::find($id_responden);
+        if (!$responden) {
+            abort(404); // atau lakukan penanganan error sesuai kebutuhan
+        }
+
+        // Ambil data input dari formPertanyaan kecuali token dan id_responden
+        $input = $request->except('_token', 'id_responden');
+
+        // Loop melalui data input untuk mendapatkan id pertanyaan dan bobotnya
+        foreach ($input as $idPertanyaan => $bobot) {
+            // Buat objek Jawaban
+            $jawaban = new Jawaban();
+            $jawaban->id_responden = $id_responden;
+            $jawaban->id_pertanyaan = $idPertanyaan;
+            $jawaban->bobot = $bobot;
+
+            // Simpan objek Jawaban ke dalam database
+            $jawaban->save();
+        }
 
         return redirect('/');
     }

@@ -20,56 +20,44 @@
     </nav>
 
     <div class="container">
-        <form id="formSurvey" method="post"
-            action="{{ route('layanan.survey.submit', ['id_tenant' => $layananData['nomor']]) }}">
+        <form id="formPertanyaan" style="display: block;"method="post"
+            action="{{ route('layanan.survey.submitjawaban', ['id_tenant' => $layananData['nomor'], 'id_responden' => $responden->id]) }}">
             @csrf
-            <h2>DATA RESPONDEN</h2>
+            <h2 id="judul" style="display: flex; justify-content: space-between; position: relative;">PERTANYAAN
+                <p id="hitung"
+                    style="text-align: right; margin: 0; font-size: 14px; position: absolute; bottom: 0; right: 0;">1
+                    dari <?php echo count($pertanyaans); ?></p>
+            </h2>
+            <div id="garis" class="garis-horizontal"></div>
+            @foreach ($pertanyaans as $index => $pertanyaan)
+                <div class="question" id="U{{ $index + 1 }}" style="display: block;">
+                    <p>{{ $pertanyaan->pertanyaan }}</p>
+                    @for ($i = 1; $i <= 4; $i++)
+                        <label class="radio-label" for="jawaban{{ $pertanyaan->id_pertanyaan }}_{{ $i }}">
+                            <input type="radio" id="jawaban{{ $pertanyaan->id_pertanyaan }}_{{ $i }}"
+                                name="{{ $pertanyaan->id_pertanyaan }}" value="{{ $i }}"
+                                Bobot="{{ $i }}">
+                            <span>{{ $pertanyaan->{'jawaban' . $i} }}</span>
+                        </label>
+                    @endfor
 
-            <div class="garis-horizontal"></div>
-            <label for="nama">Nama :</label>
-            <input type="text" id="nama" name="nama">
-
-            <div class="double-column">
-                <label for="tahun-lahir">Tahun Lahir :</label>
-                <input class="asd" type="number" id="tahun-lahir" name="tahun-lahir" min="1900" max="2024">
-
-                <label for="jenis-kelamin">Jenis Kelamin :</label>
-                <select id="jenis-kelamin" name="jenis-kelamin">
-                    <option value="" disabled selected>-- Pilih --</option>
-                    <option value="pria">Pria</option>
-                    <option value="wanita">Wanita</option>
-                </select>
-            </div><br>
-
-            <div class="double-column">
-                <label for="nomor-antrian">Nomor Antrian :</label>
-                <input class="asd" type="text" id="nomor-antrian" name="nomor-antrian">
-
-                <label for="pendidikan">Riwayat Pendidikan :</label>
-                <select id="pendidikan" name="pendidikan">
-                    <option value="" disabled selected> -- Pilih --</option>
-                    <option value="Tidak tamat">Tidak Tamat</option>
-                    <option value="sd">SD</option>
-                    <option value="smp">SMP</option>
-                    <option value="sma">SMA</option>
-                    <option value="Tamat D3">Tamat D3</option>
-                    <option value="Tamat D4/S1">Tamat D4/S1</option>
-                    <option value="Tamat S2">Tamat S2</option>
-                    <option value="Tamat S3">Tamat S3</option>
-                </select>
-            </div>
-            <label for="kerjaan">Pekerjaan :</label>
-            <select id="kerjaan" name="kerjaan">
-                <option value="" disabled selected>-- Pilih --</option>
-                <option value="pegawai Negeri">Pegawai Negeri</option>
-                <option value="pegawai Swasta">Pegawai Swasta</option>
-                <option value="mahasiswa">Mahasiswa</option>
-                <option value="pelajar">Pelajar</option>
-                <option value="wiraswasta/pengusaha">Wiraswasta/Pengusaha</option>
-                <option value="lainnya">Lainnya</option>
-            </select><br><br>
-            <button class="btn-back" type="button" onclick="goback()">Kembali</button>
-            <button class="btn-next" type="button" onclick="submitResponden()">Lanjutkan</button>
+                    <br><br><br>
+                    <?php if ($index > 0): ?>
+                    <button class="btn-back" type="button"
+                        onclick="kembaliKePertanyaanSebelumnya('U<?php echo $index + 1; ?>', 'U<?php echo $index; ?>')">Kembali</button>
+                    <?php endif; ?>
+                    <button class="btn-next" type="button" onclick="<?php echo $index === count($pertanyaans) - 1 ? 'tampilkanPertanyaanTerakhir()' : 'tampilkanPertanyaanSelanjutnya(\'U' . ($index + 1) . '\', \'U' . ($index + 2) . '\')'; ?>">
+                        Selanjutnya
+                    </button>
+                </div>
+                <?php @endforeach; ?>
+                <div class="question" id="kritik_saran" style="display: block;">
+                    <label for="saran"><strong>SARAN:</strong></label>
+                    <textarea id="saran" rows="4" cols="50"></textarea><br><br><br>
+                    <button class="btn-back" type="button"
+                        onclick="kembaliKePertanyaanSebelumnya('kritik_saran', 'U<?php echo count($pertanyaans); ?>')">Kembali</button>
+                    <button class="btn-next" type="button" onclick="submitSurvey()">Kirim Survey</button>
+                </div>
         </form>
     </div>
 
@@ -137,13 +125,6 @@
             return true;
         }
 
-        function tampilkanPertanyaan() {
-            if (validateForm()) {
-                document.getElementById('formSurvey').style.display = 'none';
-                document.getElementById('formPertanyaan').style.display = 'block';
-                document.getElementById('U1').style.display = 'block'
-            }
-        }
 
 
         var nomorPertanyaanAktif = 1;
@@ -213,13 +194,35 @@
             }
         }
 
-        function submitResponden() {
-            var formSurvey = document.getElementById("formSurvey");
+        function submitSurvey() {
+            var saran = document.getElementById("saran");
+            var formPertanyaan = document.getElementById("formPertanyaan");
 
             if (validateForm()) {
-                formSurvey.submit();
-                formSurvey.reset();
-
+                Swal.fire({
+                    icon: 'success',
+                    title: 'Survei Berhasil Dikirim',
+                    text: 'Terima kasih telah mengisi survei.',
+                    timer: 3000,
+                    timerProgressBar: true,
+                    showConfirmButton: false  
+                }).then(() => {
+                    formPertanyaan.submit();
+                    formPertanyaan.reset();
+                    saran.value = '';
+                });
+            } else {
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Gagal Mengirim Survei',
+                    text: 'Mohon lengkapi formulir dengan benar sebelum mengirim survei.',
+                    timer: 3000,
+                    timerProgressBar: true,
+                    showConfirmButton: false
+                }).then(() => {
+                    saran.value = '';
+                    window.location.href = '/';
+                });
             }
         }
 

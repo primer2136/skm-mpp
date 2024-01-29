@@ -33,8 +33,10 @@ Route::get('/survey', function () {
 
 Route::get('/layanan/{id_tenant}', [LayananController::class, 'show']);
 
-Route::get('layanan/{id_tenant}/survey', [LayananController::class, 'showSurveyForm'])->name('layanan.survey');
-Route::post('layanan/{id_tenant}/survey', [LayananController::class, 'submitSurvey']);
+Route::get('layanan/{id_tenant}/survey/responden', [LayananController::class, 'showSurveyForm'])->name('layanan.survey');
+Route::post('layanan/{id_tenant}/survey/responden-submit', [LayananController::class, 'submitResponden'])->name('layanan.survey.submit');
+Route::get('layanan/{id_tenant}/survey/pertanyaan/{id_responden}', [LayananController::class, 'showPertanyaanForm'])->name('masyarakat.pertanyaan');
+Route::post('layanan/{id_tenant}/survey/submitjawaban/{id_responden}', [LayananController::class, 'submitJawaban'])->name('layanan.survey.submitjawaban');
 
 Route::middleware(['guest'])->group(function () {
     Route::get('login', [LoginController::class, 'getLogin'])->name('login');
