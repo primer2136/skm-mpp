@@ -111,10 +111,16 @@ class LayananController extends Controller
         // Save the Responden to the database
         $responden->save();
 
-        $id_responden = $responden->id;
+        // Simpan ID responden ke dalam sesi
+        session(['id_responden' => $responden->id_responden]);
 
-        // Arahkan pengguna ke formulir pertanyaan
-        return redirect()->route('masyarakat.pertanyaan', ['id_tenant' => $id_tenant, 'id_responden' => $id_responden]);
+        // Cetak nilai ID responden dari sesi (untuk tujuan debugging)
+        // dd(session('id_responden'));
+
+        return redirect()->route('masyarakat.pertanyaan', [
+            'id_tenant' => $id_tenant,
+            'id_responden' => session('id_responden')
+        ]);
     }
 
     public function showPertanyaanForm($id_tenant, $id_responden)
@@ -145,7 +151,7 @@ class LayananController extends Controller
     public function submitJawaban(Request $request, $id_tenant)
     {
         // Ambil data input dari formPertanyaan
-        $id_responden = $request->input('id_responden');
+        $id_responden = session('id_responden');
 
         // Periksa apakah id_responden valid
         $responden = Responden::find($id_responden);
@@ -167,6 +173,8 @@ class LayananController extends Controller
             // Simpan objek Jawaban ke dalam database
             $jawaban->save();
         }
+
+        // dd($jawaban);
 
         return redirect('/');
     }

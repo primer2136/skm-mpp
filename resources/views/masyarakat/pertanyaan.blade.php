@@ -21,7 +21,7 @@
 
     <div class="container">
         <form id="formPertanyaan" style="display: block;"method="post"
-            action="{{ route('layanan.survey.submitjawaban', ['id_tenant' => $layananData['nomor'], 'id_responden' => $responden->id]) }}">
+            action="{{ route('layanan.survey.submitjawaban', ['id_tenant' => $layananData['nomor'], 'id_responden' => session('id_responden')]) }}">
             @csrf
             <h2 id="judul" style="display: flex; justify-content: space-between; position: relative;">PERTANYAAN
                 <p id="hitung"
@@ -50,14 +50,14 @@
                         Selanjutnya
                     </button>
                 </div>
-                <?php @endforeach; ?>
-                <div class="question" id="kritik_saran" style="display: block;">
-                    <label for="saran"><strong>SARAN:</strong></label>
-                    <textarea id="saran" rows="4" cols="50"></textarea><br><br><br>
-                    <button class="btn-back" type="button"
-                        onclick="kembaliKePertanyaanSebelumnya('kritik_saran', 'U<?php echo count($pertanyaans); ?>')">Kembali</button>
-                    <button class="btn-next" type="button" onclick="submitSurvey()">Kirim Survey</button>
-                </div>
+            @endforeach
+            <div class="question" id="kritik_saran" style="display: block;">
+                <label for="saran"><strong>SARAN:</strong></label>
+                <textarea id="saran" rows="4" cols="50"></textarea><br><br><br>
+                <button class="btn-back" type="button"
+                    onclick="kembaliKePertanyaanSebelumnya('kritik_saran', 'U<?php echo count($pertanyaans); ?>')">Kembali</button>
+                <button class="btn-next" type="button" onclick="submitSurvey()">Kirim Survey</button>
+            </div>
         </form>
     </div>
 
@@ -65,68 +65,12 @@
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
 
     <script>
-        function validateForm() {
-            var inputNama = document.getElementById("nama").value;
-            var inputYear = document.getElementById("tahun-lahir").value;
-            var inputJenisKelamin = document.getElementById("jenis-kelamin").value;
-            var inputNomorAntrian = document.getElementById("nomor-antrian").value;
-            var inputKerjaan = document.getElementById("kerjaan").value;
-            var inputPendidikan = document.getElementById("pendidikan").value;
-            var currentYear = new Date().getFullYear();
-
-            if (inputNama.trim() === "" &&
-                inputYear.trim() === "" &&
-                inputJenisKelamin.trim() === "" &&
-                inputNomorAntrian.trim() === "" &&
-                inputPendidikan.trim() === "" &&
-                inputKerjaan.trim() === "") {
-                Swal.fire("Peringatan", "Data harap dilengkapi", "warning");
-                return false;
+        window.onload = function() {
+            var questions = document.querySelectorAll('.question');
+            for (var i = 1; i < questions.length; i++) {
+                questions[i].style.display = 'none';
             }
-
-            if (inputNama.trim() === "") {
-                Swal.fire("Peringatan", "Nama harus diisi", "warning");
-                return false;
-            }
-
-            if (inputYear < 1900 || inputYear > currentYear) {
-                Swal.fire("Peringatan", "Tahun lahir harus di antara 1900 dan " + currentYear, "warning");
-                return false;
-            }
-
-            if (inputJenisKelamin === "") {
-                Swal.fire("Peringatan", "Jenis kelamin harus dipilih", "warning");
-                return false;
-            }
-
-            if (inputNomorAntrian.trim() === "") {
-                Swal.fire("Peringatan", "Nomor antrian harus diisi", "warning");
-                return false;
-            }
-
-            if (inputNomorAntrian.length > 10) {
-                Swal.fire(
-                    "Error",
-                    "Nomor antrian tidak valid",
-                    "warning"
-                );
-                return false;
-            }
-
-            if (inputPendidikan === "") {
-                Swal.fire("Peringatan", "Riwayat pendidikan harus dipilih", "warning");
-                return false;
-            }
-
-            if (inputKerjaan === "") {
-                Swal.fire("Peringatan", "Pekerjaan harus dipilih", "warning");
-                return false;
-            }
-            return true;
-        }
-
-
-
+        };
         var nomorPertanyaanAktif = 1;
 
         function updateNomorPertanyaan() {
@@ -198,14 +142,14 @@
             var saran = document.getElementById("saran");
             var formPertanyaan = document.getElementById("formPertanyaan");
 
-            if (validateForm()) {
+            if (validatePilihan(document.getElementById('formPertanyaan'))) {
                 Swal.fire({
                     icon: 'success',
                     title: 'Survei Berhasil Dikirim',
                     text: 'Terima kasih telah mengisi survei.',
                     timer: 3000,
                     timerProgressBar: true,
-                    showConfirmButton: false  
+                    showConfirmButton: false
                 }).then(() => {
                     formPertanyaan.submit();
                     formPertanyaan.reset();
@@ -223,20 +167,6 @@
                     saran.value = '';
                     window.location.href = '/';
                 });
-            }
-        }
-
-        function goback() {
-            var formSurvey = document.getElementById('formSurvey');
-            var formPertanyaan = document.getElementById('formPertanyaan');
-
-            if (formSurvey.style.display === 'none') {
-                // Jika sedang menampilkan pertanyaan, kembali ke formulir survei
-                formSurvey.style.display = 'block';
-                formPertanyaan.style.display = 'none';
-            } else {
-                // Jika sedang menampilkan formulir survei, kembali ke halaman sebelumnya
-                window.history.back();
             }
         }
     </script>
