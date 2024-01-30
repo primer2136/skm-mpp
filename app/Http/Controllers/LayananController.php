@@ -21,6 +21,11 @@ class LayananController extends Controller
         if (!$layanan) {
             abort(404);
         }
+
+        // Hitung rata-rata nilai jawaban untuk setiap pertanyaan
+        $nilaiRataRata = $this->hitungSkmPerTenant($id_tenant);
+        $skm = $this->hitungSkmPerTenant($id_tenant);
+
         // Jika Layanan ditemukan, lemparkan data ke view
         $layananData = [
             'nomor' => $id_tenant,
@@ -32,8 +37,8 @@ class LayananController extends Controller
         $totalResponden = Responden::whereHas('tenant', function ($query) use ($id_tenant) {
             $query->where('id_tenant', $id_tenant);
         })->count();
-
-        return view('masyarakat.layanan', compact('layananData', 'totalResponden'));
+        // dd($nilaiRataRata);
+        return view('masyarakat.layanan', compact('layananData', 'totalResponden', 'skm'));
     }
 
     public function showSurveyForm($id_tenant)
@@ -205,5 +210,71 @@ class LayananController extends Controller
         }
 
         return 'Informasi tidak ditemukan';
+    }
+
+    public function hitungSkmPerTenant($id_tenant)
+    {
+        // Dapatkan semua pertanyaan
+        $pertanyaans = Pertanyaan::all();
+
+        // Inisialisasi array untuk menyimpan total nilai jawaban untuk setiap pertanyaan
+        $nilaiRataRata = [];
+
+        // Inisialisasi array untuk menyimpan total responden
+        $totalResponden = Responden::where('id_tenant', $id_tenant)->count();
+
+        // Iterasi melalui setiap pertanyaan untuk menghitung total nilai jawaban
+        foreach ($pertanyaans as $pertanyaan) {
+            // Hitung total bobot jawaban untuk pertanyaan tertentu
+            $totalBobot = Jawaban::where('id_pertanyaan', $pertanyaan->id_pertanyaan)
+                ->whereHas('responden', function ($query) use ($id_tenant) {
+                    $query->where('id_tenant', $id_tenant);
+                })
+                ->sum('bobot');
+
+            // Hitung rata-rata nilai jawaban untuk pertanyaan tertentu
+            $rataRata = $totalResponden > 0 ? $totalBobot / $totalResponden : 0;
+
+            // Simpan rata-rata nilai jawaban untuk pertanyaan tertentu
+            $nilaiRataRata[$pertanyaan->id_pertanyaan] = $rataRata;
+        }
+
+        // Hitung nilai rata-rata tertimbang (dikali 0.11)
+        $nilaiRataRataTertimbang = array_map(function ($nilai) {
+            return $nilai * 0.11;
+        }, $nilaiRataRata);
+
+        // Hitung total nilai rata-rata tertimbang
+        $skm = array_sum($nilaiRataRataTertimbang);
+
+        // Hitung nilai konversi SKM
+        $konversiSKM = $skm * 25;
+
+        // Tentukan Kualitas Pelayanan berdasarkan nilai konversiSKM
+        if ($konversiSKM >= 25.00 && $konversiSKM <= 64.99
+        ) {
+            $kualitasPelayanan = 'Tidak Baik';
+        } elseif ($konversiSKM >= 65.00 && $konversiSKM <= 76.60) {
+            $kualitasPelayanan = 'Kurang Baik';
+        } elseif ($konversiSKM >= 76.61 && $konversiSKM <= 88.30) {
+            $kualitasPelayanan = 'Baik';
+        } elseif ($konversiSKM >= 88.31 && $konversiSKM <= 100.00) {
+            $kualitasPelayanan = 'Sangat Baik';
+        } else {
+            $kualitasPelayanan = 'Invalid';
+        }
+
+        // Ambil data untuk diagram
+        $chartData = $this->getDataForCharts($id_tenant);
+
+        // Kembalikan array total nilai pertanyaan dan nilai rata-rata tertimbang
+        return [
+            'nilaiRataRata' => $nilaiRataRata,
+            'nilaiRataRataTertimbang' => $nilaiRataRataTertimbang,
+            'skm' => $skm,
+            'konversiSKM' => $konversiSKM,
+            'kualitasPelayanan' => $kualitasPelayanan,
+            'chartData' => $chartData,
+        ];
     }
 }

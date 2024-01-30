@@ -48,7 +48,7 @@
             <div class="kotak-container">
                 <div class="kotak">
                     <h2>Indeks Kepuasan (%)</h2>
-                    <p>100</p>
+                    <p>{{ $skmData['konversiSKM'] }}</p>
                 </div>
                 <div class="kotak">
                     <h2>Total Responden</h2>
@@ -56,12 +56,12 @@
                 </div>
                 <div class="kotak">
                     <h2>Kualitas Pelayanan</h2>
-                    <p>Sangat Baik</p>
+                    <p>{{ $skmData['kualitasPelayanan'] }}</p>
                 </div>
 
                 <!-- Diagram batang -->
                 <div class="kotak bar-chart">
-                    <h4>Statistik Pemilihan Responden Per Kategori Soal</h4>
+                    <h4>Statistik Rata-Rata Nilai Per Pertanyaan</h4>
                     <canvas id="barChart" width="300" height="300"></canvas>
                 </div>
 
