@@ -102,7 +102,7 @@
                         <div class="kotak-container">
                             <div class="kotak">
                                 <h2>Indeks Kepuasan (%)</h2>
-                                <p>80</p>
+                                <p>{{ number_format($skm['konversiSKM'], 1) }}</p>
                             </div>
                             <div class="kotak">
                                 <h2>Total Responden</h2>
@@ -110,12 +110,12 @@
                             </div>
                             <div class="kotak">
                                 <h2>Kualitas Pelayanan</h2>
-                                <p>Sangat Baik</p>
+                                <p>{{ $skm['kualitasPelayanan'] }}</p>
                             </div>
 
                             <!-- Diagram batang -->
                             <div class="kotak bar-chart">
-                                <h4>Statistik Pemilihan Responden Per Kategori Soal</h4>
+                                <h4>Statistik Rata-Rata Nilai Per Pertanyaan</h4>
                                 <canvas id="barChart" width="300" height="300"></canvas>
                             </div>
 
@@ -151,11 +151,10 @@
             var barChart = new Chart(ctxBar, {
                 type: 'bar',
                 data: {
-                    labels: ['P1', 'P2', 'P3', 'P4', 'P5', 'P6', 'P7', 'P8', 'P9'],
+                    labels: ['U1', 'U2', 'U3', 'U4', 'U5', 'U6', 'U7', 'U8', 'U9'],
                     datasets: [{
-                        label: 'Jumlah Responden',
-                        data: [10, 15, 7, 20, 12, 18, 25, 16, 9],
-                        backgroundColor: 'rgba(255, 99, 132, 0.2)',
+                        label: 'Rata-Rata',
+                        data: {!! json_encode(array_values($skm['nilaiRataRata'])) !!},
                         borderColor: 'rgba(255, 99, 132, 1)',
                         borderWidth: 1
                     }]

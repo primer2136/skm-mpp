@@ -151,6 +151,10 @@
                     timerProgressBar: true,
                     showConfirmButton: false
                 }).then(() => {
+                    // Membersihkan riwayat perambanan
+                    window.history.replaceState({}, document.title, "/");
+                    // Mengarahkan kembali ke halaman home
+                    window.location.href = "/";
                     formPertanyaan.submit();
                     formPertanyaan.reset();
                     saran.value = '';

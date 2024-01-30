@@ -101,10 +101,10 @@
         var barChart = new Chart(ctxBar, {
             type: 'bar',
             data: {
-                labels: ['P1', 'P2', 'P3', 'P4', 'P5', 'P6', 'P7', 'P8', 'P9'],
+                labels: ['U1', 'U2', 'U3', 'U4', 'U5', 'U6', 'U7', 'U8', 'U9'],
                 datasets: [{
-                    label: 'Jumlah Responden',
-                    data: [10, 15, 7, 20, 12, 18, 25, 16, 9],
+                    label: 'Rata-Rata',
+                    data: {!! json_encode(array_values($skmData['nilaiRataRata'])) !!},
                     backgroundColor: 'rgba(255, 99, 132, 0.2)',
                     borderColor: 'rgba(255, 99, 132, 1)',
                     borderWidth: 1
