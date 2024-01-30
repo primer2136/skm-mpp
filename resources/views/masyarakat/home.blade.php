@@ -48,7 +48,7 @@
             <div class="kotak-container">
                 <div class="kotak">
                     <h2>Indeks Kepuasan (%)</h2>
-                    <p>{{ $skmData['konversiSKM'] }}</p>
+                    <p>{{ number_format($skmData['konversiSKM'], 1) }}</p>
                 </div>
                 <div class="kotak">
                     <h2>Total Responden</h2>
