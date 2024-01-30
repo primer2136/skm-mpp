@@ -11,7 +11,7 @@ class PublishController extends Controller
 {
     public function index()
     {
-        $jawabans = Responden::orderBy('id_responden')->get();
+        $jawabans = Responden::orderBy('created_at')->get();
         // dd($jawabans);
 
         foreach ($jawabans as $jawaban) {

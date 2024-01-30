@@ -21,7 +21,7 @@
 
     <div class="container">
         <form id="formSurvey" method="post"
-            action="{{ route('layanan.survey', ['id_tenant' => $layananData['nomor']]) }}">
+            action="{{ route('layanan.survey.submit', ['id_tenant' => $layananData['nomor']]) }}">
             @csrf
             <h2>DATA RESPONDEN</h2>
 
@@ -69,42 +69,7 @@
                 <option value="lainnya">Lainnya</option>
             </select><br><br>
             <button class="btn-back" type="button" onclick="goback()">Kembali</button>
-            <button class="btn-next" type="button" onclick="tampilkanPertanyaan()">Lanjutkan</button>
-        </form>
-
-        <form id="formPertanyaan" style="display: none;">
-            <h2 id="judul" style="display: flex; justify-content: space-between; position: relative;">PERTANYAAN
-                <p id="hitung" style="text-align: right; margin: 0; font-size: 14px; position: absolute; bottom: 0; right: 0;">1 dari <?php echo count($pertanyaans); ?></p>
-            </h2>
-            <div id="garis" class="garis-horizontal"></div>
-            <?php foreach ($pertanyaans as $index => $pertanyaan): ?>
-            <div class="question" id="question_<?php echo $index + 1; ?>" style="display: none;">
-                <p><?php echo $pertanyaan->pertanyaan; ?></p>
-                <?php for ($i = 1; $i <= 4; $i++): ?>
-                <label class="radio-label" for="answer_<?php echo $index + 1; ?>_<?php echo $i; ?>">
-                    <input type="radio" id="answer_<?php echo $index + 1; ?>_<?php echo $i; ?>"
-                        name="answer_<?php echo $index + 1; ?>" value="<?php echo $i; ?>">
-                    <span><?php echo $pertanyaan->{'jawaban' . $i}; ?></span>
-                </label>
-                <?php endfor; ?>
-
-                <br><br><br>
-                <?php if ($index > 0): ?>
-                <button class="btn-back" type="button"
-                    onclick="kembaliKePertanyaanSebelumnya('question_<?php echo $index + 1; ?>', 'question_<?php echo $index; ?>')">Kembali</button>
-                <?php endif; ?>
-                <button class="btn-next" type="button" onclick="<?php echo $index === count($pertanyaans) - 1 ? 'tampilkanPertanyaanTerakhir()' : 'tampilkanPertanyaanSelanjutnya(\'question_' . ($index + 1) . '\', \'question_' . ($index + 2) . '\')'; ?>">
-                    Selanjutnya
-                </button>
-            </div>
-            <?php endforeach; ?>
-            <div class="question" id="kritik_saran" style="display: none;">
-                <label for="saran"><strong>SARAN:</strong></label>
-                <textarea id="saran" name="saran" rows="4" cols="50"></textarea><br><br><br>
-                <button class="btn-back" type="button"
-                    onclick="kembaliKePertanyaanSebelumnya('kritik_saran', 'question_<?php echo count($pertanyaans); ?>')">Kembali</button>
-                <button class="btn-next" type="button" onclick="submitSurvey()">Kirim Survey</button>
-            </div>
+            <button class="btn-next" type="button" onclick="submitResponden()">Lanjutkan</button>
         </form>
     </div>
 
@@ -176,9 +141,10 @@
             if (validateForm()) {
                 document.getElementById('formSurvey').style.display = 'none';
                 document.getElementById('formPertanyaan').style.display = 'block';
-                document.getElementById('question_1').style.display = 'block';
+                document.getElementById('U1').style.display = 'block'
             }
         }
+
 
         var nomorPertanyaanAktif = 1;
 
@@ -209,7 +175,7 @@
 
         function tampilkanPertanyaanTerakhir(currentQuestionId, nextQuestionId) {
             var currentQuestion = document.getElementById('kritik_saran');
-            var previousQuestion = document.getElementById('question_' + (<?php echo count($pertanyaans); ?>));
+            var previousQuestion = document.getElementById('U' + (<?php echo count($pertanyaans); ?>));
 
             if (currentQuestion && previousQuestion) {
                 if (validatePilihan(previousQuestion)) {
@@ -227,10 +193,10 @@
             var radioButtons = question.querySelectorAll('input[type="radio"]');
             for (var i = 0; i < radioButtons.length; i++) {
                 if (radioButtons[i].checked) {
-                    return true; // Setidaknya satu opsi dipilih
+                    return true;
                 }
             }
-            return false; // Tidak ada opsi yang dipilih
+            return false;
         }
 
         function kembaliKePertanyaanSebelumnya(currentQuestionId, previousQuestionId) {
@@ -247,37 +213,13 @@
             }
         }
 
-        function submitSurvey() {
+        function submitResponden() {
             var formSurvey = document.getElementById("formSurvey");
-            var saran = document.getElementById("saran");
-            // var formPertanyaan = document.getElementById("formPertanyaan");
 
             if (validateForm()) {
-                Swal.fire({
-                    icon: 'success',
-                    title: 'Survei Berhasil Dikirim',
-                    text: 'Terima kasih telah mengisi survei.',
-                    timer: 3000,
-                    timerProgressBar: true,
-                    showConfirmButton: false
-                }).then(() => {
-                    formSurvey.submit();
-                    formSurvey.reset();
-                    saran.value = '';
-                });
-            } else {
-                Swal.fire({
-                    icon: 'error',
-                    title: 'Gagal Mengirim Survei',
-                    text: 'Mohon lengkapi formulir dengan benar sebelum mengirim survei.',
-                    timer: 3000,
-                    timerProgressBar: true,
-                    showConfirmButton: false
-                }).then(() => {
-                    saran.value = '';
-                    formSurvey.reset();
-                    window.location.href = '/';
-                });
+                formSurvey.submit();
+                formSurvey.reset();
+
             }
         }
 

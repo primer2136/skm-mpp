@@ -14,7 +14,6 @@ class Jawaban extends Model
     protected $fillable = [
         'id_responden',
         'id_pertanyaan',
-        'jawaban',
         'bobot',
     ];
 

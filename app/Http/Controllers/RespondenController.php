@@ -26,7 +26,7 @@ class RespondenController extends Controller
                     ->orWhere('pekerjaan', 'like', "%$keyword%");
             });
         }
-        $respondens = $respondens->orderBy('id_responden')->get();
+        $respondens = $respondens->orderBy('created_at')->get();
 
         return view('admin.responden.index', compact('respondens'));
     }
