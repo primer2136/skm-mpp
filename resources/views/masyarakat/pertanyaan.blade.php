@@ -20,7 +20,7 @@
     </nav>
 
     <div class="container">
-        <form id="formPertanyaan" style="display: block;"method="post"
+        <form id="formPertanyaan" method="post"
             action="{{ route('layanan.survey.submitjawaban', ['id_tenant' => $layananData['nomor'], 'id_responden' => session('id_responden')]) }}">
             @csrf
             <h2 id="judul" style="display: flex; justify-content: space-between; position: relative;">PERTANYAAN
@@ -30,7 +30,7 @@
             </h2>
             <div id="garis" class="garis-horizontal"></div>
             @foreach ($pertanyaans as $index => $pertanyaan)
-                <div class="question" id="U{{ $index + 1 }}" style="display: block;">
+                <div class="question" id="U{{ $index + 1 }}">
                     <p>{{ $pertanyaan->pertanyaan }}</p>
                     @for ($i = 1; $i <= 4; $i++)
                         <label class="radio-label" for="jawaban{{ $pertanyaan->id_pertanyaan }}_{{ $i }}">
@@ -71,6 +71,7 @@
                 questions[i].style.display = 'none';
             }
         };
+
         var nomorPertanyaanAktif = 1;
 
         function updateNomorPertanyaan() {
@@ -138,6 +139,8 @@
             }
         }
 
+        var surveySubmitted = false;
+
         function submitSurvey() {
             var saran = document.getElementById("saran");
             var formPertanyaan = document.getElementById("formPertanyaan");
@@ -151,6 +154,7 @@
                     timerProgressBar: true,
                     showConfirmButton: false
                 }).then(() => {
+                    surveySubmitted = true;
                     // Membersihkan riwayat perambanan
                     window.history.replaceState({}, document.title, "/");
                     // Mengarahkan kembali ke halaman home
@@ -173,6 +177,32 @@
                 });
             }
         }
+
+        window.addEventListener('beforeunload', function(e) {
+            if (!surveySubmitted) {
+                e.preventDefault();
+
+                // Lakukan pengiriman permintaan HTTP ke endpoint yang akan menghapus id_responden
+                var id_responden = <?php echo session('id_responden'); ?>;
+                if (id_responden) {
+                    fetch('/hapus-responden/' + id_responden, {
+                            method: 'DELETE',
+                            headers: {
+                                'Content-Type': 'application/json',
+                                'X-CSRF-TOKEN': '{{ csrf_token() }}'
+                            }
+                        })
+                        .then(response => {
+                            if (!response.ok) {
+                                throw new Error('Gagal menghapus id_responden');
+                            }
+                        })
+                        .catch(error => {
+                            console.error('Error:', error);
+                        });
+                }
+            }
+        });
     </script>
 
 

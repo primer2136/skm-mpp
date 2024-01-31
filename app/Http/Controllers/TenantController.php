@@ -6,6 +6,7 @@ use App\Models\Tenant;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
+use App\Http\Controllers\LayananController;
 
 
 class TenantController extends Controller
@@ -13,7 +14,7 @@ class TenantController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index(Request $request)
+    public function index(Request $request , LayananController $layananController)
     {
         $keyword = $request->input('keyword');
 
@@ -24,6 +25,13 @@ class TenantController extends Controller
             });
         }
         $tenants = $tenants->orderBy('created_at')->get();
+
+        // Memanggil fungsi hitungSkmPerTenant dari LayananController
+        foreach ($tenants as $tenant) {
+            $skmData = $layananController->hitungSkmPerTenant($tenant->id_tenant);
+            $tenant->skm = $skmData['konversiSKM'];
+            // Anda dapat menambahkan nilai SKM ke objek tenant atau menangani data lainnya sesuai kebutuhan
+        }
 
         return view('admin.tenant.index', compact('tenants'));
     }
