@@ -217,6 +217,10 @@
             var formSurvey = document.getElementById("formSurvey");
 
             if (validateForm()) {
+                // Membersihkan riwayat perambanan
+                window.history.replaceState({}, document.title, "/");
+                // Mengarahkan kembali ke halaman home
+                window.location.href = "/";
                 formSurvey.submit();
                 formSurvey.reset();
 
