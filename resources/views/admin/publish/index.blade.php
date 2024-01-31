@@ -25,9 +25,7 @@
                                 </div>
                             </div>
                         @endif
-                        {{-- Button tambah --}}
-                        <a href="{{ route('publish.create') }}" class="btn btn-violet mb-4"><i
-                                class="fas fa-plus text-light"></i></a>
+
 
                         {{-- Form search --}}
                         <div class="float-right">
