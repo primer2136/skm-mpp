@@ -52,6 +52,7 @@
                                     <th>No.</th>
                                     <th>Logo</th>
                                     <th>Nama Tenant</th>
+                                    <th>SKM</th>
                                     <th>Aksi</th>
                                 </tr>
                             </thead>
@@ -71,6 +72,7 @@
                                             @endif
                                         </td>
                                         <td>{{ $tenant->nama_tenant }}</td>
+                                        <td>{{ number_format($tenant->skm, 1) }}</td>
                                         <td>
                                             <a href="{{ route('tenant.edit', $tenant->id_tenant) }}"
                                                 class="btn btn-warning p-0" style="vertical-align: baseline">

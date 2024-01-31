@@ -75,7 +75,7 @@
                                 @endforeach
                                 {{-- Baris untuk rata-rata nilai --}}
                                 <tr>
-                                    <td colspan="2" style="text-align: center">Rata-rata Nilai</td>
+                                    <td colspan="2" style="text-align: center"><b>Rata-rata Nilai</b></td>
                                     <td>{{ number_format($rataRata, 2) }}</td>
                                 </tr>
                             </tbody>
