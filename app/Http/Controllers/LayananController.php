@@ -184,6 +184,14 @@ class LayananController extends Controller
         return redirect('/');
     }
 
+    public function hapusResponden($id_responden) {
+        $responden = Responden::find($id_responden);
+        if ($responden) {
+            $responden->delete();
+        }
+        return redirect()->route('home');
+    }
+
     private function getJudulByNomor($id_tenant)
     {
         $tenant = Tenant::find($id_tenant);
@@ -261,7 +269,7 @@ class LayananController extends Controller
         } elseif ($konversiSKM >= 88.31 && $konversiSKM <= 100.00) {
             $kualitasPelayanan = 'Sangat Baik';
         } else {
-            $kualitasPelayanan = 'Invalid';
+            $kualitasPelayanan = '-';
         }
 
         // Ambil data untuk diagram

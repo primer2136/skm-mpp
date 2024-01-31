@@ -38,6 +38,8 @@ Route::post('layanan/{id_tenant}/survey/responden-submit', [LayananController::c
 Route::get('layanan/{id_tenant}/survey/pertanyaan/{id_responden}', [LayananController::class, 'showPertanyaanForm'])->name('masyarakat.pertanyaan');
 Route::post('layanan/{id_tenant}/survey/jawaban-submit', [LayananController::class, 'submitJawaban'])->name('layanan.survey.submitjawaban');
 
+Route::delete('/hapus-responden/{id_responden}', [LayananController::class, 'hapusResponden']);
+
 Route::middleware(['guest'])->group(function () {
     Route::get('login', [LoginController::class, 'getLogin'])->name('login');
     Route::post('login', [LoginController::class, 'postLogin']);
