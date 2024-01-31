@@ -5,6 +5,8 @@
 @section('pertanyaan', 'active')
 <title>Pertanyaan</title>
 
+<link rel="shortcut icon" href="https://mpp.cimahikota.go.id/img/favicon.png" type="image/x-icon">
+
 @section('konten')
     <style>
         ul {
@@ -86,46 +88,11 @@
                                                 {{-- <i class="fas fa-edit mb-2"></i> --}}
                                                 <button class="btn btn-warning m-0">Edit</button>
                                             </a>
-                                            {{-- <a href="#" data-id=""
-                                                class="btn btn-danger confirm_script-{{ $pertanyaan->id_responden }} mr-3">
-                                                <form action="{{ route('pertanyaan.destroy', $pertanyaan->id_responden) }}"
-                                                    class="delete_form-{{ $pertanyaan->id_responden }}" method="POST">
-                                                    @method('DELETE')
-                                                    @csrf
-                                                </form>
-                                                <i class="fas fa-trash"></i>
-                                            </a> --}}
                                         </td>
                                     </tr>
-                                    {{-- @push('page-scripts')
-                                        <script src="{{ asset('node_modules/sweetalert/dist/sweetalert.min.js') }}"></script>
-                                    @endpush
-
-                                    @push('after-scripts')
-                                        <script>
-                                            $(".confirm_script-{{ $pertanyaan->id_responden }}").click(function(e) {
-                                                // id = e.target.dataset.id;
-                                                swal({
-                                                        title: 'Yakin hapus data?',
-                                                        text: 'Data yang dihapus tidak bisa di kembalikan',
-                                                        icon: 'warning',
-                                                        buttons: true,
-                                                        dangerMode: true,
-                                                    })
-                                                    .then((willDelete) => {
-                                                        if (willDelete) {
-                                                            $('.delete_form-{{ $pertanyaan->id_responden }}').submit();
-                                                        } else {
-                                                            swal('Hapus data telah di batalkan');
-                                                        }
-                                                    });
-                                            });
-                                        </script>
-                                    @endpush --}}
                                 @endforeach
                             </tbody>
                         </table>
-                        {{-- {{ $pertanyaans->links() }} --}}
                     </div>
                 </div>
             </div>

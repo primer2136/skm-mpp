@@ -17,7 +17,6 @@ class RespondenController extends Controller
         $id_tenant = $request->input('id_tenant');
         $tenants = Tenant::all();
         $respondens = Responden::query();
-
         $respondent = Responden::with('tenant');
         
         if ($keyword) {
@@ -30,6 +29,7 @@ class RespondenController extends Controller
                     ->orWhere('pekerjaan', 'like', "%$keyword%");
             });
         }
+        
         if ($id_tenant) {
             $respondent->whereHas('tenant', function ($query) use ($id_tenant) {
                 $query->where('id_tenant', $id_tenant);
