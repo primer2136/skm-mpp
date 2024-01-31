@@ -143,6 +143,7 @@
             var formPertanyaan = document.getElementById("formPertanyaan");
 
             if (validatePilihan(document.getElementById('formPertanyaan'))) {
+                sessionStorage.setItem('surveySubmitted', 'true');
                 Swal.fire({
                     icon: 'success',
                     title: 'Survei Berhasil Dikirim',
@@ -170,6 +171,19 @@
             }
         }
     </script>
+
+    window.onload = function() {
+    // Periksa apakah pengguna sudah mengirimkan survei
+    var surveySubmitted = sessionStorage.getItem('surveySubmitted');
+
+    if (surveySubmitted === 'true') {
+    // Pengguna sudah mengirimkan survei, arahkan atau tampilkan pesan
+    Swal.fire("Info", "Anda sudah mengirimkan survei.", "info").then(() => {
+    // Arahkan kembali ke halaman utama atau ambil tindakan yang sesuai
+    window.location.href = '/';
+    });
+    }
+    };
 
 
 </body>
