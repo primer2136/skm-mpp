@@ -100,10 +100,13 @@ class RespondenController extends Controller
         // DB::table('respondens')->where('id_responden', $id)->delete();
         // return redirect()->back()->with('message', 'Berhasil dihapus');
 
-        $respondens = Responden::findOrFail($id_responden);
+        $responden = Responden::findOrFail($id_responden);
 
-        $respondens->delete();
-
+        // Hapus terlebih dahulu semua entri yang terkait di tabel jawaban_responden
+        $responden->jawaban()->delete();
+    
+        // Sekarang Anda dapat menghapus baris dari tabel respondens
+        $responden->delete();
         return redirect()->route('responden.index')->with('message', 'Berhasil dihapus');
     }
 }
