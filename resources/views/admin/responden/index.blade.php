@@ -19,7 +19,7 @@
                                 class="fas fa-plus text-light"></i></a>
 
                         {{-- Form search --}}
-                        <div class="float-right">
+                        <div class="float-right mr-3">
                             <form action="?" method="GET">
                                 <div class="input-group mb-3">
                                     <input name="keyword" id="cariresponden" type="text" class="form-control"
@@ -30,6 +30,23 @@
                                             type="submit" id="button-addon2"><i
                                                 class="fas fa-search text-light"></i></button>
                                     </div>
+                                </div>
+                            </form>
+                        </div>
+
+                        {{-- Dropdown filter --}}
+                        <div class="float-right mr-3">
+                            <form id="filterForm" action="{{ route('responden.index') }}" method="GET">
+                                <div class="form-group">
+                                    <select name="id_tenant" id="id_tenant" class="form-control">
+                                        <option value="">Semua Tenant</option>
+                                        @foreach ($tenants as $tenant)
+                                            <option value="{{ $tenant->id_tenant }}"
+                                                {{ $id_tenant == $tenant->id_tenant ? 'selected' : '' }}>
+                                                {{ $tenant->nama_tenant }}
+                                            </option>
+                                        @endforeach
+                                    </select>
                                 </div>
                             </form>
                         </div>
@@ -65,27 +82,31 @@
                                     $no = 1;
                                 @endphp
                                 @foreach ($respondens as $responden)
-                                    <tr>
-                                        <td>{{ $no++ }}</td>
-                                        <td>{{ $responden->nama_responden }}</td>
-                                        <td>{{ $responden->tahun_lahir }}</td>
-                                        <td>{{ $responden->jenis_kelamin }}</td>
-                                        <td>{{ $responden->nomor_antrian }}</td>
-                                        <td>{{ $responden->riwayat_pendidikan }}</td>
-                                        <td>{{ $responden->pekerjaan }}</td>
-                                        <td>
-                                            <a href="{{ route('responden.edit', $responden->id_responden) }}"
-                                                class="btn btn-warning p-0" style="vertical-align: baseline">
-                                                <button class="btn btn-warning m-0"><i class="fas fa-edit"></i></button>
-                                            </a>
-                                            <form action="{{ route('responden.destroy', $responden->id_responden) }}"
-                                                method="POST" class="btn btn-danger p-0 delete-tenant" style="vertical-align: baseline">
-                                                @csrf
-                                                @method('DELETE')
-                                                <button class="btn btn-danger m-0"><i class="fas fa-trash-alt"></i></button>
-                                            </form>
-                                        </td>
-                                    </tr>
+                                    @if (!$id_tenant || $responden->id_tenant == $id_tenant)
+                                        <tr>
+                                            <td>{{ $no++ }}</td>
+                                            <td>{{ $responden->nama_responden }}</td>
+                                            <td>{{ $responden->tahun_lahir }}</td>
+                                            <td>{{ $responden->jenis_kelamin }}</td>
+                                            <td>{{ $responden->nomor_antrian }}</td>
+                                            <td>{{ $responden->riwayat_pendidikan }}</td>
+                                            <td>{{ $responden->pekerjaan }}</td>
+                                            <td>
+                                                <a href="{{ route('responden.edit', $responden->id_responden) }}"
+                                                    class="btn btn-warning p-0" style="vertical-align: baseline">
+                                                    <button class="btn btn-warning m-0"><i class="fas fa-edit"></i></button>
+                                                </a>
+                                                <form action="{{ route('responden.destroy', $responden->id_responden) }}"
+                                                    method="POST" class="btn btn-danger p-0 delete-tenant"
+                                                    style="vertical-align: baseline">
+                                                    @csrf
+                                                    @method('DELETE')
+                                                    <button class="btn btn-danger m-0"><i
+                                                            class="fas fa-trash-alt"></i></button>
+                                                </form>
+                                            </td>
+                                        </tr>
+                                    @endif
                                 @endforeach
                             </tbody>
                         </table>
@@ -132,4 +153,11 @@
             });
         </script>
     @endpush
+
+    <script>
+        document.getElementById('id_tenant').addEventListener('change', function() {
+            document.getElementById('filterForm').submit();
+        });
+    </script>
+
 @endsection

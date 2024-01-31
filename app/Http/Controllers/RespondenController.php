@@ -14,8 +14,12 @@ class RespondenController extends Controller
     public function index(Request $request)
     {
         $keyword = $request->input('keyword');
-
+        $id_tenant = $request->input('id_tenant');
+        $tenants = Tenant::all();
         $respondens = Responden::query();
+
+        $respondent = Responden::with('tenant');
+        
         if ($keyword) {
             $respondens->where(function ($query) use ($keyword) {
                 $query->where('nama_responden', 'like', "%$keyword%")
@@ -26,9 +30,15 @@ class RespondenController extends Controller
                     ->orWhere('pekerjaan', 'like', "%$keyword%");
             });
         }
+        if ($id_tenant) {
+            $respondent->whereHas('tenant', function ($query) use ($id_tenant) {
+                $query->where('id_tenant', $id_tenant);
+            });
+        }
+
         $respondens = $respondens->orderBy('created_at')->get();
 
-        return view('admin.responden.index', compact('respondens'));
+        return view('admin.responden.index', compact('respondens', 'tenants', 'id_tenant', 'respondent'));
     }
 
     /**
