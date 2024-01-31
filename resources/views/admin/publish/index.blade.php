@@ -26,7 +26,6 @@
                             </div>
                         @endif
 
-
                         {{-- Form search --}}
                         <div class="float-right">
                             <form action="?" method="GET">
@@ -42,8 +41,6 @@
                                 </div>
                             </form>
                         </div>
-
-
 
                         {{-- tabel --}}
                         <table class="table">
@@ -107,7 +104,6 @@
                                 @endforeach
                             </tbody>
                         </table>
-                        {{-- {{ $survei->links() }} --}}
                     </div>
                 </div>
             </div>

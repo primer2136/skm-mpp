@@ -19,7 +19,7 @@
                                 class="fas fa-plus text-light"></i></a>
 
                         {{-- Form search --}}
-                        <div class="float-right mr-3">
+                        <div class="float-right">
                             <form action="?" method="GET">
                                 <div class="input-group mb-3">
                                     <input name="keyword" id="cariresponden" type="text" class="form-control"

@@ -4,14 +4,14 @@
 @section('title2', 'index')
 @section('admin', 'active')
 <title>Admin</title>
+
+<link rel="shortcut icon" href="https://mpp.cimahikota.go.id/img/favicon.png" type="image/x-icon">
+
 <style>
     td.password-col {
         max-width: 350px;
     }
 </style>
-
-
-<link rel="shortcut icon" href="https://mpp.cimahikota.go.id/img/favicon.png" type="image/x-icon">
 
 @section('konten')
     <div class="container-fluid">

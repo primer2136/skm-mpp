@@ -15,9 +15,9 @@
             {{-- Entry data --}}
             <li class="menu-header">Entri data</li>
             <li class="@yield('admin')"><a class="nav-link" href="/ds-admin"><i class="fas fa-user"></i> <span>Admin</span></a></li>
-            <li class="@yield('responden')"><a class="nav-link" href="/responden"><i class="fas fa-user"></i> <span>Responden</span></a></li>
             <li class="@yield('tenant')"><a class="nav-link" href="/tenant"><i class="fas fa-user"></i> <span>Tenant</span></a></li>
             <li class="@yield('pertanyaan')"><a class="nav-link" href="/pertanyaan"><i class="fas fa-user"></i> <span>Pertanyaan</span></a></li>
+            <li class="@yield('responden')"><a class="nav-link" href="/responden"><i class="fas fa-user"></i> <span>Responden</span></a></li>
 
             {{-- @endif
             @if (Auth::guard('admin')->user()->role == 'super admin')
