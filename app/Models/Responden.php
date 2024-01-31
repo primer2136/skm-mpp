@@ -25,4 +25,9 @@ class Responden extends Model
     {
         return $this->belongsTo(Tenant::class, 'id_tenant', 'id_tenant');
     }
+
+    public function jawaban()
+    {
+        return $this->hasMany(Jawaban::class, 'id_responden');
+    }
 }
