@@ -99,7 +99,7 @@ class HomeController extends Controller
         } elseif ($konversiSKM >= 88.31 && $konversiSKM <= 100.00) {
             $kualitasPelayanan = 'Sangat Baik';
         } else {
-            $kualitasPelayanan = 'Invalid';
+            $kualitasPelayanan = '-';
         }
 
         // Ambil data untuk diagram
