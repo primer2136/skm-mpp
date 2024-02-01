@@ -18,6 +18,7 @@
             <li class="@yield('tenant')"><a class="nav-link" href="/tenant"><i class="fas fa-user"></i> <span>Tenant</span></a></li>
             <li class="@yield('pertanyaan')"><a class="nav-link" href="/pertanyaan"><i class="fas fa-user"></i> <span>Pertanyaan</span></a></li>
             <li class="@yield('responden')"><a class="nav-link" href="/responden"><i class="fas fa-user"></i> <span>Responden</span></a></li>
+            <li class="@yield('saran')"><a class="nav-link" href="/saran"><i class="fas fa-user"></i> <span>Saran</span></a></li>
 
             {{-- @endif
             @if (Auth::guard('admin')->user()->role == 'super admin')
@@ -35,6 +36,7 @@
             {{-- Penilaian --}}
             <li class="menu-header">Penilaian</li>
             <li class="@yield('publish')"><a class="nav-link" href="/publish"><i class="fas fa-database"></i> <span>Hasil Penilaian</span></a></li>
+            {{-- <li class="@yield('saran')"><a class="nav-link" href="/saran"><i class="fas fa-database"></i> <span>Saran</span></a></li> --}}
 
             {{-- @if (Auth::guard('admin')->user()->status == 'admin') --}}
             {{-- <li class="menu-header">Laporan</li>

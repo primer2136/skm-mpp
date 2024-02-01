@@ -137,82 +137,6 @@
             return true;
         }
 
-        function tampilkanPertanyaan() {
-            if (validateForm()) {
-                document.getElementById('formSurvey').style.display = 'none';
-                document.getElementById('formPertanyaan').style.display = 'block';
-                document.getElementById('U1').style.display = 'block'
-            }
-        }
-
-
-        var nomorPertanyaanAktif = 1;
-
-        function updateNomorPertanyaan() {
-            var judulPertanyaan = document.getElementById('hitung');
-            judulPertanyaan.textContent = nomorPertanyaanAktif + " dari <?php echo count($pertanyaans); ?>";
-        }
-
-        function tampilkanPertanyaanSelanjutnya(currentQuestionId, nextQuestionId) {
-            var currentQuestion = document.getElementById(currentQuestionId);
-            var nextQuestion = document.getElementById(nextQuestionId);
-
-            if (currentQuestion && nextQuestion) {
-                if (validatePilihan(currentQuestion)) {
-                    currentQuestion.style.display = 'none';
-                    nomorPertanyaanAktif++;
-                    updateNomorPertanyaan();
-                    if (nextQuestionId === 'kritik_saran') {
-                        tampilkanPertanyaanTerakhir();
-                    } else {
-                        nextQuestion.style.display = 'block'; // Tampilkan pertanyaan selanjutnya
-                    }
-                } else {
-                    Swal.fire("Peringatan", "Pilih salah satu opsi sebelum melanjutkan.", "warning");
-                }
-            }
-        }
-
-        function tampilkanPertanyaanTerakhir(currentQuestionId, nextQuestionId) {
-            var currentQuestion = document.getElementById('kritik_saran');
-            var previousQuestion = document.getElementById('U' + (<?php echo count($pertanyaans); ?>));
-
-            if (currentQuestion && previousQuestion) {
-                if (validatePilihan(previousQuestion)) {
-                    previousQuestion.style.display = 'none';
-                    currentQuestion.style.display = 'block';
-                    document.getElementById('judul').style.display = 'none';
-                    document.getElementById('garis').style.display = 'none';
-                } else {
-                    Swal.fire("Peringatan", "Pilih salah satu opsi sebelum melanjutkan.", "warning");
-                }
-            }
-        }
-
-        function validatePilihan(question) {
-            var radioButtons = question.querySelectorAll('input[type="radio"]');
-            for (var i = 0; i < radioButtons.length; i++) {
-                if (radioButtons[i].checked) {
-                    return true;
-                }
-            }
-            return false;
-        }
-
-        function kembaliKePertanyaanSebelumnya(currentQuestionId, previousQuestionId) {
-            var currentQuestion = document.getElementById(currentQuestionId);
-            var previousQuestion = document.getElementById(previousQuestionId);
-            document.getElementById('judul').style.display = 'block';
-            document.getElementById('garis').style.display = 'block';
-
-            if (currentQuestion && previousQuestion) {
-                currentQuestion.style.display = 'none';
-                previousQuestion.style.display = 'block';
-                nomorPertanyaanAktif--;
-                updateNomorPertanyaan();
-            }
-        }
-
         function submitResponden() {
             var formSurvey = document.getElementById("formSurvey");
 
@@ -223,7 +147,6 @@
                 window.location.href = "/";
                 formSurvey.submit();
                 formSurvey.reset();
-
             }
         }
 

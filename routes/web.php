@@ -10,6 +10,7 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\PertanyaanController;
 use App\Http\Controllers\PublishController;
+use App\Http\Controllers\SaranController;
 use SebastianBergmann\CodeCoverage\Report\Html\Dashboard;
 
 /*
@@ -37,7 +38,8 @@ Route::get('layanan/{id_tenant}/survey/responden', [LayananController::class, 's
 Route::post('layanan/{id_tenant}/survey/responden-submit', [LayananController::class, 'submitResponden'])->name('layanan.survey.submit');
 Route::get('layanan/{id_tenant}/survey/pertanyaan/{id_responden}', [LayananController::class, 'showPertanyaanForm'])->name('masyarakat.pertanyaan');
 Route::post('layanan/{id_tenant}/survey/jawaban-submit', [LayananController::class, 'submitJawaban'])->name('layanan.survey.submitjawaban');
-
+Route::get('layanan/{id_tenant}/survey/saran/{id_responden}', [LayananController::class, 'showSaranForm'])->name('masyarakat.saran');
+Route::post('layanan/{id_tenant}/survey/saran-submit', [LayananController::class, 'submitSaran'])->name('layanan.survey.submitsaran');
 Route::delete('/hapus-responden/{id_responden}', [LayananController::class, 'hapusResponden']);
 
 Route::middleware(['guest'])->group(function () {
@@ -69,6 +71,8 @@ Route::resource('/pertanyaan', PertanyaanController::class);
 
 Route::resource('/publish', PublishController::class);
 Route::get('/publish/{id_responden}', [PublishController::class, 'view'])->name('publish.view');
+
+Route::resource('/saran', SaranController::class);
 
 // Route::get('/publish', function () {
 //     return view('admin/publish/index');

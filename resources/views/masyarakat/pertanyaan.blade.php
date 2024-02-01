@@ -30,7 +30,7 @@
             </h2>
             <div id="garis" class="garis-horizontal"></div>
             @foreach ($pertanyaans as $index => $pertanyaan)
-                <div class="question" id="U{{ $index + 1 }}">
+                <div class="question" id="U{{ $index + 1 }}" style="display:none;">
                     <p>{{ $pertanyaan->pertanyaan }}</p>
                     @for ($i = 1; $i <= 4; $i++)
                         <label class="radio-label" for="jawaban{{ $pertanyaan->id_pertanyaan }}_{{ $i }}">
@@ -46,18 +46,11 @@
                     <button class="btn-back" type="button"
                         onclick="kembaliKePertanyaanSebelumnya('U<?php echo $index + 1; ?>', 'U<?php echo $index; ?>')">Kembali</button>
                     <?php endif; ?>
-                    <button class="btn-next" type="button" onclick="<?php echo $index === count($pertanyaans) - 1 ? 'tampilkanPertanyaanTerakhir()' : 'tampilkanPertanyaanSelanjutnya(\'U' . ($index + 1) . '\', \'U' . ($index + 2) . '\')'; ?>">
+                    <button class="btn-next" type="button" onclick="<?php echo $index === count($pertanyaans) - 1 ? 'submitPertanyaan()' : 'tampilkanPertanyaanSelanjutnya(\'U' . ($index + 1) . '\', \'U' . ($index + 2) . '\')'; ?>">
                         Selanjutnya
                     </button>
                 </div>
             @endforeach
-            <div class="question" id="kritik_saran" style="display: block;">
-                <label for="saran"><strong>SARAN:</strong></label>
-                <textarea id="saran" rows="4" cols="50"></textarea><br><br><br>
-                <button class="btn-back" type="button"
-                    onclick="kembaliKePertanyaanSebelumnya('kritik_saran', 'U<?php echo count($pertanyaans); ?>')">Kembali</button>
-                <button class="btn-next" type="button" onclick="submitSurvey()">Kirim Survey</button>
-            </div>
         </form>
     </div>
 
@@ -70,6 +63,7 @@
             for (var i = 1; i < questions.length; i++) {
                 questions[i].style.display = 'none';
             }
+            questions[0].style.display = 'block';
         };
 
         var nomorPertanyaanAktif = 1;
@@ -141,42 +135,20 @@
 
         var surveySubmitted = false;
 
-        function submitSurvey() {
-            var saran = document.getElementById("saran");
+        function submitPertanyaan() {
             var formPertanyaan = document.getElementById("formPertanyaan");
 
             if (validatePilihan(document.getElementById('formPertanyaan'))) {
-                Swal.fire({
-                    icon: 'success',
-                    title: 'Survei Berhasil Dikirim',
-                    text: 'Terima kasih telah mengisi survei.',
-                    timer: 3000,
-                    timerProgressBar: true,
-                    showConfirmButton: false
-                }).then(() => {
-                    surveySubmitted = true;
-                    // Membersihkan riwayat perambanan
-                    window.history.replaceState({}, document.title, "/");
-                    // Mengarahkan kembali ke halaman home
-                    window.location.href = "/";
-                    formPertanyaan.submit();
-                    formPertanyaan.reset();
-                    saran.value = '';
-                });
-            } else {
-                Swal.fire({
-                    icon: 'error',
-                    title: 'Gagal Mengirim Survei',
-                    text: 'Mohon lengkapi formulir dengan benar sebelum mengirim survei.',
-                    timer: 3000,
-                    timerProgressBar: true,
-                    showConfirmButton: false
-                }).then(() => {
-                    saran.value = '';
-                    window.location.href = '/';
-                });
+                surveySubmitted = true;
+                // Membersihkan riwayat perambanan
+                window.history.replaceState({}, document.title, "/");
+                // Mengarahkan kembali ke halaman home
+                window.location.href = "/";
+                formPertanyaan.submit();
+                formPertanyaan.reset();
             }
         }
+
 
         window.addEventListener('beforeunload', function(e) {
             if (!surveySubmitted) {

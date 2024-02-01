@@ -9,6 +9,7 @@ use App\Models\Tenant;
 use App\Models\Responden;
 use App\Models\Pertanyaan;
 use App\Models\Jawaban;
+use App\Models\Saran;
 
 class LayananController extends Controller
 {
@@ -181,15 +182,58 @@ class LayananController extends Controller
 
         // dd($jawaban);
 
+        return redirect()->route('masyarakat.saran', [
+            'id_tenant' => $id_tenant,
+            'id_responden' => session('id_responden')
+        ]);
+    }
+
+    public function showSaranForm($id_tenant)
+    {
+        // Dapatkan data responden berdasarkan ID
+        $id_responden = session('id_responden');
+        $responden = Responden::find($id_responden);
+
+        // Jika responden tidak ditemukan, kembalikan 404
+        if (!$responden) {
+            abort(404);
+        }
+
+        $data = [
+            'layananData' => [
+                'nomor' => $id_tenant,
+            ],
+            'responden' => $id_responden,
+        ];
+
+        return view('masyarakat.saran', $data);
+    }
+
+    public function submitSaran(Request $request)
+    {
+        // Validasi data yang diterima dari form
+        $request->validate([
+            'saran' => 'nullable|string|max:255',
+        ]);
+
+        // Simpan saran ke dalam database
+        $saran = new Saran();
+        $saran->id_responden = session('id_responden');
+        $saran->saran = $request->input('saran');
+        $saran->save();
+
+        // dd($saran);
+
         return redirect('/');
     }
 
-    public function hapusResponden($id_responden) {
+    public function hapusResponden($id_responden)
+    {
         $responden = Responden::find($id_responden);
         if ($responden) {
             $responden->delete();
         }
-        return redirect()->route('home');
+        return redirect()->route('/');
     }
 
     private function getJudulByNomor($id_tenant)
@@ -259,7 +303,8 @@ class LayananController extends Controller
         $konversiSKM = $skm * 25;
 
         // Tentukan Kualitas Pelayanan berdasarkan nilai konversiSKM
-        if ($konversiSKM >= 25.00 && $konversiSKM <= 64.99
+        if (
+            $konversiSKM >= 25.00 && $konversiSKM <= 64.99
         ) {
             $kualitasPelayanan = 'Tidak Baik';
         } elseif ($konversiSKM >= 65.00 && $konversiSKM <= 76.60) {
