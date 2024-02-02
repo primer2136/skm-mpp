@@ -30,4 +30,9 @@ class Responden extends Model
     {
         return $this->hasMany(Jawaban::class, 'id_responden');
     }
+
+    public function saran()
+    {
+        return $this->hasOne(Saran::class, 'id_responden');
+    }
 }

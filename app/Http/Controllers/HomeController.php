@@ -80,7 +80,7 @@ class HomeController extends Controller
 
         // Hitung nilai rata-rata tertimbang (dikali 0.11)
         $nilaiRataRataTertimbang = array_map(function ($nilai) {
-            return $nilai * 0.11;
+            return $nilai * 1/9;
         }, $nilaiRataRata);
 
         // Hitung total nilai rata-rata tertimbang
@@ -96,10 +96,12 @@ class HomeController extends Controller
             $kualitasPelayanan = 'Kurang Baik';
         } elseif ($konversiSKM >= 76.61 && $konversiSKM <= 88.30) {
             $kualitasPelayanan = 'Baik';
-        } elseif ($konversiSKM >= 88.31 && $konversiSKM <= 100.00) {
+        } elseif ($konversiSKM >= 88.31 && $konversiSKM <= 100.01) {
             $kualitasPelayanan = 'Sangat Baik';
-        } else {
+        } elseif ($konversiSKM >= 0 && $konversiSKM <= 24.49) {
             $kualitasPelayanan = '-';
+        } else {
+            $kualitasPelayanan = 'Invalid';
         }
 
         // Ambil data untuk diagram

@@ -104,6 +104,8 @@ class RespondenController extends Controller
 
         // Hapus terlebih dahulu semua entri yang terkait di tabel jawaban_responden
         $responden->jawaban()->delete();
+
+        $responden->saran()->delete();
     
         // Sekarang Anda dapat menghapus baris dari tabel respondens
         $responden->delete();
