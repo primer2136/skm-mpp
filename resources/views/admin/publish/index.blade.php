@@ -26,17 +26,23 @@
                             </div>
                         @endif
 
-                        {{-- Form search --}}
+                        {{-- Form filter --}}
                         <div class="float-right">
-                            <form action="?" method="GET">
+                            <form action="{{ route('publish.index') }}" method="GET">
                                 <div class="input-group mb-3">
-                                    <input name="keyword" id="caripublish" type="text" class="form-control"
-                                        placeholder="Cari..." aria-label="Cari" aria-describedby="button-addon2"
-                                        value="{{ Request()->keyword }}" autocomplete="off">
+                                    <select name="id_tenant" class="form-control">
+                                        <option value="">Pilih Tenant</option>
+                                        @foreach ($tenants as $tenant)
+                                            <option value="{{ $tenant->id_tenant }}"
+                                                {{ Request()->id_tenant == $tenant->id_tenant ? 'selected' : '' }}>
+                                                {{ $tenant->nama_tenant }}</option>
+                                        @endforeach
+                                    </select>
                                     <div class="input-group-append">
-                                        <button id="btncaripublish" class="btn btn-outline-warning bg-warning"
-                                            type="submit" id="button-addon2"><i
-                                                class="fas fa-search text-light"></i></button>
+                                        <button class="btn btn-outline-warning bg-warning" type="submit"
+                                            id="button-addon2">
+                                            <i class="fas fa-filter text-light"></i>
+                                        </button>
                                     </div>
                                 </div>
                             </form>
