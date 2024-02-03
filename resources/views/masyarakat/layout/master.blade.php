@@ -96,6 +96,50 @@
     </script>
     -->
     <script>
+        $(document).ready(function() {
+            // Animasi untuk indeks kepuasan
+            $({
+                Counter: 0
+            }).animate({
+                Counter: <?php echo $skmData['konversiSKM']; ?>
+            }, {
+                duration: 2000,
+                easing: 'swing',
+                step: function() {
+                    $('p#indeks-kepuasan').text(this.Counter.toFixed(2));
+                },
+                complete: function() {
+                    // Setelah animasi indeks kepuasan selesai
+                    animateTotalResponden(); // Mulai animasi total responden
+                }
+            });
+
+            // Animasi untuk total responden
+            $({
+                Counter: 0
+            }).animate({
+                Counter: <?php echo $totalRespondenSemuaTenant; ?>
+            }, {
+                duration: 2000,
+                easing: 'swing',
+                step: function() {
+                    $('p#total-responden').text(Math.ceil(this.Counter));
+                },
+                complete: function() {
+                    // Setelah animasi total responden selesai
+                    animateKualitasPelayanan(); // Mulai animasi kualitas pelayanan
+                }
+            });
+
+            function animateKualitasPelayanan() {
+                // Tentukan kualitas pelayanan
+                var kualitasPelayanan = "<?php echo $skmData['kualitasPelayanan']; ?>";
+
+                // Tampilkan kualitas pelayanan secara pop-up
+                $('#kualitas-pelayanan').text(kualitasPelayanan).css('opacity', '1');
+            }
+        });
+
         // Diagram batang
         var ctxBar = document.getElementById('barChart').getContext('2d');
         var barChart = new Chart(ctxBar, {

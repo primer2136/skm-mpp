@@ -24,7 +24,6 @@ class LayananController extends Controller
         }
 
         // Hitung rata-rata nilai jawaban untuk setiap pertanyaan
-        $nilaiRataRata = $this->hitungSkmPerTenant($id_tenant);
         $skm = $this->hitungSkmPerTenant($id_tenant);
 
         // Jika Layanan ditemukan, lemparkan data ke view
@@ -38,7 +37,7 @@ class LayananController extends Controller
         $totalResponden = Responden::whereHas('tenant', function ($query) use ($id_tenant) {
             $query->where('id_tenant', $id_tenant);
         })->count();
-        // dd($nilaiRataRata);
+        // dd($skm);
         return view('masyarakat.layanan', compact('layananData', 'totalResponden', 'skm'));
     }
 

@@ -89,3 +89,8 @@
     margin-bottom: 10px;
     margin-left: 5px;
 }
+
+.animate-text {
+    opacity: 0; /* Atur ke 0 agar teks awalnya tidak terlihat */
+    transition: opacity 0.75s ease; /* Efek transisi saat teks muncul */
+}
