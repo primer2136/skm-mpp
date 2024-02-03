@@ -48,15 +48,15 @@
             <div class="kotak-container">
                 <div class="kotak">
                     <h2>Indeks Kepuasan (%)</h2>
-                    <p>{{ number_format($skmData['konversiSKM'], 1) }}</p>
+                    <p id="indeks-kepuasan">0</p>
                 </div>
                 <div class="kotak">
                     <h2>Total Responden</h2>
-                    <p>{{ $totalRespondenSemuaTenant }}</p>
+                    <p id="total-responden">0</p>
                 </div>
                 <div class="kotak">
                     <h2>Kualitas Pelayanan</h2>
-                    <p>{{ $skmData['kualitasPelayanan'] }}</p>
+                    <p class="animate-text" id="kualitas-pelayanan">-</p>
                 </div>
 
                 <!-- Diagram batang -->
@@ -205,29 +205,6 @@
 
     </div>
 
-    <!-- <div>
-                                <div style="margin-top:2%">
-                                    <nav>
-                                        <ul class="pagination">
-
-
-                                            <li class="page-item disabled" aria-disabled="true" aria-label="&laquo; Previous">
-                                                <span class="page-link" aria-hidden="true">
-                                                    <</span>
-                                            </li>
-                                            <li class="page-item active" aria-current="page"><span class="page-link">1</span>
-                                            </li>
-                                            <li class="page-item"><a class="page-link" href="http://mpp.cimahikota.go.id?page=2">2</a></li>
-                                            <li class="page-item"><a class="page-link" href="http://mpp.cimahikota.go.id?page=3">3</a></li>
-                                            <li class="page-item"><a class="page-link" href="http://mpp.cimahikota.go.id?page=4">4</a></li>
-                                            <li class="page-item"><a class="page-link" href="http://mpp.cimahikota.go.id?page=5">5</a></li>
-                                            <li class="page-item"><a class="page-link" href="http://mpp.cimahikota.go.id?page=6">6</a></li>
-                                            <li class="page-item"><a class="page-link" href="http://mpp.cimahikota.go.id?page=2" rel="next" aria-label="Next »">></a>
-                                            </li>
-
-                                        </ul>
-                                    </nav>
-                                </div> -->
     <br><br>
 
     <div class="footer">

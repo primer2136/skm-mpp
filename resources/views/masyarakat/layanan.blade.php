@@ -102,15 +102,15 @@
                         <div class="kotak-container">
                             <div class="kotak">
                                 <h2>Indeks Kepuasan (%)</h2>
-                                <p>{{ number_format($skm['konversiSKM'], 1) }}</p>
+                                <p id="indeks-kepuasan">0</p>
                             </div>
                             <div class="kotak">
                                 <h2>Total Responden</h2>
-                                <p>{{ $totalResponden }}</p>
+                                <p id="total-responden">0</p>
                             </div>
                             <div class="kotak">
                                 <h2>Kualitas Pelayanan</h2>
-                                <p>{{ $skm['kualitasPelayanan'] }}</p>
+                                <p class="animate-text" id="kualitas-pelayanan">-</p>
                             </div>
 
                             <!-- Diagram batang -->
@@ -146,6 +146,49 @@
         @stack('page-scripts')
 
         <script>
+            $(document).ready(function() {
+                // Animasi untuk indeks kepuasan
+                $({
+                    Counter: 0
+                }).animate({
+                    Counter: <?php echo $skm['konversiSKM']; ?>
+                }, {
+                    duration: 2000,
+                    easing: 'swing',
+                    step: function() {
+                        $('p#indeks-kepuasan').text(this.Counter.toFixed(2));
+                    },
+                    complete: function() {
+                        // Setelah animasi indeks kepuasan selesai
+                        animateTotalResponden(); // Mulai animasi total responden
+                    }
+                });
+
+                // Animasi untuk total responden
+                $({
+                    Counter: 0
+                }).animate({
+                    Counter: <?php echo $totalResponden; ?>
+                }, {
+                    duration: 2000,
+                    easing: 'swing',
+                    step: function() {
+                        $('p#total-responden').text(Math.ceil(this.Counter));
+                    },
+                    complete: function() {
+                        // Setelah animasi total responden selesai
+                        animateKualitasPelayanan(); // Mulai animasi kualitas pelayanan
+                    }
+                });
+
+                function animateKualitasPelayanan() {
+                    // Tentukan kualitas pelayanan
+                    var kualitasPelayanan = "<?php echo $skm['kualitasPelayanan']; ?>";
+
+                    // Tampilkan kualitas pelayanan secara pop-up
+                    $('#kualitas-pelayanan').text(kualitasPelayanan).css('opacity', '1');
+                }
+            });
             // Diagram batang
             var ctxBar = document.getElementById('barChart').getContext('2d');
             var barChart = new Chart(ctxBar, {
@@ -236,13 +279,13 @@
 
         <!-- Option 2: Separate Popper and Bootstrap JS -->
         <!--
-                    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"
-                        integrity="sha384-q2kxQ16AaE6UbzuKqyBE9/u/KzioAlnx2maXQHiDX9d4/zp8Ok3f+M7DPm+Ib6IU" crossorigin="anonymous">
-                    </script>
-                    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.min.js"
-                        integrity="sha384-pQQkAEnwaBkjpqZ8RU1fF1AKtTcHJwFl3pblpTlHXybJjHpMYo79HY3hIi4NKxyj" crossorigin="anonymous">
-                    </script>
-                    -->
+                        <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"
+                            integrity="sha384-q2kxQ16AaE6UbzuKqyBE9/u/KzioAlnx2maXQHiDX9d4/zp8Ok3f+M7DPm+Ib6IU" crossorigin="anonymous">
+                        </script>
+                        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.min.js"
+                            integrity="sha384-pQQkAEnwaBkjpqZ8RU1fF1AKtTcHJwFl3pblpTlHXybJjHpMYo79HY3hIi4NKxyj" crossorigin="anonymous">
+                        </script>
+                        -->
     </body>
 
     </html>
