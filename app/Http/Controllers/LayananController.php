@@ -293,7 +293,7 @@ class LayananController extends Controller
 
         // Hitung nilai rata-rata tertimbang (dikali 0.11)
         $nilaiRataRataTertimbang = array_map(function ($nilai) {
-            return $nilai * 1/9;
+            return $nilai * 0.11;
         }, $nilaiRataRata);
 
         // Hitung total nilai rata-rata tertimbang
