@@ -31,9 +31,10 @@
                     <div class="card-body">
 
                         {{-- Button tambah --}}
-                        <a href="{{ route('responden.create') }}" class="btn btn-warning mb-4"><i
-                                class="fas fa-plus text-light"></i></a>
-
+                        <div class="float-left mb-3 mr-3">
+                            <a href="{{ route('responden.create') }}" class="btn btn-warning mb-4"><i
+                                    class="fas fa-plus text-light"></i></a>
+                        </div>
                         {{-- Form search --}}
                         <div class="float-right">
                             <form action="?" method="GET">
@@ -67,6 +68,18 @@
                             </form>
                         </div>
 
+                        <div class="float-left mr-3">
+                            {{-- Show entries --}}
+                            <label for="showEntries" class="mr-2">Show entries:</label>
+                            <select id="showEntries" class="form-control d-inline-block" style="width: auto;">
+                                <option value="10">10</option>
+                                <option value="25">25</option>
+                                <option value="50">50</option>
+                                <option value="100">100</option>
+                            </select>
+                            <span id="showEntriesInfo" class="ml-2"></span>
+                        </div>
+
                         {{-- Alert --}}
                         @if (session('message'))
                             <div class="alert alert-success alert-dismissible show fade">
@@ -95,7 +108,7 @@
                             </thead>
                             <tbody>
                                 @php
-                                    $no = 1;
+                                    $no = $respondens->firstItem();
                                 @endphp
                                 @foreach ($respondens as $responden)
                                     @if (!$id_tenant || $responden->id_tenant == $id_tenant)
@@ -179,6 +192,42 @@
     <script>
         document.getElementById('id_tenant').addEventListener('change', function() {
             document.getElementById('filterForm').submit();
+        });
+
+        document.addEventListener("DOMContentLoaded", function() {
+            var showEntriesSelect = document.getElementById("showEntries");
+            var showEntriesInfo = document.getElementById("showEntriesInfo");
+            var totalData = "{{ $respondens->total() }}"; 
+
+            // Fungsi untuk memperbarui informasi "of total data" dan jumlah entri yang ditampilkan
+            function updateShowEntriesInfo(totalData, selectedEntries) {
+                showEntriesInfo.textContent = " of " + totalData + " entries";
+            }
+
+            // Mengambil nilai opsi "Show entries" dari URL jika tersedia
+            var urlParams = new URLSearchParams(window.location.search);
+            var entries = urlParams.get('entries');
+            if (entries) {
+                showEntriesSelect.value = entries;
+            }
+            var selectedEntries = showEntriesSelect.value; // Mendapatkan nilai opsi yang dipilih
+            updateShowEntriesInfo(totalData,
+            selectedEntries); // Memperbarui informasi jumlah entri yang ditampilkan
+
+            // Tambahkan event listener untuk opsi "Show entries"
+            showEntriesSelect.addEventListener("change", function() {
+                var selectedValue = this.value; // Mendapatkan nilai yang dipilih
+                var url = new URL(window.location.href); // Mendapatkan URL saat ini
+                url.searchParams.set('entries',
+                selectedValue); // Menambahkan parameter 'entries' ke URL dengan nilai yang dipilih
+                window.location.href = url.href; // Mengarahkan ulang ke URL yang diperbarui
+
+                // Simpan nilai terakhir yang dipilih ke penyimpanan lokal (localStorage)
+                localStorage.setItem('lastSelectedEntries', selectedValue);
+
+                // Memperbarui informasi jumlah entri yang ditampilkan
+                updateShowEntriesInfo(totalData, selectedValue);
+            });
         });
     </script>
 

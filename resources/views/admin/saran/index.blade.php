@@ -66,7 +66,13 @@
                                     <tr>
                                         <td>{{ $no++ }}</td>
                                         <td>{{ optional($saran->responden)->nama_responden }}</td>
-                                        <td class="password-col">{{ $saran->saran }}</td>
+                                        <td class="password-col" style="@if (!$saran->saran) opacity: 0.5; @endif">
+                                            @if ($saran->saran)
+                                                {{ $saran->saran }}
+                                            @else
+                                                (Tidak ada saran)
+                                            @endif
+                                        </td>
                                         <td>
                                             <a href="{{ route('publish.view', ['id_responden' => $saran->id_responden]) }}"
                                                 class="btn btn-warning p-0" style="vertical-align: baseline">
