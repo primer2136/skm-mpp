@@ -14,9 +14,11 @@ class TenantController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index(Request $request , LayananController $layananController)
+    public function index(Request $request, LayananController $layananController)
     {
         $keyword = $request->input('keyword');
+
+        $itemsPerPage = $request->input('itemsPerPage', 20);
 
         $tenants = Tenant::query();
         if ($keyword) {
@@ -24,7 +26,7 @@ class TenantController extends Controller
                 $query->where('nama_tenant', 'like', "%$keyword%");
             });
         }
-        $tenants = $tenants->orderBy('created_at')->get();
+        $tenants = $tenants->orderBy('created_at')->paginate($itemsPerPage);
 
         // Memanggil fungsi hitungSkmPerTenant dari LayananController
         foreach ($tenants as $tenant) {

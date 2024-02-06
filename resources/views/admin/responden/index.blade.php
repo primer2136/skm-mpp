@@ -7,6 +7,22 @@
 
 <link rel="shortcut icon" href="https://mpp.cimahikota.go.id/img/favicon.png" type="image/x-icon">
 
+<style>
+    .pagination.orange .page-item.active .page-link,
+    .pagination.orange .page-link:hover {
+        background-color: #ff8c00 !important;
+        /* Warna oranye saat hover dan aktif */
+        border-color: #ff8c00 !important;
+        /* Warna border oranye saat hover dan aktif */
+    }
+
+    .pagination.orange .page-link {
+        color: #ff8c00 !important;
+        /* Warna teks oranye */
+    }
+</style>
+
+
 @section('konten')
     <div class="container-fluid">
         <div class="row">
@@ -110,6 +126,12 @@
                                 @endforeach
                             </tbody>
                         </table>
+
+                        <div class="d-flex justify-content-center">
+                            {{ $respondens->links('pagination::bootstrap-4')->with(['class' => 'pagination orange']) }}
+                        </div>
+
+
                         <!-- Penanganan jika tidak ada data -->
                         @if ($respondens->isEmpty())
                             <div class="alert alert-danger mt-3">

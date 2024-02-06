@@ -72,7 +72,7 @@
                                             @endif
                                         </td>
                                         <td>{{ $tenant->nama_tenant }}</td>
-                                        <td>{{ number_format($tenant->skm, 1) }}</td>
+                                        <td>{{ number_format($tenant->skm, 2) }}</td>
                                         <td>
                                             <a href="{{ route('tenant.edit', $tenant->id_tenant) }}"
                                                 class="btn btn-warning p-0" style="vertical-align: baseline">
@@ -89,6 +89,11 @@
                                 @endforeach
                             </tbody>
                         </table>
+
+                        <div class="d-flex justify-content-center">
+                            {{ $tenants->links('pagination::bootstrap-4')->with(['class' => 'pagination orange']) }}
+                        </div>
+
                         <!-- Penanganan jika tidak ada data -->
                         @if ($tenants->isEmpty())
                             <div class="alert alert-danger mt-3">

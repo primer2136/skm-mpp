@@ -7,6 +7,12 @@
 
 <link rel="shortcut icon" href="https://mpp.cimahikota.go.id/img/favicon.png" type="image/x-icon">
 
+<style>
+    td.password-col {
+        max-width: 350px;
+    }
+</style>
+
 @section('konten')
     <div class="container-fluid">
         <div class="row">
@@ -60,7 +66,7 @@
                                     <tr>
                                         <td>{{ $no++ }}</td>
                                         <td>{{ optional($saran->responden)->nama_responden }}</td>
-                                        <td>{{ $saran->saran }}</td>
+                                        <td class="password-col">{{ $saran->saran }}</td>
                                         <td>
                                             <a href="{{ route('publish.view', ['id_responden' => $saran->id_responden]) }}"
                                                 class="btn btn-warning p-0" style="vertical-align: baseline">

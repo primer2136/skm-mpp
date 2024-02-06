@@ -11,7 +11,8 @@ class PublishController extends Controller
 {
     public function index()
     {
-        $jawabans = Responden::orderBy('created_at')->get();
+        $perPage = 20;
+        $jawabans = Responden::orderBy('created_at')->paginate($perPage);
         // dd($jawabans);
 
         foreach ($jawabans as $jawaban) {
