@@ -16,8 +16,8 @@ class RespondenController extends Controller
         $keyword = $request->input('keyword');
         $id_tenant = $request->input('id_tenant');
         $tenants = Tenant::all();
-        $perPage = $request->input('perPage', 20);
-
+        $entriesPerPage = $request->input('entries', 10);
+        
         $respondens = Responden::query();
         $respondent = Responden::with('tenant');
         
@@ -38,7 +38,7 @@ class RespondenController extends Controller
             });
         }
 
-        $respondens = $respondens->orderBy('created_at')->paginate($perPage);
+        $respondens = $respondens->orderBy('created_at')->paginate($entriesPerPage);
 
         return view('admin.responden.index', compact('respondens', 'tenants', 'id_tenant', 'respondent'));
     }

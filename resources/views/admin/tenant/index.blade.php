@@ -58,7 +58,7 @@
                             </thead>
                             <tbody>
                                 @php
-                                    $no = 1;
+                                    $no = $tenants->firstItem();
                                 @endphp
                                 @foreach ($tenants as $tenant)
                                     <tr>
