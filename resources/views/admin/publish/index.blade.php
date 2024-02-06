@@ -6,6 +6,20 @@
 <title>Publish</title>
 
 <link rel="shortcut icon" href="https://mpp.cimahikota.go.id/img/favicon.png" type="image/x-icon">
+<style>
+    .pagination.orange .page-item.active .page-link,
+    .pagination.orange .page-link:hover {
+        background-color: #ff8c00 !important;
+        /* Warna oranye saat hover dan aktif */
+        border-color: #ff8c00 !important;
+        /* Warna border oranye saat hover dan aktif */
+    }
+
+    .pagination.orange .page-link {
+        color: #ff8c00 !important;
+        /* Warna teks oranye */
+    }
+</style>
 
 @section('konten')
     <div class="container-fluid">
@@ -54,7 +68,7 @@
                             </thead>
                             <tbody>
                                 @php
-                                    $no = 1;
+                                    $no = $jawabans->firstItem();
                                 @endphp
                                 @foreach ($jawabans as $jawaban)
                                     <tr>
@@ -104,6 +118,9 @@
                                 @endforeach
                             </tbody>
                         </table>
+                        <div class="d-flex justify-content-center">
+                            {{ $jawabans->links('pagination::bootstrap-4')->with(['class' => 'pagination orange']) }}
+                        </div> 
                     </div>
                 </div>
             </div>
