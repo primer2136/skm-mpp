@@ -11,6 +11,7 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\PertanyaanController;
 use App\Http\Controllers\PublishController;
 use App\Http\Controllers\SaranController;
+use App\Http\Controllers\ExcelController;
 use SebastianBergmann\CodeCoverage\Report\Html\Dashboard;
 
 /*
@@ -73,6 +74,9 @@ Route::resource('/publish', PublishController::class);
 Route::get('/publish/{id_responden}', [PublishController::class, 'view'])->name('publish.view');
 
 Route::resource('/saran', SaranController::class);
+
+// Route::get('/export', [ExcelController::class, 'exportForm'])->name('export.form');
+Route::post('/export/excel', [ExcelController::class, 'exportDataToExcel'])->name('export.excel');
 
 // Route::get('/publish', function () {
 //     return view('admin/publish/index');

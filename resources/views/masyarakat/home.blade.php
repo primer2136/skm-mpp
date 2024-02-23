@@ -78,6 +78,15 @@
                 </div>
             </div>
         </div>
+        {{-- <div class="container">
+            <div class="col-md-8">
+                <!-- Tombol untuk mengekspor data ke dalam file Excel -->
+                <form action="{{ route('export.excel') }}" method="POST">
+                    @csrf
+                    <button type="submit" class="btn btn-primary">Export to Excel</button>
+                </form>
+            </div>
+        </div> --}}
 
 
         <br id="tata-cara"><br><br><br><br><br>
@@ -167,7 +176,8 @@
                     </svg>
                     <input type="text" name="search" class="form-input pl-12 text-lg py-3 rounded-lg"
                         placeholder="Cari Layanan" id="searchInput">
-                    <button class="form-button absolute inset-y-2 right-2" type="submit" onclick="searchServices(event)">
+                    <button class="form-button absolute inset-y-2 right-2" type="submit"
+                        onclick="searchServices(event)">
                         Cari
                     </button>
                 </div>
